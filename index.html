@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kamila Kopřivová | Realitní makléřka</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--white:#ffffff;
+--soft:#f8f6f1;
+--gold:#c6a66a;
+--gold-light:#e8d8b8;
+--navy:#111b3f;
+--navy-soft:#1d2b5c;
+--text:#333333;
+--muted:#777777;
+--border:#eee7da;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:"Montserrat",sans-serif;
+background:var(--white);
+color:var(--text);
+line-height:1.7;
+overflow-x:hidden;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+h1,h2,h3{
+font-family:"Playfair Display",serif;
+font-weight:400;
+}
+
+header{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:34px 7%;
+color:white;
+}
+
+.logo{
+color:white;
+text-decoration:none;
+font-size:26px;
+letter-spacing:3px;
+font-weight:400;
+text-transform:uppercase;
+}
+
+.logo span{
+color:var(--gold-light);
+}
+
+nav{
+display:flex;
+gap:34px;
+align-items:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:400;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--gold-light);
+}
+
+.menu-circle{
+width:64px;
+height:64px;
+border-radius:50%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-left:12px;
+}
+
+.menu-circle span{
+width:24px;
+height:2px;
+background:var(--navy);
+position:relative;
+display:block;
+}
+
+.menu-circle span::before,
+.menu-circle span::after{
+content:"";
+position:absolute;
+left:0;
+width:24px;
+height:2px;
+background:var(--navy);
+}
+
+.menu-circle span::before{
+top:-8px;
+}
+
+.menu-circle span::after{
+top:8px;
+}
+
+.hero{
+height:100vh;
+min-height:720px;
+background:
+linear-gradient(rgba(17,27,63,.45),rgba(17,27,63,.45)),
+url("images/IMG_1007.png") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+padding:0 7%;
+}
+
+.hero-content{
+max-width:1000px;
+}
+
+.hero h1{
+font-size:86px;
+letter-spacing:10px;
+text-transform:uppercase;
+line-height:1.05;
+margin-bottom:24px;
+}
+
+.hero-line{
+width:120px;
+height:1px;
+background:var(--gold-light);
+margin:0 auto 28px;
+}
+
+.hero p{
+font-size:18px;
+letter-spacing:3px;
+text-transform:uppercase;
+font-weight:300;
+}
+
+.hero-buttons{
+margin-top:44px;
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.btn{
+display:inline-block;
+padding:15px 32px;
+border-radius:0;
+text-decoration:none;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:500;
+transition:.35s;
+}
+
+.btn-primary{
+background:white;
+color:var(--navy);
+}
+
+.btn-primary:hover{
+background:var(--gold-light);
+}
+
+.btn-secondary{
+border:1px solid white;
+color:white;
+}
+
+.btn-secondary:hover{
+background:white;
+color:var(--navy);
+}
+
+section{
+padding:105px 8%;
+}
+
+.section-label{
+text-align:center;
+color:var(--gold);
+letter-spacing:3px;
+text-transform:uppercase;
+font-size:12px;
+font-weight:600;
+margin-bottom:18px;
+}
+
+.section-title{
+font-size:48px;
+color:var(--navy);
+text-align:center;
+margin-bottom:22px;
+}
+
+.section-subtitle{
+max-width:760px;
+margin:0 auto 60px;
+text-align:center;
+color:var(--muted);
+font-size:17px;
+}
+
+.stats{
+background:var(--soft);
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:1px;
+padding:0;
+border-top:1px solid var(--border);
+border-bottom:1px solid var(--border);
+}
+
+.stat{
+background:white;
+padding:65px 30px;
+text-align:center;
+}
+
+.stat h2{
+font-size:54px;
+color:var(--navy);
+margin-bottom:8px;
+}
+
+.stat p{
+color:var(--gold);
+letter-spacing:2px;
+text-transform:uppercase;
+font-size:12px;
+font-weight:600;
+}
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center;
+}
+
+.about-image{
+height:620px;
+overflow:hidden;
+}
+
+.about-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.about-text .section-label,
+.about-text .section-title{
+text-align:left;
+}
+
+.about-text .section-title{
+margin-bottom:28px;
+}
+
+.about-text p{
+color:var(--muted);
+margin-bottom:20px;
+font-size:16px;
+}
+
+.about-text .signature{
+font-family:"Playfair Display",serif;
+font-size:28px;
+color:var(--navy);
+margin-top:30px;
+}
+
+.properties-preview{
+background:var(--soft);
+}
+
+.property-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
+}
+
+.property-card{
+background:white;
+}
+
+.property-card img{
+width:100%;
+height:330px;
+object-fit:cover;
+}
+
+.property-info{
+padding:28px;
+border:1px solid var(--border);
+border-top:none;
+}
+
+.property-info small{
+color:var(--gold);
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+}
+
+.property-info h3{
+font-size:25px;
+color:var(--navy);
+margin:12px 0;
+line-height:1.25;
+}
+
+.property-info p{
+color:var(--muted);
+font-size:15px;
+margin-bottom:18px;
+}
+
+.property-info strong{
+color:var(--navy);
+font-size:18px;
+}
+
+.center{
+text-align:center;
+margin-top:48px;
+}
+
+.clean-btn{
+display:inline-block;
+color:var(--navy);
+text-decoration:none;
+letter-spacing:2px;
+text-transform:uppercase;
+font-size:13px;
+font-weight:600;
+border-bottom:1px solid var(--gold);
+padding-bottom:8px;
+transition:.3s;
+}
+
+.clean-btn:hover{
+color:var(--gold);
+}
+
+.valuation{
+background:
+linear-gradient(rgba(17,27,63,.78),rgba(17,27,63,.78)),
+url("images/IMG_1014.png") center/cover;
+color:white;
+text-align:center;
+padding:120px 8%;
+}
+
+.valuation h2{
+font-size:54px;
+margin-bottom:22px;
+}
+
+.valuation p{
+max-width:720px;
+margin:0 auto 38px;
+color:#e6e6e6;
+}
+
+.valuation .btn-primary{
+background:var(--gold);
+color:white;
+}
+
+.references{
+background:white;
+}
+
+.review-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px;
+}
+
+.review{
+border:1px solid var(--border);
+padding:38px;
+background:white;
+box-shadow:0 18px 45px rgba(17,27,63,.05);
+}
+
+.stars{
+color:var(--gold);
+font-size:20px;
+margin-bottom:18px;
+}
+
+.review p{
+color:var(--muted);
+margin-bottom:24px;
+}
+
+.review h3{
+color:var(--navy);
+font-size:22px;
+}
+
+.contact{
+background:var(--soft);
+}
+
+.contact-box{
+max-width:850px;
+margin:auto;
+text-align:center;
+background:white;
+padding:65px;
+border:1px solid var(--border);
+box-shadow:0 22px 65px rgba(17,27,63,.06);
+}
+
+.contact-box h2{
+font-size:46px;
+color:var(--navy);
+margin-bottom:20px;
+}
+
+.contact-box p{
+color:var(--muted);
+margin-bottom:8px;
+}
+
+.contact-links{
+margin-top:34px;
+display:flex;
+justify-content:center;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.contact-links .btn-primary{
+background:var(--navy);
+color:white;
+}
+
+.contact-links .btn-secondary{
+border:1px solid var(--navy);
+color:var(--navy);
+}
+
+.contact-links .btn-secondary:hover{
+background:var(--navy);
+color:white;
+}
+
+footer{
+background:var(--navy);
+color:white;
+text-align:center;
+padding:28px;
+font-size:13px;
+letter-spacing:1px;
+}
+
+@media(max-width:1100px){
+header{
+position:absolute;
+flex-direction:column;
+gap:22px;
+padding:28px 5%;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+gap:18px;
+}
+
+.menu-circle{
+display:none;
+}
+
+.hero h1{
+font-size:64px;
+}
+
+.about{
+grid-template-columns:1fr;
+gap:50px;
+}
+
+.property-grid,
+.review-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:768px){
+header{
+position:absolute;
+padding:24px 5%;
+}
+
+.logo{
+font-size:20px;
+letter-spacing:2px;
+}
+
+nav{
+gap:10px;
+}
+
+nav a{
+font-size:11px;
+letter-spacing:1.5px;
+background:rgba(255,255,255,.12);
+padding:7px 10px;
+}
+
+.hero{
+min-height:680px;
+padding:0 6%;
+}
+
+.hero h1{
+font-size:42px;
+letter-spacing:5px;
+}
+
+.hero p{
+font-size:13px;
+letter-spacing:2px;
+}
+
+.hero-buttons{
+flex-direction:column;
+align-items:center;
+}
+
+.btn{
+width:100%;
+max-width:310px;
+text-align:center;
+}
+
+section{
+padding:70px 6%;
+}
+
+.section-title{
+font-size:36px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.stat{
+padding:45px 20px;
+}
+
+.about-image{
+height:430px;
+}
+
+.about-text .section-label,
+.about-text .section-title{
+text-align:center;
+}
+
+.property-grid,
+.review-grid{
+grid-template-columns:1fr;
+}
+
+.property-card img{
+height:260px;
+}
+
+.valuation{
+padding:85px 6%;
+}
+
+.valuation h2{
+font-size:36px;
+}
+
+.contact-box{
+padding:40px 26px;
+}
+
+.contact-box h2{
+font-size:34px;
+}
+}
+
+@media(max-width:420px){
+.hero h1{
+font-size:34px;
+}
+
+.section-title{
+font-size:31px;
+}
+
+nav a{
+font-size:10px;
+padding:6px 8px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="index.html" class="logo">Kamila <span>Kopřivová</span></a>
+
+<nav>
+<a href="index.html">Domů</a>
+<a href="sluzby.html">Služby</a>
+<a href="nemovitosti.html">Nemovitosti</a>
+<a href="oceneni-nemovitosti.html">Ocenění</a>
+<a href="reference.html">Reference</a>
+<a href="#kontakt">Kontakt</a>
+</nav>
+
+<div class="menu-circle">
+<span></span>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Kamila Kopřivová</h1>
+<div class="hero-line"></div>
+<p>Realitní makléřka pro Olomoucký kraj</p>
+
+<div class="hero-buttons">
+<a href="nemovitosti.html" class="btn btn-primary">Aktuální nabídka</a>
+<a href="oceneni-nemovitosti.html" class="btn btn-secondary">Ocenění nemovitosti</a>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="stat">
+<h2>12+</h2>
+<p>let zkušeností</p>
+</div>
+
+<div class="stat">
+<h2>300+</h2>
+<p>zobchodovaných nemovitostí</p>
+</div>
+
+<div class="stat">
+<h2>100%</h2>
+<p>důraz na důvěru</p>
+</div>
+</section>
+
+<section class="about">
+<div class="about-image">
+<img src="images/IMG_1007.png" alt="Realitní prezentace">
+</div>
+
+<div class="about-text">
+<div class="section-label">O makléřce</div>
+<h2 class="section-title">Prodej nemovitosti začíná prvním dojmem.</h2>
+
+<p>
+Každá nemovitost má své silné stránky. Mým cílem je je správně ukázat,
+aby se kupující nebo nájemci dokázali rychle zorientovat a vnímat skutečnou hodnotu prostoru.
+</p>
+
+<p>
+Zakládám si na férovosti, poctivosti, důvěře a profesionální prezentaci.
+Věřím, že kvalitní příprava, fotografie, video a jasná komunikace dokážou výrazně ovlivnit výsledek.
+</p>
+
+<p class="signature">Ing. Kamila Kopřivová</p>
+</div>
+</section>
+
+<section class="properties-preview">
+<div class="section-label">Aktuální nabídka</div>
+<h2 class="section-title">Vybrané nemovitosti</h2>
+<p class="section-subtitle">
+Ukázka aktuálních nemovitostí v nabídce paní Kopřivové.
+</p>
+
+<div class="property-grid">
+
+<div class="property-card">
+<img src="images/IMG_1006.png" alt="Byt Olomouc">
+<div class="property-info">
+<small>Pronájem bytu</small>
+<h3>Pronájem útulného bytu 2+kk</h3>
+<p>Olomouc, ul. Kpt. Nálepky</p>
+<strong>14 000 Kč / měsíc</strong>
+</div>
+</div>
+
+<div class="property-card">
+<img src="images/IMG_1009.png" alt="Rodinný dům Moravičany">
+<div class="property-info">
+<small>Pronájem domu</small>
+<h3>Pronájem RD 4+kk, 183 m²</h3>
+<p>Moravičany, okr. Šumperk</p>
+<strong>24 000 Kč / měsíc</strong>
+</div>
+</div>
+
+<div class="property-card">
+<img src="images/IMG_1014.png" alt="Pozemek Podolí u Bouzova">
+<div class="property-info">
+<small>Prodej pozemku</small>
+<h3>Prodej pozemku pro bydlení, 3 462 m²</h3>
+<p>Podolí u Bouzova</p>
+<strong>580 Kč / m²</strong>
+</div>
+</div>
+
+</div>
+
+<div class="center">
+<a href="nemovitosti.html" class="clean-btn">Zobrazit všechny nemovitosti</a>
+</div>
+</section>
+
+<section class="valuation">
+<h2>Zjistěte hodnotu své nemovitosti</h2>
+<p>
+Uvažujete o prodeji nebo pronájmu? Připravím pro vás profesionální pohled na cenu,
+prezentaci a vhodnou strategii.
+</p>
+<a href="oceneni-nemovitosti.html" class="btn btn-primary">Chci ocenění nemovitosti</a>
+</section>
+
+<section class="references">
+<div class="section-label">Reference</div>
+<h2 class="section-title">Důvěra klientů je základ</h2>
+<p class="section-subtitle">
+Největší hodnotou v realitách je klidná komunikace, férovost a profesionální vedení celého procesu.
+</p>
+
+<div class="review-grid">
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>
+Velmi příjemná komunikace, profesionální přístup a krásná prezentace nemovitosti.
+</p>
+<h3>Pronájem bytu</h3>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>
+Oceňujeme férovost, ochotu a jistotu během celého procesu.
+</p>
+<h3>Prodej nemovitosti</h3>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>
+Spolupráce proběhla rychle, klidně a s výborným výsledkem.
+</p>
+<h3>Realitní servis</h3>
+</div>
+
+</div>
+
+<div class="center">
+<a href="reference.html" class="clean-btn">Zobrazit reference</a>
+</div>
+</section>
+
+<section id="kontakt" class="contact">
+<div class="contact-box">
+<h2>Uvažujete o prodeji nebo pronájmu?</h2>
+
+<p>Ráda s vámi projdu možnosti a navrhnu nejlepší postup.</p>
+<br>
+<p><strong>Ing. Kamila Kopřivová</strong></p>
+<p>Realitní makléřka pro Olomoucký kraj</p>
+<p>koprivovakamila@gmail.com</p>
+<p>+420 736 167 321</p>
+
+<div class="contact-links">
+<a href="mailto:koprivovakamila@gmail.com" class="btn btn-primary">Napsat e-mail</a>
+<a href="tel:+420736167321" class="btn btn-secondary">Zavolat</a>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 Kamila Kopřivová | Realitní makléřka
+</footer>
+
+</body>
+</html>
