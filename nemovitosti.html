@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nemovitosti | Kamila Kopřivová</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--white:#ffffff;
+--soft:#f8f6f1;
+--gold:#c6a66a;
+--gold-light:#e8d8b8;
+--navy:#111b3f;
+--navy-soft:#1d2b5c;
+--text:#333333;
+--muted:#777777;
+--border:#eee7da;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:"Montserrat",sans-serif;
+background:var(--white);
+color:var(--text);
+line-height:1.7;
+overflow-x:hidden;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+h1,h2,h3{
+font-family:"Playfair Display",serif;
+font-weight:400;
+}
+
+header{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:34px 7%;
+color:white;
+}
+
+.logo{
+color:white;
+text-decoration:none;
+font-size:26px;
+letter-spacing:3px;
+font-weight:400;
+text-transform:uppercase;
+}
+
+.logo span{
+color:var(--gold-light);
+}
+
+nav{
+display:flex;
+gap:34px;
+align-items:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:400;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--gold-light);
+}
+
+.menu-circle{
+width:64px;
+height:64px;
+border-radius:50%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-left:12px;
+}
+
+.menu-circle span{
+width:24px;
+height:2px;
+background:var(--navy);
+position:relative;
+display:block;
+}
+
+.menu-circle span::before,
+.menu-circle span::after{
+content:"";
+position:absolute;
+left:0;
+width:24px;
+height:2px;
+background:var(--navy);
+}
+
+.menu-circle span::before{
+top:-8px;
+}
+
+.menu-circle span::after{
+top:8px;
+}
+
+.hero{
+height:70vh;
+min-height:560px;
+background:
+linear-gradient(rgba(17,27,63,.55),rgba(17,27,63,.55)),
+url("images/IMG_1014.png") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+padding:0 7%;
+}
+
+.hero-content{
+max-width:950px;
+}
+
+.hero h1{
+font-size:76px;
+letter-spacing:8px;
+text-transform:uppercase;
+line-height:1.05;
+margin-bottom:24px;
+}
+
+.hero-line{
+width:120px;
+height:1px;
+background:var(--gold-light);
+margin:0 auto 28px;
+}
+
+.hero p{
+font-size:16px;
+letter-spacing:3px;
+text-transform:uppercase;
+font-weight:300;
+}
+
+section{
+padding:95px 8%;
+}
+
+.section-label{
+text-align:center;
+color:var(--gold);
+letter-spacing:3px;
+text-transform:uppercase;
+font-size:12px;
+font-weight:600;
+margin-bottom:18px;
+}
+
+.section-title{
+font-size:48px;
+color:var(--navy);
+text-align:center;
+margin-bottom:22px;
+}
+
+.section-subtitle{
+max-width:800px;
+margin:0 auto 60px;
+text-align:center;
+color:var(--muted);
+font-size:17px;
+}
+
+.filters{
+display:flex;
+justify-content:center;
+gap:14px;
+flex-wrap:wrap;
+margin-bottom:55px;
+}
+
+.filter{
+padding:12px 22px;
+border:1px solid var(--border);
+background:white;
+color:var(--navy);
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.filter.active,
+.filter:hover{
+background:var(--navy);
+color:white;
+border-color:var(--navy);
+}
+
+.properties{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:34px;
+}
+
+.property{
+background:white;
+border:1px solid var(--border);
+transition:.35s;
+}
+
+.property:hover{
+transform:translateY(-6px);
+box-shadow:0 24px 60px rgba(17,27,63,.08);
+}
+
+.property-image{
+height:310px;
+overflow:hidden;
+}
+
+.property-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
+}
+
+.property:hover .property-image img{
+transform:scale(1.04);
+}
+
+.property-content{
+padding:30px;
+}
+
+.property-type{
+color:var(--gold);
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+margin-bottom:12px;
+}
+
+.property h3{
+font-size:27px;
+line-height:1.25;
+color:var(--navy);
+margin-bottom:12px;
+}
+
+.location{
+color:var(--muted);
+font-size:15px;
+margin-bottom:16px;
+}
+
+.desc{
+color:var(--muted);
+font-size:15px;
+margin-bottom:22px;
+}
+
+.price{
+font-size:20px;
+font-weight:600;
+color:var(--navy);
+margin-bottom:24px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 26px;
+text-decoration:none;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+transition:.35s;
+}
+
+.btn-primary{
+background:var(--navy);
+color:white;
+}
+
+.btn-primary:hover{
+background:var(--gold);
+}
+
+.sold{
+background:var(--soft);
+}
+
+.cta{
+background:
+linear-gradient(rgba(17,27,63,.78),rgba(17,27,63,.78)),
+url("images/IMG_1007.png") center/cover;
+color:white;
+text-align:center;
+padding:115px 8%;
+}
+
+.cta h2{
+font-size:54px;
+margin-bottom:22px;
+}
+
+.cta p{
+max-width:720px;
+margin:0 auto 38px;
+color:#e6e6e6;
+}
+
+.cta .btn-primary{
+background:var(--gold);
+color:white;
+}
+
+footer{
+background:var(--navy);
+color:white;
+text-align:center;
+padding:28px;
+font-size:13px;
+letter-spacing:1px;
+}
+
+@media(max-width:1100px){
+header{
+position:absolute;
+flex-direction:column;
+gap:22px;
+padding:28px 5%;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+gap:18px;
+}
+
+.menu-circle{
+display:none;
+}
+
+.hero h1{
+font-size:58px;
+}
+
+.properties{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:768px){
+.logo{
+font-size:20px;
+letter-spacing:2px;
+}
+
+nav{
+gap:10px;
+}
+
+nav a{
+font-size:11px;
+letter-spacing:1.5px;
+background:rgba(255,255,255,.12);
+padding:7px 10px;
+}
+
+.hero{
+min-height:620px;
+height:70vh;
+padding:0 6%;
+}
+
+.hero h1{
+font-size:40px;
+letter-spacing:5px;
+}
+
+.hero p{
+font-size:12px;
+letter-spacing:2px;
+}
+
+section{
+padding:70px 6%;
+}
+
+.section-title{
+font-size:36px;
+}
+
+.properties{
+grid-template-columns:1fr;
+}
+
+.property-image{
+height:260px;
+}
+
+.filters{
+gap:10px;
+}
+
+.filter{
+font-size:11px;
+padding:10px 14px;
+}
+
+.cta{
+padding:85px 6%;
+}
+
+.cta h2{
+font-size:36px;
+}
+
+.btn{
+width:100%;
+text-align:center;
+}
+}
+
+@media(max-width:420px){
+.hero h1{
+font-size:32px;
+}
+
+.section-title{
+font-size:31px;
+}
+
+nav a{
+font-size:10px;
+padding:6px 8px;
+}
+
+.property-content{
+padding:24px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="index.html" class="logo">Kamila <span>Kopřivová</span></a>
+
+<nav>
+<a href="index.html">Domů</a>
+<a href="sluzby.html">Služby</a>
+<a href="nemovitosti.html">Nemovitosti</a>
+<a href="oceneni-nemovitosti.html">Ocenění</a>
+<a href="reference.html">Reference</a>
+<a href="index.html#kontakt">Kontakt</a>
+</nav>
+
+<div class="menu-circle">
+<span></span>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Nemovitosti</h1>
+<div class="hero-line"></div>
+<p>Aktuální nabídka Ing. Kamily Kopřivové</p>
+</div>
+</section>
+
+<section>
+
+<div class="section-label">Portfolio nemovitostí</div>
+<h2 class="section-title">Aktuální nabídka</h2>
+<p class="section-subtitle">
+Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a elegantním stylu.
+</p>
+
+<div class="filters">
+<button class="filter active" data-filter="all">Vše</button>
+<button class="filter" data-filter="byt">Byty</button>
+<button class="filter" data-filter="dum">Domy</button>
+<button class="filter" data-filter="pozemek">Pozemky</button>
+<button class="filter" data-filter="komerce">Komerční</button>
+<button class="filter" data-filter="prodej">Prodej</button>
+<button class="filter" data-filter="pronajem">Pronájem</button>
+</div>
+
+<div class="properties">
+
+<div class="property" data-category="byt pronajem">
+<div class="property-image">
+<img src="images/IMG_1006.png" alt="Byt Kpt. Nálepky">
+</div>
+<div class="property-content">
+<div class="property-type">Pronájem bytu</div>
+<h3>Pronájem útulného bytu 2+kk</h3>
+<p class="location">Olomouc, ul. Kpt. Nálepky</p>
+<p class="desc">Přízemní nezařízený byt vhodný pro jednotlivce nebo pár.</p>
+<p class="price">14 000 Kč / měsíc</p>
+<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+<div class="property" data-category="byt pronajem">
+<div class="property-image">
+<img src="images/IMG_1007.png" alt="Byt Šternberk Dolní Žleb">
+</div>
+<div class="property-content">
+<div class="property-type">Pronájem bytu</div>
+<h3>Stylový byt 3+1, 76 m²</h3>
+<p class="location">Šternberk – Dolní Žleb</p>
+<p class="desc">Byt s lodžií, garáží a zahrádkou v příjemné lokalitě.</p>
+<p class="price">17 200 Kč / měsíc</p>
+<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+<div class="property" data-category="komerce pronajem">
+<div class="property-image">
+<img src="images/IMG_1008.jpeg" alt="Komerční prostory Olomouc">
+</div>
+<div class="property-content">
+<div class="property-type">Pronájem komerce</div>
+<h3>Exkluzivní komerční prostory, 204,5 m²</h3>
+<p class="location">Olomouc, centrum</p>
+<p class="desc">Reprezentativní prostory v 1. NP v centru Olomouce.</p>
+<p class="price">150 000 Kč / měsíc</p>
+<a href="https://www.reality-proradost.cz/reality/pronajem-exkluzivnich-komercnich-prostor-204-5-m2-1-np-centrum-olomouce-29442/" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+<div class="property" data-category="dum pronajem">
+<div class="property-image">
+<img src="images/IMG_1009.png" alt="Rodinný dům Moravičany">
+</div>
+<div class="property-content">
+<div class="property-type">Pronájem domu</div>
+<h3>Pronájem RD 4+kk, 183 m²</h3>
+<p class="location">Moravičany, okr. Šumperk</p>
+<p class="desc">Rodinný dům s pozemkem 507 m² a garáží.</p>
+<p class="price">24 000 Kč / měsíc</p>
+<a href="https://www.reality-proradost.cz/reality/pronajem-rd-4-kk-183-m2-pozemek-507-m2-garaz-moravicany-okr-sumperk-29285/" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+<div class="property" data-category="byt pronajem">
+<div class="property-image">
+<img src="images/IMG_1010.png" alt="Byt Olomouc Neředín">
+</div>
+<div class="property-content">
+<div class="property-type">Pronájem bytu</div>
+<h3>Byt 2+1 po rekonstrukci, 53 m²</h3>
+<p class="location">Olomouc, Neředín, ul. Jílová</p>
+<p class="desc">Byt po rekonstrukci v 7. patře v oblíbené části Olomouce.</p>
+<p class="price">16 000 Kč / měsíc</p>
+<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+<div class="property" data-category="byt pronajem">
+<div class="property-image">
+<img src="images/IMG_1011.png" alt="Byt Olomouc Ostružnická">
+</div>
+<div class="property-content">
+<div class="property-type">Pronájem bytu</div>
+<h3>Byt 2+kk, 76 m²</h3>
+<p class="location">Olomouc, Ostružnická ul., centrum</p>
+<p class="desc">Prostorný byt ve 2. patře v centru Olomouce.</p>
+<p class="price">17 000 Kč / měsíc</p>
+<a href="https://www.reality-proradost.cz/reality/pronajem-prostorneho-bytu-v-centru-mesta-76-m2-2-patro-olomouc-ostruznicka-ul-28771/" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+<div class="property" data-category="komerce pronajem">
+<div class="property-image">
+<img src="images/IMG_1012.png" alt="Kanceláře Olomouc Holická">
+</div>
+<div class="property-content">
+<div class="property-type">Pronájem komerce</div>
+<h3>Zařízené kancelářské prostory, 200 m²</h3>
+<p class="location">Olomouc, Holická ul.</p>
+<p class="desc">Kancelářské prostory v 1. patře vhodné pro firmu nebo služby.</p>
+<p class="price">45 000 Kč / měsíc</p>
+<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+<div class="property" data-category="pozemek prodej">
+<div class="property-image">
+<img src="images/IMG_1013.png" alt="Pozemek Vernířovice">
+</div>
+<div class="property-content">
+<div class="property-type">Prodej pozemku</div>
+<h3>Místo pro chalupu v srdci Vernířovic</h3>
+<p class="location">Vernířovice, okr. Šumperk</p>
+<p class="desc">Pozemek o velikosti 799 m² v centru obce Vernířovice.</p>
+<p class="price">2 200 000 Kč</p>
+<a href="https://www.reality-proradost.cz/reality/tisk/misto-pro-chalupu-v-srdci-vernirovic-pozemek-799-m2-okr-sumperk-27748/" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+<div class="property" data-category="pozemek prodej">
+<div class="property-image">
+<img src="images/IMG_1014.png" alt="Pozemek Podolí u Bouzova">
+</div>
+<div class="property-content">
+<div class="property-type">Prodej pozemku</div>
+<h3>Pozemek pro bydlení, 3 462 m²</h3>
+<p class="location">Podolí u Bouzova, okr. Olomouc</p>
+<p class="desc">Rovinatý pozemek na okraji obce vhodný pro bydlení nebo investici.</p>
+<p class="price">580 Kč / m²</p>
+<a href="https://www.reality-proradost.cz/reality/prodej-pozemku-pro-bydleni-3-462-m2-okraj-obce-podoli-u-bouzova-okr-olomouc-19796/" class="btn btn-primary">Zobrazit detail</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="sold">
+
+<div class="section-label">Realizované obchody</div>
+<h2 class="section-title">Vybrané realizace</h2>
+<p class="section-subtitle">
+Tuto část lze postupně doplnit o konkrétní prodané nebo pronajaté nemovitosti podle podkladů od paní Kopřivové.
+</p>
+
+<div class="properties">
+
+<div class="property">
+<div class="property-image">
+<img src="images/IMG_1013.png" alt="Realizovaný pozemek">
+</div>
+<div class="property-content">
+<div class="property-type">Realizováno</div>
+<h3>Prodej pozemku</h3>
+<p class="location">Olomoucký kraj</p>
+<p class="desc">Ukázka realizovaného obchodu v oblasti pozemků.</p>
+<p class="price">Prodáno</p>
+</div>
+</div>
+
+<div class="property">
+<div class="property-image">
+<img src="images/IMG_1007.png" alt="Realizovaný pronájem bytu">
+</div>
+<div class="property-content">
+<div class="property-type">Realizováno</div>
+<h3>Pronájem bytu</h3>
+<p class="location">Olomouc a okolí</p>
+<p class="desc">Ukázka realizovaného pronájmu bytové jednotky.</p>
+<p class="price">Pronajato</p>
+</div>
+</div>
+
+<div class="property">
+<div class="property-image">
+<img src="images/IMG_1008.jpeg" alt="Realizovaná komerce">
+</div>
+<div class="property-content">
+<div class="property-type">Realizováno</div>
+<h3>Pronájem komerčního prostoru</h3>
+<p class="location">Olomouc</p>
+<p class="desc">Ukázka realizovaného komerčního pronájmu.</p>
+<p class="price">Realizováno</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="cta">
+<h2>Máte zájem o některou z nemovitostí?</h2>
+<p>
+Ozvěte se paní Kopřivové a domluvte si prohlídku nebo nezávaznou konzultaci.
+</p>
+<a href="index.html#kontakt" class="btn btn-primary">Kontaktovat makléřku</a>
+</section>
+
+<footer>
+© 2026 Kamila Kopřivová | Realitní makléřka
+</footer>
+
+<script>
+const buttons = document.querySelectorAll(".filter");
+const properties = document.querySelectorAll(".property[data-category]");
+
+buttons.forEach(button => {
+button.addEventListener("click", () => {
+buttons.forEach(btn => btn.classList.remove("active"));
+button.classList.add("active");
+
+const filter = button.getAttribute("data-filter");
+
+properties.forEach(property => {
+const category = property.getAttribute("data-category");
+
+if(filter === "all" || category.includes(filter)){
+property.style.display = "block";
+} else {
+property.style.display = "none";
+}
+});
+});
+});
+</script>
+
+</body>
+</html>
