@@ -29,6 +29,10 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:"Montserrat",sans-serif;
 background:white;
@@ -47,6 +51,58 @@ max-width:100%;
 display:block;
 }
 
+/* ANIMACE */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(35px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes slowZoom{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
+}
+
+@keyframes lineGrow{
+from{
+width:0;
+}
+to{
+width:110px;
+}
+}
+
+.animate{
+opacity:0;
+transform:translateY(35px);
+animation:fadeUp .9s ease forwards;
+}
+
+.delay-1{animation-delay:.15s;}
+.delay-2{animation-delay:.3s;}
+.delay-3{animation-delay:.45s;}
+.delay-4{animation-delay:.6s;}
+.delay-5{animation-delay:.75s;}
+
 header{
 position:absolute;
 top:0;
@@ -58,6 +114,7 @@ grid-template-columns:auto 1fr auto;
 align-items:center;
 gap:30px;
 padding:34px 7%;
+animation:fadeIn 1s ease forwards;
 }
 
 .logo{
@@ -67,6 +124,11 @@ font-size:24px;
 letter-spacing:3px;
 text-transform:uppercase;
 white-space:nowrap;
+transition:.35s ease;
+}
+
+.logo:hover{
+letter-spacing:4px;
 }
 
 .logo span{
@@ -88,10 +150,26 @@ letter-spacing:2px;
 text-transform:uppercase;
 white-space:nowrap;
 transition:.3s;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:1px;
+background:var(--gold-light);
+transition:.35s;
 }
 
 nav a:hover{
 color:var(--gold-light);
+}
+
+nav a:hover::after{
+width:100%;
 }
 
 .menu-circle{
@@ -103,6 +181,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 position:relative;
+transition:.35s ease;
+}
+
+.menu-circle:hover{
+transform:scale(1.08);
+background:var(--gold-light);
 }
 
 .menu-circle span,
@@ -136,6 +220,25 @@ justify-content:center;
 text-align:center;
 padding:0 7%;
 color:white;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:url("images/IMG_1011.png") center/cover;
+z-index:-2;
+animation:slowZoom 18s ease-in-out infinite alternate;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(18,27,63,.62);
+z-index:-1;
 }
 
 .hero-content{
@@ -147,19 +250,23 @@ font-size:76px;
 letter-spacing:8px;
 text-transform:uppercase;
 margin-bottom:24px;
+animation:fadeUp 1s ease forwards;
 }
 
 .hero-line{
-width:110px;
 height:1px;
 background:var(--gold-light);
 margin:0 auto 28px;
+width:0;
+animation:lineGrow 1s ease .35s forwards;
 }
 
 .hero p{
 font-size:15px;
 letter-spacing:3px;
 text-transform:uppercase;
+opacity:0;
+animation:fadeUp 1s ease .45s forwards;
 }
 
 .hero-btn{
@@ -172,12 +279,15 @@ text-decoration:none;
 font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
-transition:.35s;
+transition:.35s ease;
 font-weight:600;
+opacity:0;
+animation:fadeUp 1s ease .6s forwards;
 }
 
 .hero-btn:hover{
 background:var(--gold-light);
+transform:translateY(-3px);
 }
 
 section{
@@ -236,6 +346,12 @@ gap:24px;
 .point{
 border-left:2px solid var(--gold);
 padding-left:20px;
+transition:.35s ease;
+}
+
+.point:hover{
+transform:translateX(6px);
+border-left-color:var(--navy);
 }
 
 .point h3{
@@ -254,6 +370,12 @@ background:white;
 border:1px solid var(--border);
 padding:50px;
 box-shadow:0 24px 60px rgba(18,27,63,.08);
+transition:.35s ease;
+}
+
+.form-box:hover{
+transform:translateY(-6px);
+box-shadow:0 30px 75px rgba(18,27,63,.1);
 }
 
 .form-box h2{
@@ -287,13 +409,14 @@ border:1px solid var(--border);
 font-family:"Montserrat",sans-serif;
 font-size:14px;
 outline:none;
-transition:.3s;
+transition:.3s ease;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
 border-color:var(--gold);
+box-shadow:0 0 0 3px rgba(200,171,114,.12);
 }
 
 textarea{
@@ -310,12 +433,13 @@ font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
 cursor:pointer;
-transition:.35s;
+transition:.35s ease;
 font-weight:600;
 }
 
 .submit-btn:hover{
 background:var(--gold);
+transform:translateY(-3px);
 }
 
 .quote{
@@ -325,6 +449,7 @@ url("images/IMG_1014.png") center/cover;
 color:white;
 text-align:center;
 padding:120px 8%;
+background-attachment:fixed;
 }
 
 .quote h2{
@@ -374,6 +499,10 @@ background:rgba(255,255,255,.12);
 padding:7px 10px;
 }
 
+nav a::after{
+display:none;
+}
+
 .menu-circle{
 display:none;
 }
@@ -409,6 +538,10 @@ padding:34px 24px;
 
 .form-row{
 grid-template-columns:1fr;
+}
+
+.quote{
+background-attachment:scroll;
 }
 
 .quote h2{
@@ -466,22 +599,22 @@ Nezávazně poptat
 
 <section>
 
-<div class="section-label">
+<div class="section-label animate delay-1">
 Ocenění nemovitosti
 </div>
 
-<h2 class="section-title">
+<h2 class="section-title animate delay-2">
 Správná cena rozhoduje
 </h2>
 
-<p class="section-subtitle">
+<p class="section-subtitle animate delay-3">
 Pomohu vám získat realistický pohled na hodnotu nemovitosti
 a navrhnu vhodnou strategii prodeje nebo pronájmu.
 </p>
 
 <div class="grid">
 
-<div class="info">
+<div class="info animate delay-1">
 
 <h2>
 Profesionální pohled na hodnotu vaší nemovitosti
@@ -533,7 +666,7 @@ Vše můžeme nezávazně probrat osobně nebo telefonicky.
 
 </div>
 
-<div class="form-box" id="formular">
+<div class="form-box animate delay-2" id="formular">
 
 <h2>Nezávazná poptávka</h2>
 
@@ -589,7 +722,7 @@ Odeslat poptávku
 
 <section class="quote">
 
-<h2>
+<h2 class="animate delay-1">
 „Dobře nastavená cena a kvalitní prezentace jsou
 <span>základem úspěšného realitního obchodu.</span>“
 </h2>
