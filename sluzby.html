@@ -1,10 +1,11 @@
-<!-- reference.html -->
+<!-- sluzby.html -->
 <!DOCTYPE html>
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reference | Kamila Kopřivová</title>
+
+<title>Služby | Kamila Kopřivová</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
@@ -17,7 +18,7 @@
 --gold-light:#eadcc0;
 --navy:#121b3f;
 --navy-soft:#1d2d63;
---text:#2e2e2e;
+--text:#2d2d2d;
 --muted:#777;
 --border:#ece6da;
 }
@@ -100,6 +101,8 @@ animation:fadeUp .9s ease forwards;
 .delay-2{animation-delay:.3s;}
 .delay-3{animation-delay:.45s;}
 .delay-4{animation-delay:.6s;}
+.delay-5{animation-delay:.75s;}
+.delay-6{animation-delay:.9s;}
 
 header{
 position:absolute;
@@ -207,11 +210,11 @@ transform:translateY(8px);
 }
 
 .hero{
-height:75vh;
-min-height:650px;
+height:78vh;
+min-height:700px;
 background:
 linear-gradient(rgba(18,27,63,.62),rgba(18,27,63,.62)),
-url("images/IMG_1007.png") center/cover;
+url("images/IMG_1008.jpeg") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -226,7 +229,7 @@ overflow:hidden;
 content:"";
 position:absolute;
 inset:0;
-background:url("images/IMG_1007.png") center/cover;
+background:url("images/IMG_1008.jpeg") center/cover;
 z-index:-2;
 animation:slowZoom 18s ease-in-out infinite alternate;
 }
@@ -277,8 +280,8 @@ font-size:12px;
 letter-spacing:3px;
 text-transform:uppercase;
 color:var(--gold);
-margin-bottom:16px;
 font-weight:600;
+margin-bottom:18px;
 }
 
 .section-title{
@@ -293,30 +296,30 @@ max-width:760px;
 margin:auto;
 text-align:center;
 color:var(--muted);
-margin-bottom:60px;
+margin-bottom:65px;
 }
 
-.references{
+.services{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:34px;
 }
 
-.reference{
+.service{
 background:white;
 border:1px solid var(--border);
-padding:40px;
+padding:46px 38px;
 transition:.35s ease;
 position:relative;
 overflow:hidden;
 }
 
-.reference:hover{
+.service:hover{
 transform:translateY(-8px);
 box-shadow:0 24px 60px rgba(18,27,63,.08);
 }
 
-.reference::before{
+.service::before{
 content:"";
 position:absolute;
 top:0;
@@ -326,58 +329,34 @@ height:3px;
 background:linear-gradient(to right,var(--gold),var(--gold-light));
 }
 
-.stars{
+.service-number{
+font-size:13px;
+letter-spacing:3px;
 color:var(--gold);
-font-size:20px;
-margin-bottom:22px;
-letter-spacing:2px;
-}
-
-.reference p{
-color:var(--muted);
-margin-bottom:26px;
-}
-
-.client{
-display:flex;
-align-items:center;
-gap:16px;
-}
-
-.avatar{
-width:58px;
-height:58px;
-border-radius:50%;
-background:var(--navy);
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
+margin-bottom:18px;
 font-weight:600;
 transition:.35s ease;
 }
 
-.reference:hover .avatar{
-background:var(--gold);
-transform:scale(1.05);
+.service:hover .service-number{
+letter-spacing:4px;
 }
 
-.client h3{
-font-size:23px;
+.service h3{
+font-size:30px;
 color:var(--navy);
+margin-bottom:18px;
 }
 
-.client span{
-font-size:12px;
-letter-spacing:2px;
-text-transform:uppercase;
-color:var(--gold);
+.service p{
+color:var(--muted);
+font-size:15px;
 }
 
 .quote{
 background:
-linear-gradient(rgba(18,27,63,.82),rgba(18,27,63,.82)),
-url("images/IMG_1014.png") center/cover;
+linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
+url("images/IMG_1012.png") center/cover;
 color:white;
 text-align:center;
 padding:120px 8%;
@@ -395,36 +374,52 @@ line-height:1.35;
 color:var(--gold-light);
 }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
+.process{
 background:var(--soft);
-border-top:1px solid var(--border);
-border-bottom:1px solid var(--border);
 }
 
-.stat{
-padding:70px 20px;
-text-align:center;
+.process-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:28px;
+margin-top:55px;
+}
+
+.step{
 background:white;
+padding:38px 28px;
+border:1px solid var(--border);
+text-align:center;
 transition:.35s ease;
 }
 
-.stat:hover{
-background:var(--soft);
+.step:hover{
+transform:translateY(-8px);
+box-shadow:0 24px 60px rgba(18,27,63,.07);
 }
 
-.stat h2{
-font-size:54px;
-color:var(--navy);
-margin-bottom:10px;
-}
-
-.stat p{
+.step-number{
+font-size:42px;
 color:var(--gold);
-letter-spacing:2px;
-text-transform:uppercase;
-font-size:12px;
+margin-bottom:16px;
+font-family:"Playfair Display",serif;
+transition:.35s ease;
+}
+
+.step:hover .step-number{
+color:var(--navy);
+transform:scale(1.08);
+}
+
+.step h3{
+font-size:24px;
+color:var(--navy);
+margin-bottom:14px;
+}
+
+.step p{
+color:var(--muted);
+font-size:14px;
 }
 
 footer{
@@ -471,35 +466,36 @@ display:none;
 display:none;
 }
 
-.references{
+.services{
+grid-template-columns:1fr 1fr;
+}
+
+.process-grid{
 grid-template-columns:1fr 1fr;
 }
 
 .hero h1{
 font-size:56px;
 }
-
-.stats{
-grid-template-columns:1fr;
-}
 }
 
 @media(max-width:768px){
 
 .hero{
-min-height:580px;
+min-height:600px;
 }
 
 .hero h1{
-font-size:38px;
+font-size:40px;
 letter-spacing:4px;
 }
 
 .section-title{
-font-size:34px;
+font-size:36px;
 }
 
-.references{
+.services,
+.process-grid{
 grid-template-columns:1fr;
 }
 
@@ -546,11 +542,11 @@ Kamila <span>Kopřivová</span>
 
 <div class="hero-content">
 
-<h1>Reference</h1>
+<h1>Služby</h1>
 
 <div class="hero-line"></div>
 
-<p>Důvěra klientů je základ každé spolupráce</p>
+<p>Kompletní realitní servis od první konzultace po předání</p>
 
 </div>
 
@@ -559,83 +555,90 @@ Kamila <span>Kopřivová</span>
 <section>
 
 <div class="section-label animate delay-1">
-Reference klientů
+Realitní služby
 </div>
 
 <h2 class="section-title animate delay-2">
-Profesionální přístup a důvěra
+Profesionální prezentace a individuální přístup
 </h2>
 
 <p class="section-subtitle animate delay-3">
-Každý obchod je jedinečný. Zakládám si na osobním přístupu,
-férovosti a kvalitní prezentaci nemovitostí.
+Každé nemovitosti věnuji maximální péči. Od profesionální prezentace,
+fotografií a videa až po samotný prodej či pronájem.
 </p>
 
-<div class="references">
+<div class="services">
 
-<div class="reference animate delay-1">
+<div class="service animate delay-1">
 
-<div class="stars">★★★★★</div>
+<div class="service-number">01</div>
+
+<h3>Prodej nemovitostí</h3>
 
 <p>
-Velmi profesionální komunikace a krásná prezentace nemovitosti.
-Celý proces proběhl rychle a bez starostí.
+Kompletní servis při prodeji bytů, domů, pozemků i komerčních prostor.
+Od strategie až po finální předání.
 </p>
 
-<div class="client">
-
-<div class="avatar">MK</div>
-
-<div>
-<h3>Martin K.</h3>
-<span>Pronájem bytu</span>
 </div>
 
-</div>
+<div class="service animate delay-2">
 
-</div>
+<div class="service-number">02</div>
 
-<div class="reference animate delay-2">
-
-<div class="stars">★★★★★</div>
+<h3>Pronájem nemovitostí</h3>
 
 <p>
-Paní Kopřivová nám pomohla s prodejem pozemku.
-Skvělá komunikace, ochota a lidský přístup.
+Efektivní prezentace a výběr vhodných zájemců s důrazem na bezpečný a klidný průběh pronájmu.
 </p>
 
-<div class="client">
-
-<div class="avatar">JP</div>
-
-<div>
-<h3>Jana P.</h3>
-<span>Prodej pozemku</span>
 </div>
 
-</div>
+<div class="service animate delay-3">
 
-</div>
+<div class="service-number">03</div>
 
-<div class="reference animate delay-3">
-
-<div class="stars">★★★★★</div>
+<h3>Marketing a prezentace</h3>
 
 <p>
-Výborná prezentace nemovitosti, profesionální fotografie a rychlé jednání.
-Doporučuji.
+Profesionální fotografie, video prohlídky, sociální sítě a moderní propagace každé nabídky.
 </p>
 
-<div class="client">
-
-<div class="avatar">TH</div>
-
-<div>
-<h3>Tomáš H.</h3>
-<span>Pronájem domu</span>
 </div>
 
+<div class="service animate delay-4">
+
+<div class="service-number">04</div>
+
+<h3>Ocenění nemovitostí</h3>
+
+<p>
+Pomohu určit reálnou tržní cenu nemovitosti s ohledem na lokalitu a aktuální situaci na trhu.
+</p>
+
 </div>
+
+<div class="service animate delay-5">
+
+<div class="service-number">05</div>
+
+<h3>Právní servis</h3>
+
+<p>
+Zajištění smluv, právního procesu a bezpečného převodu nemovitosti včetně administrativy.
+</p>
+
+</div>
+
+<div class="service animate delay-6">
+
+<div class="service-number">06</div>
+
+<h3>Osobní přístup</h3>
+
+<p>
+Každá spolupráce je individuální. Zakládám si na důvěře, komunikaci a férovém jednání.
+</p>
 
 </div>
 
@@ -646,26 +649,73 @@ Doporučuji.
 <section class="quote">
 
 <h2 class="animate delay-1">
-„Zakládám si na <span>férovosti, důvěře a kvalitní prezentaci</span> každé nemovitosti.“
+„První dojem prodává.
+<span>Kvalitní prezentace nemovitosti</span>
+je dnes klíčem k úspěšnému obchodu.“
 </h2>
 
 </section>
 
-<section class="stats">
+<section class="process">
 
-<div class="stat animate delay-1">
-<h2><span class="counter" data-target="12">0</span>+</h2>
-<p>let zkušeností</p>
+<div class="section-label animate delay-1">
+Průběh spolupráce
 </div>
 
-<div class="stat animate delay-2">
-<h2><span class="counter" data-target="300">0</span>+</h2>
-<p>zobchodovaných nemovitostí</p>
+<h2 class="section-title animate delay-2">
+Jak probíhá spolupráce
+</h2>
+
+<div class="process-grid">
+
+<div class="step animate delay-1">
+
+<div class="step-number">1</div>
+
+<h3>Konzultace</h3>
+
+<p>
+Společně projdeme možnosti prodeje nebo pronájmu a nastavíme vhodnou strategii.
+</p>
+
 </div>
 
-<div class="stat animate delay-3">
-<h2><span class="counter" data-target="100">0</span>%</h2>
-<p>profesionální přístup</p>
+<div class="step animate delay-2">
+
+<div class="step-number">2</div>
+
+<h3>Příprava</h3>
+
+<p>
+Profesionální fotografie, video, marketing a kompletní prezentace nemovitosti.
+</p>
+
+</div>
+
+<div class="step animate delay-3">
+
+<div class="step-number">3</div>
+
+<h3>Prezentace</h3>
+
+<p>
+Inzerce, sociální sítě, komunikace se zájemci a organizace prohlídek.
+</p>
+
+</div>
+
+<div class="step animate delay-4">
+
+<div class="step-number">4</div>
+
+<h3>Realizace</h3>
+
+<p>
+Bezpečné dokončení obchodu, právní servis a finální předání nemovitosti.
+</p>
+
+</div>
+
 </div>
 
 </section>
@@ -673,46 +723,6 @@ Doporučuji.
 <footer>
 © 2026 Kamila Kopřivová | Realitní makléřka
 </footer>
-
-<script>
-const counters = document.querySelectorAll(".counter");
-let counterStarted = false;
-
-function startCounters(){
-  if(counterStarted) return;
-
-  const statsSection = document.querySelector(".stats");
-  const sectionPosition = statsSection.getBoundingClientRect().top;
-  const screenPosition = window.innerHeight - 100;
-
-  if(sectionPosition < screenPosition){
-    counterStarted = true;
-
-    counters.forEach(counter => {
-      const target = Number(counter.dataset.target);
-      let current = 0;
-      const duration = 1800;
-      const increment = target / (duration / 16);
-
-      function updateCounter(){
-        current += increment;
-
-        if(current < target){
-          counter.textContent = Math.floor(current);
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.textContent = target;
-        }
-      }
-
-      updateCounter();
-    });
-  }
-}
-
-window.addEventListener("scroll", startCounters);
-window.addEventListener("load", startCounters);
-</script>
 
 </body>
 </html>
