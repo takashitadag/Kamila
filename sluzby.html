@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ocenění nemovitosti | Kamila Kopřivová</title>
+<title>Služby | Kamila Kopřivová</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
@@ -134,11 +134,11 @@ top:8px;
 }
 
 .hero{
-height:100vh;
-min-height:720px;
+height:80vh;
+min-height:640px;
 background:
 linear-gradient(rgba(17,27,63,.58),rgba(17,27,63,.58)),
-url("images/IMG_1011.png") center/cover;
+url("images/IMG_1008.jpeg") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -173,56 +173,6 @@ text-transform:uppercase;
 font-weight:300;
 }
 
-.hero-buttons{
-margin-top:44px;
-display:flex;
-justify-content:center;
-gap:18px;
-flex-wrap:wrap;
-}
-
-.btn{
-display:inline-block;
-padding:15px 32px;
-text-decoration:none;
-font-size:13px;
-letter-spacing:2px;
-text-transform:uppercase;
-font-weight:500;
-transition:.35s;
-border:none;
-cursor:pointer;
-}
-
-.btn-primary{
-background:white;
-color:var(--navy);
-}
-
-.btn-primary:hover{
-background:var(--gold-light);
-}
-
-.btn-dark{
-background:var(--navy);
-color:white;
-}
-
-.btn-dark:hover{
-background:var(--gold);
-}
-
-.btn-outline{
-border:1px solid white;
-color:white;
-background:transparent;
-}
-
-.btn-outline:hover{
-background:white;
-color:var(--navy);
-}
-
 section{
 padding:105px 8%;
 }
@@ -252,109 +202,137 @@ color:var(--muted);
 font-size:17px;
 }
 
-.valuation-section{
+.services{
 display:grid;
-grid-template-columns:0.9fr 1.1fr;
-gap:70px;
-align-items:start;
+grid-template-columns:repeat(3,1fr);
+gap:34px;
 }
 
-.valuation-text h2{
-font-size:48px;
-color:var(--navy);
+.service{
+background:white;
+border:1px solid var(--border);
+padding:42px;
+transition:.35s;
+}
+
+.service:hover{
+transform:translateY(-6px);
+box-shadow:0 24px 60px rgba(17,27,63,.08);
+}
+
+.service-number{
+color:var(--gold);
+font-size:13px;
+letter-spacing:3px;
+text-transform:uppercase;
+font-weight:600;
 margin-bottom:22px;
 }
 
-.valuation-text p{
-color:var(--muted);
-margin-bottom:20px;
-font-size:16px;
-}
-
-.benefits{
-margin-top:34px;
-display:grid;
-gap:20px;
-}
-
-.benefit{
-border-left:2px solid var(--gold);
-padding-left:20px;
-}
-
-.benefit h3{
-font-size:23px;
+.service h3{
+font-size:30px;
 color:var(--navy);
-margin-bottom:6px;
+line-height:1.25;
+margin-bottom:18px;
 }
 
-.benefit p{
-margin:0;
+.service p{
+color:var(--muted);
+margin-bottom:22px;
 font-size:15px;
 }
 
-.form-box{
-background:var(--white);
-border:1px solid var(--border);
-box-shadow:0 24px 70px rgba(17,27,63,.08);
-padding:48px;
-}
-
-.form-box h2{
-font-size:40px;
-color:var(--navy);
-margin-bottom:12px;
-}
-
-.form-box p{
-color:var(--muted);
-margin-bottom:30px;
-}
-
-form{
+.service ul{
+list-style:none;
 display:grid;
-gap:18px;
+gap:10px;
 }
 
-.form-row{
+.service li{
+color:var(--text);
+font-size:14px;
+border-top:1px solid var(--border);
+padding-top:10px;
+}
+
+.service li::before{
+content:"— ";
+color:var(--gold);
+}
+
+.presentation{
+background:var(--soft);
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:18px;
+gap:80px;
+align-items:center;
 }
 
-input,
-select,
-textarea{
+.presentation-image{
+height:620px;
+overflow:hidden;
+}
+
+.presentation-image img{
 width:100%;
-padding:16px 15px;
-border:1px solid var(--border);
-font-family:"Montserrat",sans-serif;
-font-size:14px;
-color:var(--text);
-background:white;
-outline:none;
-transition:.3s;
+height:100%;
+object-fit:cover;
 }
 
-textarea{
-min-height:130px;
-resize:vertical;
+.presentation-text .section-label,
+.presentation-text .section-title{
+text-align:left;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-border-color:var(--gold);
+.presentation-text .section-title{
+margin-bottom:28px;
 }
 
-.form-note{
-font-size:12px;
+.presentation-text p{
 color:var(--muted);
-line-height:1.5;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 32px;
+text-decoration:none;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:500;
+transition:.35s;
+}
+
+.btn-dark{
+background:var(--navy);
+color:white;
+}
+
+.btn-dark:hover{
+background:var(--gold);
+}
+
+.clean-btn{
+display:inline-block;
+color:var(--navy);
+text-decoration:none;
+letter-spacing:2px;
+text-transform:uppercase;
+font-size:13px;
+font-weight:600;
+border-bottom:1px solid var(--gold);
+padding-bottom:8px;
+transition:.3s;
+margin-top:16px;
+}
+
+.clean-btn:hover{
+color:var(--gold);
 }
 
 .process{
-background:var(--soft);
+background:white;
 }
 
 .steps{
@@ -364,9 +342,9 @@ gap:28px;
 }
 
 .step{
-background:white;
 border:1px solid var(--border);
 padding:36px;
+background:white;
 }
 
 .step-number{
@@ -389,7 +367,7 @@ color:var(--muted);
 font-size:15px;
 }
 
-.quote{
+.cta{
 background:
 linear-gradient(rgba(17,27,63,.82),rgba(17,27,63,.82)),
 url("images/IMG_1014.png") center/cover;
@@ -398,47 +376,20 @@ text-align:center;
 padding:120px 8%;
 }
 
-.quote h2{
-font-size:50px;
-max-width:980px;
-margin:auto;
-line-height:1.35;
+.cta h2{
+font-size:54px;
+margin-bottom:22px;
 }
 
-.quote span{
-color:var(--gold-light);
+.cta p{
+max-width:720px;
+margin:0 auto 38px;
+color:#e6e6e6;
 }
 
-.contact{
-background:white;
-}
-
-.contact-box{
-max-width:850px;
-margin:auto;
-text-align:center;
-background:var(--soft);
-padding:65px;
-border:1px solid var(--border);
-}
-
-.contact-box h2{
-font-size:46px;
-color:var(--navy);
-margin-bottom:20px;
-}
-
-.contact-box p{
-color:var(--muted);
-margin-bottom:8px;
-}
-
-.contact-links{
-margin-top:34px;
-display:flex;
-justify-content:center;
-gap:16px;
-flex-wrap:wrap;
+.cta .btn-dark{
+background:var(--gold);
+color:white;
 }
 
 footer{
@@ -472,8 +423,13 @@ display:none;
 font-size:58px;
 }
 
-.valuation-section{
+.services{
 grid-template-columns:1fr;
+}
+
+.presentation{
+grid-template-columns:1fr;
+gap:50px;
 }
 
 .steps{
@@ -499,13 +455,14 @@ padding:7px 10px;
 }
 
 .hero{
-min-height:680px;
+min-height:620px;
+height:75vh;
 padding:0 6%;
 }
 
 .hero h1{
-font-size:39px;
-letter-spacing:4px;
+font-size:40px;
+letter-spacing:5px;
 }
 
 .hero p{
@@ -513,9 +470,38 @@ font-size:12px;
 letter-spacing:2px;
 }
 
-.hero-buttons{
-flex-direction:column;
-align-items:center;
+section{
+padding:70px 6%;
+}
+
+.section-title,
+.presentation-text .section-title{
+font-size:36px;
+text-align:center;
+}
+
+.presentation-text .section-label{
+text-align:center;
+}
+
+.presentation-image{
+height:420px;
+}
+
+.service{
+padding:32px 26px;
+}
+
+.steps{
+grid-template-columns:1fr;
+}
+
+.cta{
+padding:85px 6%;
+}
+
+.cta h2{
+font-size:36px;
 }
 
 .btn{
@@ -523,56 +509,15 @@ width:100%;
 max-width:310px;
 text-align:center;
 }
-
-section{
-padding:70px 6%;
-}
-
-.section-title,
-.valuation-text h2{
-font-size:36px;
-}
-
-.form-box{
-padding:32px 24px;
-}
-
-.form-box h2{
-font-size:32px;
-}
-
-.form-row{
-grid-template-columns:1fr;
-}
-
-.steps{
-grid-template-columns:1fr;
-}
-
-.quote{
-padding:85px 6%;
-}
-
-.quote h2{
-font-size:32px;
-}
-
-.contact-box{
-padding:40px 26px;
-}
-
-.contact-box h2{
-font-size:34px;
-}
 }
 
 @media(max-width:420px){
 .hero h1{
-font-size:31px;
+font-size:32px;
 }
 
 .section-title,
-.valuation-text h2{
+.presentation-text .section-title{
 font-size:31px;
 }
 
@@ -605,165 +550,146 @@ padding:6px 8px;
 
 <section class="hero">
 <div class="hero-content">
-<h1>Ocenění nemovitosti</h1>
+<h1>Služby</h1>
 <div class="hero-line"></div>
-<p>Zjistěte reálnou hodnotu své nemovitosti</p>
-
-<div class="hero-buttons">
-<a href="#formular" class="btn btn-primary">Chci ocenění</a>
-<a href="tel:+420736167321" class="btn btn-outline">Zavolat</a>
-</div>
+<p>Kompletní realitní servis od první konzultace po předání</p>
 </div>
 </section>
 
-<section id="formular" class="valuation-section">
+<section>
 
-<div class="valuation-text">
-<div class="section-label" style="text-align:left;">Prodej začíná správnou cenou</div>
+<div class="section-label">Realitní servis</div>
+<h2 class="section-title">S čím vám pomohu</h2>
+<p class="section-subtitle">
+Každá nemovitost potřebuje jiný přístup. Cílem je připravit strategii,
+která bude odpovídat vaší situaci, typu nemovitosti i aktuálnímu trhu.
+</p>
 
-<h2>Správně nastavená cena rozhoduje o výsledku.</h2>
+<div class="services">
+
+<div class="service">
+<div class="service-number">01</div>
+<h3>Prodej nemovitosti</h3>
+<p>
+Pomohu vám nastavit správnou strategii prodeje, připravit nemovitost,
+oslovit vhodné zájemce a bezpečně projít celým procesem.
+</p>
+<ul>
+<li>cenové doporučení</li>
+<li>příprava nemovitosti</li>
+<li>inzerce a prezentace</li>
+<li>komunikace se zájemci</li>
+<li>vedení celého obchodu</li>
+</ul>
+</div>
+
+<div class="service">
+<div class="service-number">02</div>
+<h3>Pronájem nemovitosti</h3>
+<p>
+Postarám se o to, aby vaše nemovitost působila důvěryhodně,
+zaujala správné zájemce a našla vhodného nájemníka.
+</p>
+<ul>
+<li>příprava nabídky</li>
+<li>výběr nájemníka</li>
+<li>prohlídky</li>
+<li>komunikace a podklady</li>
+<li>bezpečný průběh pronájmu</li>
+</ul>
+</div>
+
+<div class="service">
+<div class="service-number">03</div>
+<h3>Marketing nemovitosti</h3>
+<p>
+První dojem rozhoduje. Proto kladu důraz na kvalitní fotografie,
+video, textaci, sociální sítě a celkový dojem nabídky.
+</p>
+<ul>
+<li>fotografie a video</li>
+<li>textace inzerátu</li>
+<li>sociální sítě</li>
+<li>vizuální prezentace</li>
+<li>zvýraznění předností</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section class="presentation">
+
+<div class="presentation-image">
+<img src="images/IMG_1007.png" alt="Prezentace nemovitosti">
+</div>
+
+<div class="presentation-text">
+<div class="section-label">Prémiová prezentace</div>
+<h2 class="section-title">Nemovitost musí zaujmout dřív, než začne prohlídka.</h2>
 
 <p>
-Každá nemovitost je jiná. Hodnotu ovlivňuje lokalita, stav, dispozice,
-poptávka, konkurence i způsob prezentace.
+Kvalitní prezentace není jen o hezkých fotografiích. Je to kombinace správného světla,
+textu, atmosféry, ceny a jasného příběhu nemovitosti.
 </p>
 
 <p>
-Pomohu vám získat jasnější představu o tom, jakou cenu může mít vaše nemovitost
-a jak ji připravit tak, aby zaujala správné zájemce.
+U každé nabídky hledám její hlavní přednosti a snažím se je ukázat tak,
+aby si zájemce dokázal rychle představit, proč by právě tato nemovitost mohla být pro něj.
 </p>
 
-<div class="benefits">
-
-<div class="benefit">
-<h3>Reálný pohled na trh</h3>
-<p>Ocenění vychází z aktuální situace, lokality a srovnatelných nabídek.</p>
-</div>
-
-<div class="benefit">
-<h3>Strategie prodeje nebo pronájmu</h3>
-<p>Nejde jen o cenu, ale i o způsob prezentace a načasování nabídky.</p>
-</div>
-
-<div class="benefit">
-<h3>Nezávazná konzultace</h3>
-<p>Společně projdeme možnosti a doporučím vhodný postup.</p>
-</div>
-
-</div>
-</div>
-
-<div class="form-box">
-<h2>Nezávazné ocenění</h2>
-
-<p>
-Vyplňte základní údaje a ozvu se vám s dalším postupem.
-</p>
-
-<form action="mailto:koprivovakamila@gmail.com" method="post" enctype="text/plain">
-
-<div class="form-row">
-<input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
-<input type="tel" name="Telefon" placeholder="Telefon" required>
-</div>
-
-<input type="email" name="E-mail" placeholder="E-mail" required>
-
-<div class="form-row">
-<select name="Typ nemovitosti" required>
-<option value="">Typ nemovitosti</option>
-<option>Byt</option>
-<option>Dům</option>
-<option>Pozemek</option>
-<option>Komerční prostor</option>
-<option>Jiné</option>
-</select>
-
-<select name="Záměr" required>
-<option value="">Záměr</option>
-<option>Prodej</option>
-<option>Pronájem</option>
-<option>Zatím se rozhoduji</option>
-</select>
-</div>
-
-<input type="text" name="Lokalita" placeholder="Lokalita / obec" required>
-
-<textarea name="Zpráva" placeholder="Krátký popis nemovitosti"></textarea>
-
-<p class="form-note">
-Odesláním formuláře se otevře váš e-mailový klient s předvyplněnou zprávou.
-Pro profesionální web lze později napojit formulář přímo na e-mail.
-</p>
-
-<button type="submit" class="btn btn-dark">Odeslat poptávku</button>
-</form>
+<a href="nemovitosti.html" class="clean-btn">Zobrazit aktuální nabídku</a>
 </div>
 
 </section>
 
 <section class="process">
 
-<div class="section-label">Jak to probíhá</div>
-<h2 class="section-title">Jednoduchý postup</h2>
+<div class="section-label">Postup spolupráce</div>
+<h2 class="section-title">Jak spolupráce probíhá</h2>
 
 <p class="section-subtitle">
-Cílem je získat jasný pohled na hodnotu nemovitosti a zvolit strategii,
-která bude dávat smysl.
+Srozumitelně, férově a s jasným plánem. Od prvního kontaktu až po úspěšné dokončení.
 </p>
 
 <div class="steps">
 
 <div class="step">
 <div class="step-number">01</div>
-<h3>Zadáte údaje</h3>
-<p>Pošlete základní informace o nemovitosti, lokalitě a vašem záměru.</p>
+<h3>Konzultace</h3>
+<p>Společně projdeme vaši situaci, typ nemovitosti a cíle prodeje nebo pronájmu.</p>
 </div>
 
 <div class="step">
 <div class="step-number">02</div>
-<h3>Analýza trhu</h3>
-<p>Podívám se na lokalitu, srovnatelné nabídky, stav trhu a potenciál nemovitosti.</p>
+<h3>Strategie</h3>
+<p>Nastavíme vhodný postup, cenu, prezentaci a způsob oslovení zájemců.</p>
 </div>
 
 <div class="step">
 <div class="step-number">03</div>
-<h3>Doporučení</h3>
-<p>Navrhnu možný cenový rámec a vhodný postup pro prodej nebo pronájem.</p>
+<h3>Prezentace</h3>
+<p>Připraví se kvalitní fotografie, textace, inzerce a případně video nebo sociální sítě.</p>
 </div>
 
 <div class="step">
 <div class="step-number">04</div>
-<h3>Strategie</h3>
-<p>Společně můžeme nastavit prezentaci, inzerci a další kroky.</p>
+<h3>Výsledek</h3>
+<p>Provedu vás jednáním, domluvou, prohlídkami a dokončením celého procesu.</p>
 </div>
 
 </div>
 </section>
 
-<section class="quote">
-<h2>
-„Dobře nastavená cena a kvalitní prezentace jsou základem
-<span>úspěšného realitního obchodu.</span>“
-</h2>
-</section>
+<section class="cta">
+<h2>Nejste si jistí, kde začít?</h2>
 
-<section class="contact">
-<div class="contact-box">
-<h2>Raději vše proberete osobně?</h2>
+<p>
+Začněme oceněním nemovitosti. Získáte lepší představu o její hodnotě
+a o tom, jaký postup bude dávat největší smysl.
+</p>
 
-<p>Ozvěte se mi a společně projdeme možnosti vaší nemovitosti.</p>
-<br>
-<p><strong>Ing. Kamila Kopřivová</strong></p>
-<p>Realitní makléřka pro Olomoucký kraj</p>
-<p>koprivovakamila@gmail.com</p>
-<p>+420 736 167 321</p>
-
-<div class="contact-links">
-<a href="mailto:koprivovakamila@gmail.com" class="btn btn-dark">Napsat e-mail</a>
-<a href="tel:+420736167321" class="btn btn-dark">Zavolat</a>
-</div>
-</div>
+<a href="oceneni-nemovitosti.html" class="btn btn-dark">Zjistit hodnotu nemovitosti</a>
 </section>
 
 <footer>
