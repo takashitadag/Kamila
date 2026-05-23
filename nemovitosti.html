@@ -1,3 +1,4 @@
+<!-- nemovitosti.html -->
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -11,42 +12,33 @@
 <style>
 :root{
 --white:#ffffff;
---soft:#f8f6f1;
---gold:#c6a66a;
---gold-light:#e8d8b8;
---navy:#111b3f;
---navy-soft:#1d2b5c;
---text:#333333;
---muted:#777777;
---border:#eee7da;
+--soft:#f7f5f0;
+--gold:#c8ab72;
+--gold-light:#eadcc0;
+--navy:#121b3f;
+--text:#2d2d2d;
+--muted:#777;
+--border:#ece6da;
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:"Montserrat",sans-serif;
-background:var(--white);
+background:white;
 color:var(--text);
 line-height:1.7;
 overflow-x:hidden;
 }
 
-img{
-max-width:100%;
-display:block;
-}
-
 h1,h2,h3{
 font-family:"Playfair Display",serif;
 font-weight:400;
+}
+
+img{
+max-width:100%;
+display:block;
 }
 
 header{
@@ -55,45 +47,42 @@ top:0;
 left:0;
 width:100%;
 z-index:1000;
-display:flex;
-justify-content:space-between;
+display:grid;
+grid-template-columns:auto 1fr auto;
 align-items:center;
+gap:30px;
 padding:34px 7%;
-color:white;
 }
 
 .logo{
 color:white;
 text-decoration:none;
-font-size:26px;
+font-size:24px;
 letter-spacing:3px;
-font-weight:400;
 text-transform:uppercase;
+white-space:nowrap;
 }
 
-.logo span{
-color:var(--gold-light);
-}
+.logo span{color:var(--gold-light);}
 
 nav{
 display:flex;
-gap:34px;
+justify-content:center;
 align-items:center;
+gap:28px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-font-size:13px;
+font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
-font-weight:400;
+white-space:nowrap;
 transition:.3s;
 }
 
-nav a:hover{
-color:var(--gold-light);
-}
+nav a:hover{color:var(--gold-light);}
 
 .menu-circle{
 width:64px;
@@ -103,85 +92,67 @@ background:white;
 display:flex;
 align-items:center;
 justify-content:center;
-margin-left:12px;
-}
-
-.menu-circle span{
-width:24px;
-height:2px;
-background:var(--navy);
 position:relative;
-display:block;
 }
 
+.menu-circle span,
 .menu-circle span::before,
 .menu-circle span::after{
 content:"";
-position:absolute;
-left:0;
+display:block;
 width:24px;
 height:2px;
 background:var(--navy);
+position:absolute;
 }
 
-.menu-circle span::before{
-top:-8px;
-}
-
-.menu-circle span::after{
-top:8px;
-}
+.menu-circle span::before{transform:translateY(-8px);}
+.menu-circle span::after{transform:translateY(8px);}
 
 .hero{
-height:70vh;
-min-height:560px;
+height:75vh;
+min-height:650px;
 background:
-linear-gradient(rgba(17,27,63,.55),rgba(17,27,63,.55)),
+linear-gradient(rgba(18,27,63,.62),rgba(18,27,63,.62)),
 url("images/IMG_1014.png") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-color:white;
 padding:0 7%;
-}
-
-.hero-content{
-max-width:950px;
+color:white;
 }
 
 .hero h1{
 font-size:76px;
 letter-spacing:8px;
 text-transform:uppercase;
-line-height:1.05;
 margin-bottom:24px;
 }
 
 .hero-line{
-width:120px;
+width:110px;
 height:1px;
 background:var(--gold-light);
 margin:0 auto 28px;
 }
 
 .hero p{
-font-size:16px;
+font-size:15px;
 letter-spacing:3px;
 text-transform:uppercase;
-font-weight:300;
 }
 
 section{
-padding:95px 8%;
+padding:100px 8%;
 }
 
 .section-label{
 text-align:center;
-color:var(--gold);
+font-size:12px;
 letter-spacing:3px;
 text-transform:uppercase;
-font-size:12px;
+color:var(--gold);
 font-weight:600;
 margin-bottom:18px;
 }
@@ -194,11 +165,11 @@ margin-bottom:22px;
 }
 
 .section-subtitle{
-max-width:800px;
-margin:0 auto 60px;
+max-width:760px;
+margin:auto;
 text-align:center;
 color:var(--muted);
-font-size:17px;
+margin-bottom:60px;
 }
 
 .filters{
@@ -243,7 +214,7 @@ transition:.35s;
 
 .property:hover{
 transform:translateY(-6px);
-box-shadow:0 24px 60px rgba(17,27,63,.08);
+box-shadow:0 24px 60px rgba(18,27,63,.08);
 }
 
 .property-image{
@@ -310,14 +281,11 @@ letter-spacing:2px;
 text-transform:uppercase;
 font-weight:600;
 transition:.35s;
-}
-
-.btn-primary{
 background:var(--navy);
 color:white;
 }
 
-.btn-primary:hover{
+.btn:hover{
 background:var(--gold);
 }
 
@@ -327,27 +295,26 @@ background:var(--soft);
 
 .cta{
 background:
-linear-gradient(rgba(17,27,63,.78),rgba(17,27,63,.78)),
+linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
 url("images/IMG_1007.png") center/cover;
 color:white;
 text-align:center;
-padding:115px 8%;
+padding:120px 8%;
 }
 
 .cta h2{
-font-size:54px;
-margin-bottom:22px;
+font-size:52px;
+max-width:900px;
+margin:auto;
+margin-bottom:24px;
+line-height:1.35;
 }
 
 .cta p{
-max-width:720px;
-margin:0 auto 38px;
+max-width:700px;
+margin:auto;
+margin-bottom:34px;
 color:#e6e6e6;
-}
-
-.cta .btn-primary{
-background:var(--gold);
-color:white;
 }
 
 footer{
@@ -361,39 +328,21 @@ letter-spacing:1px;
 
 @media(max-width:1100px){
 header{
-position:absolute;
+display:flex;
 flex-direction:column;
-gap:22px;
+gap:20px;
 padding:28px 5%;
+}
+
+.logo{
+font-size:21px;
+text-align:center;
 }
 
 nav{
 flex-wrap:wrap;
 justify-content:center;
-gap:18px;
-}
-
-.menu-circle{
-display:none;
-}
-
-.hero h1{
-font-size:58px;
-}
-
-.properties{
-grid-template-columns:repeat(2,1fr);
-}
-}
-
-@media(max-width:768px){
-.logo{
-font-size:20px;
-letter-spacing:2px;
-}
-
-nav{
-gap:10px;
+gap:12px;
 }
 
 nav a{
@@ -403,24 +352,23 @@ background:rgba(255,255,255,.12);
 padding:7px 10px;
 }
 
+.menu-circle{display:none;}
+
+.hero h1{font-size:56px;}
+
+.properties{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:768px){
 .hero{
-min-height:620px;
-height:70vh;
-padding:0 6%;
+min-height:600px;
 }
 
 .hero h1{
-font-size:40px;
-letter-spacing:5px;
-}
-
-.hero p{
-font-size:12px;
-letter-spacing:2px;
-}
-
-section{
-padding:70px 6%;
+font-size:38px;
+letter-spacing:4px;
 }
 
 .section-title{
@@ -435,45 +383,22 @@ grid-template-columns:1fr;
 height:260px;
 }
 
-.filters{
-gap:10px;
-}
-
-.filter{
-font-size:11px;
-padding:10px 14px;
-}
-
-.cta{
-padding:85px 6%;
-}
-
 .cta h2{
-font-size:36px;
+font-size:34px;
+}
+
+section{
+padding:70px 6%;
 }
 
 .btn{
 width:100%;
 text-align:center;
 }
-}
 
-@media(max-width:420px){
-.hero h1{
-font-size:32px;
-}
-
-.section-title{
-font-size:31px;
-}
-
-nav a{
-font-size:10px;
-padding:6px 8px;
-}
-
-.property-content{
-padding:24px;
+.filter{
+font-size:11px;
+padding:10px 14px;
 }
 }
 </style>
@@ -482,7 +407,10 @@ padding:24px;
 <body>
 
 <header>
-<a href="index.html" class="logo">Kamila <span>Kopřivová</span></a>
+
+<a href="index.html" class="logo">
+Kamila <span>Kopřivová</span>
+</a>
 
 <nav>
 <a href="index.html">Domů</a>
@@ -496,22 +424,27 @@ padding:24px;
 <div class="menu-circle">
 <span></span>
 </div>
+
 </header>
 
 <section class="hero">
-<div class="hero-content">
+
+<div>
 <h1>Nemovitosti</h1>
 <div class="hero-line"></div>
 <p>Aktuální nabídka Ing. Kamily Kopřivové</p>
 </div>
+
 </section>
 
 <section>
 
 <div class="section-label">Portfolio nemovitostí</div>
+
 <h2 class="section-title">Aktuální nabídka</h2>
+
 <p class="section-subtitle">
-Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a elegantním stylu.
+Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezentaci.
 </p>
 
 <div class="filters">
@@ -536,7 +469,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Olomouc, ul. Kpt. Nálepky</p>
 <p class="desc">Přízemní nezařízený byt vhodný pro jednotlivce nebo pár.</p>
 <p class="price">14 000 Kč / měsíc</p>
-<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -550,7 +483,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Šternberk – Dolní Žleb</p>
 <p class="desc">Byt s lodžií, garáží a zahrádkou v příjemné lokalitě.</p>
 <p class="price">17 200 Kč / měsíc</p>
-<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -564,7 +497,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Olomouc, centrum</p>
 <p class="desc">Reprezentativní prostory v 1. NP v centru Olomouce.</p>
 <p class="price">150 000 Kč / měsíc</p>
-<a href="https://www.reality-proradost.cz/reality/pronajem-exkluzivnich-komercnich-prostor-204-5-m2-1-np-centrum-olomouce-29442/" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/pronajem-exkluzivnich-komercnich-prostor-204-5-m2-1-np-centrum-olomouce-29442/" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -578,7 +511,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Moravičany, okr. Šumperk</p>
 <p class="desc">Rodinný dům s pozemkem 507 m² a garáží.</p>
 <p class="price">24 000 Kč / měsíc</p>
-<a href="https://www.reality-proradost.cz/reality/pronajem-rd-4-kk-183-m2-pozemek-507-m2-garaz-moravicany-okr-sumperk-29285/" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/pronajem-rd-4-kk-183-m2-pozemek-507-m2-garaz-moravicany-okr-sumperk-29285/" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -592,7 +525,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Olomouc, Neředín, ul. Jílová</p>
 <p class="desc">Byt po rekonstrukci v 7. patře v oblíbené části Olomouce.</p>
 <p class="price">16 000 Kč / měsíc</p>
-<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -606,7 +539,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Olomouc, Ostružnická ul., centrum</p>
 <p class="desc">Prostorný byt ve 2. patře v centru Olomouce.</p>
 <p class="price">17 000 Kč / měsíc</p>
-<a href="https://www.reality-proradost.cz/reality/pronajem-prostorneho-bytu-v-centru-mesta-76-m2-2-patro-olomouc-ostruznicka-ul-28771/" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/pronajem-prostorneho-bytu-v-centru-mesta-76-m2-2-patro-olomouc-ostruznicka-ul-28771/" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -620,7 +553,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Olomouc, Holická ul.</p>
 <p class="desc">Kancelářské prostory v 1. patře vhodné pro firmu nebo služby.</p>
 <p class="price">45 000 Kč / měsíc</p>
-<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/vse/?uzivatel=73" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -634,7 +567,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Vernířovice, okr. Šumperk</p>
 <p class="desc">Pozemek o velikosti 799 m² v centru obce Vernířovice.</p>
 <p class="price">2 200 000 Kč</p>
-<a href="https://www.reality-proradost.cz/reality/tisk/misto-pro-chalupu-v-srdci-vernirovic-pozemek-799-m2-okr-sumperk-27748/" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/tisk/misto-pro-chalupu-v-srdci-vernirovic-pozemek-799-m2-okr-sumperk-27748/" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -648,7 +581,7 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <p class="location">Podolí u Bouzova, okr. Olomouc</p>
 <p class="desc">Rovinatý pozemek na okraji obce vhodný pro bydlení nebo investici.</p>
 <p class="price">580 Kč / m²</p>
-<a href="https://www.reality-proradost.cz/reality/prodej-pozemku-pro-bydleni-3-462-m2-okraj-obce-podoli-u-bouzova-okr-olomouc-19796/" class="btn btn-primary">Zobrazit detail</a>
+<a href="https://www.reality-proradost.cz/reality/prodej-pozemku-pro-bydleni-3-462-m2-okraj-obce-podoli-u-bouzova-okr-olomouc-19796/" class="btn">Zobrazit detail</a>
 </div>
 </div>
 
@@ -658,7 +591,9 @@ Vybrané byty, dům, komerční prostory a pozemky prezentované v čistém a el
 <section class="sold">
 
 <div class="section-label">Realizované obchody</div>
+
 <h2 class="section-title">Vybrané realizace</h2>
+
 <p class="section-subtitle">
 Tuto část lze postupně doplnit o konkrétní prodané nebo pronajaté nemovitosti podle podkladů od paní Kopřivové.
 </p>
@@ -705,14 +640,19 @@ Tuto část lze postupně doplnit o konkrétní prodané nebo pronajaté nemovit
 </div>
 
 </div>
+
 </section>
 
 <section class="cta">
+
 <h2>Máte zájem o některou z nemovitostí?</h2>
+
 <p>
 Ozvěte se paní Kopřivové a domluvte si prohlídku nebo nezávaznou konzultaci.
 </p>
-<a href="index.html#kontakt" class="btn btn-primary">Kontaktovat makléřku</a>
+
+<a href="index.html#kontakt" class="btn">Kontaktovat makléřku</a>
+
 </section>
 
 <footer>
