@@ -1,3 +1,4 @@
+<!-- sluzby.html -->
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -9,16 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
 --white:#ffffff;
---soft:#f8f6f1;
---gold:#c6a66a;
---gold-light:#e8d8b8;
---navy:#111b3f;
---navy-soft:#1d2b5c;
---text:#333333;
---muted:#777777;
---border:#eee7da;
+--soft:#f7f5f0;
+--gold:#c8ab72;
+--gold-light:#eadcc0;
+--navy:#121b3f;
+--navy-soft:#1d2d63;
+--text:#2d2d2d;
+--muted:#777;
+--border:#ece6da;
 }
 
 *{
@@ -27,26 +29,22 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 font-family:"Montserrat",sans-serif;
-background:var(--white);
+background:white;
 color:var(--text);
 line-height:1.7;
 overflow-x:hidden;
 }
 
-img{
-max-width:100%;
-display:block;
-}
-
 h1,h2,h3{
 font-family:"Playfair Display",serif;
 font-weight:400;
+}
+
+img{
+max-width:100%;
+display:block;
 }
 
 header{
@@ -55,19 +53,18 @@ top:0;
 left:0;
 width:100%;
 z-index:1000;
-display:flex;
-justify-content:space-between;
+display:grid;
+grid-template-columns:auto 1fr auto;
 align-items:center;
+gap:30px;
 padding:34px 7%;
-color:white;
 }
 
 .logo{
 color:white;
 text-decoration:none;
-font-size:26px;
+font-size:24px;
 letter-spacing:3px;
-font-weight:400;
 text-transform:uppercase;
 white-space:nowrap;
 }
@@ -78,17 +75,18 @@ color:var(--gold-light);
 
 nav{
 display:flex;
-gap:34px;
+justify-content:center;
 align-items:center;
+gap:28px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-font-size:13px;
+font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
-font-weight:400;
+white-space:nowrap;
 transition:.3s;
 }
 
@@ -104,47 +102,40 @@ background:white;
 display:flex;
 align-items:center;
 justify-content:center;
-margin-left:12px;
-}
-
-.menu-circle span{
-width:24px;
-height:2px;
-background:var(--navy);
 position:relative;
-display:block;
 }
 
+.menu-circle span,
 .menu-circle span::before,
 .menu-circle span::after{
 content:"";
-position:absolute;
-left:0;
+display:block;
 width:24px;
 height:2px;
 background:var(--navy);
+position:absolute;
 }
 
 .menu-circle span::before{
-top:-8px;
+transform:translateY(-8px);
 }
 
 .menu-circle span::after{
-top:8px;
+transform:translateY(8px);
 }
 
 .hero{
-height:80vh;
-min-height:640px;
+height:78vh;
+min-height:700px;
 background:
-linear-gradient(rgba(17,27,63,.58),rgba(17,27,63,.58)),
+linear-gradient(rgba(18,27,63,.62),rgba(18,27,63,.62)),
 url("images/IMG_1008.jpeg") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-color:white;
 padding:0 7%;
+color:white;
 }
 
 .hero-content{
@@ -152,37 +143,35 @@ max-width:1000px;
 }
 
 .hero h1{
-font-size:78px;
+font-size:76px;
 letter-spacing:8px;
 text-transform:uppercase;
-line-height:1.08;
 margin-bottom:24px;
 }
 
 .hero-line{
-width:120px;
+width:110px;
 height:1px;
 background:var(--gold-light);
 margin:0 auto 28px;
 }
 
 .hero p{
-font-size:17px;
+font-size:15px;
 letter-spacing:3px;
 text-transform:uppercase;
-font-weight:300;
 }
 
 section{
-padding:105px 8%;
+padding:100px 8%;
 }
 
 .section-label{
 text-align:center;
-color:var(--gold);
+font-size:12px;
 letter-spacing:3px;
 text-transform:uppercase;
-font-size:12px;
+color:var(--gold);
 font-weight:600;
 margin-bottom:18px;
 }
@@ -195,11 +184,11 @@ margin-bottom:22px;
 }
 
 .section-subtitle{
-max-width:780px;
-margin:0 auto 60px;
+max-width:760px;
+margin:auto;
 text-align:center;
 color:var(--muted);
-font-size:17px;
+margin-bottom:65px;
 }
 
 .services{
@@ -211,185 +200,99 @@ gap:34px;
 .service{
 background:white;
 border:1px solid var(--border);
-padding:42px;
+padding:46px 38px;
 transition:.35s;
+position:relative;
 }
 
 .service:hover{
 transform:translateY(-6px);
-box-shadow:0 24px 60px rgba(17,27,63,.08);
+box-shadow:0 24px 60px rgba(18,27,63,.08);
+}
+
+.service::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:3px;
+background:linear-gradient(to right,var(--gold),var(--gold-light));
 }
 
 .service-number{
-color:var(--gold);
 font-size:13px;
 letter-spacing:3px;
-text-transform:uppercase;
+color:var(--gold);
+margin-bottom:18px;
 font-weight:600;
-margin-bottom:22px;
 }
 
 .service h3{
 font-size:30px;
 color:var(--navy);
-line-height:1.25;
 margin-bottom:18px;
 }
 
 .service p{
 color:var(--muted);
-margin-bottom:22px;
 font-size:15px;
 }
 
-.service ul{
-list-style:none;
-display:grid;
-gap:10px;
-}
-
-.service li{
-color:var(--text);
-font-size:14px;
-border-top:1px solid var(--border);
-padding-top:10px;
-}
-
-.service li::before{
-content:"— ";
-color:var(--gold);
-}
-
-.presentation{
-background:var(--soft);
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:80px;
-align-items:center;
-}
-
-.presentation-image{
-height:620px;
-overflow:hidden;
-}
-
-.presentation-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.presentation-text .section-label,
-.presentation-text .section-title{
-text-align:left;
-}
-
-.presentation-text .section-title{
-margin-bottom:28px;
-}
-
-.presentation-text p{
-color:var(--muted);
-margin-bottom:20px;
-}
-
-.btn{
-display:inline-block;
-padding:15px 32px;
-text-decoration:none;
-font-size:13px;
-letter-spacing:2px;
-text-transform:uppercase;
-font-weight:500;
-transition:.35s;
-}
-
-.btn-dark{
-background:var(--navy);
-color:white;
-}
-
-.btn-dark:hover{
-background:var(--gold);
-}
-
-.clean-btn{
-display:inline-block;
-color:var(--navy);
-text-decoration:none;
-letter-spacing:2px;
-text-transform:uppercase;
-font-size:13px;
-font-weight:600;
-border-bottom:1px solid var(--gold);
-padding-bottom:8px;
-transition:.3s;
-margin-top:16px;
-}
-
-.clean-btn:hover{
-color:var(--gold);
-}
-
-.process{
-background:white;
-}
-
-.steps{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:28px;
-}
-
-.step{
-border:1px solid var(--border);
-padding:36px;
-background:white;
-}
-
-.step-number{
-color:var(--gold);
-font-size:13px;
-letter-spacing:3px;
-text-transform:uppercase;
-font-weight:600;
-margin-bottom:18px;
-}
-
-.step h3{
-font-size:25px;
-color:var(--navy);
-margin-bottom:12px;
-}
-
-.step p{
-color:var(--muted);
-font-size:15px;
-}
-
-.cta{
+.quote{
 background:
-linear-gradient(rgba(17,27,63,.82),rgba(17,27,63,.82)),
-url("images/IMG_1014.png") center/cover;
+linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
+url("images/IMG_1012.png") center/cover;
 color:white;
 text-align:center;
 padding:120px 8%;
 }
 
-.cta h2{
-font-size:54px;
-margin-bottom:22px;
+.quote h2{
+font-size:52px;
+max-width:1000px;
+margin:auto;
+line-height:1.35;
 }
 
-.cta p{
-max-width:720px;
-margin:0 auto 38px;
-color:#e6e6e6;
+.quote span{
+color:var(--gold-light);
 }
 
-.cta .btn-dark{
-background:var(--gold);
-color:white;
+.process{
+background:var(--soft);
+}
+
+.process-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:28px;
+margin-top:55px;
+}
+
+.step{
+background:white;
+padding:38px 28px;
+border:1px solid var(--border);
+text-align:center;
+}
+
+.step-number{
+font-size:42px;
+color:var(--gold);
+margin-bottom:16px;
+font-family:"Playfair Display",serif;
+}
+
+.step h3{
+font-size:24px;
+color:var(--navy);
+margin-bottom:14px;
+}
+
+.step p{
+color:var(--muted);
+font-size:14px;
 }
 
 footer{
@@ -402,49 +305,23 @@ letter-spacing:1px;
 }
 
 @media(max-width:1100px){
+
 header{
-position:absolute;
+display:flex;
 flex-direction:column;
-gap:22px;
+gap:20px;
 padding:28px 5%;
+}
+
+.logo{
+font-size:21px;
+text-align:center;
 }
 
 nav{
 flex-wrap:wrap;
 justify-content:center;
-gap:18px;
-}
-
-.menu-circle{
-display:none;
-}
-
-.hero h1{
-font-size:58px;
-}
-
-.services{
-grid-template-columns:1fr;
-}
-
-.presentation{
-grid-template-columns:1fr;
-gap:50px;
-}
-
-.steps{
-grid-template-columns:repeat(2,1fr);
-}
-}
-
-@media(max-width:768px){
-.logo{
-font-size:20px;
-letter-spacing:2px;
-}
-
-nav{
-gap:10px;
+gap:12px;
 }
 
 nav a{
@@ -454,85 +331,62 @@ background:rgba(255,255,255,.12);
 padding:7px 10px;
 }
 
+.menu-circle{
+display:none;
+}
+
+.services{
+grid-template-columns:1fr 1fr;
+}
+
+.process-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.hero h1{
+font-size:56px;
+}
+}
+
+@media(max-width:768px){
+
 .hero{
-min-height:620px;
-height:75vh;
-padding:0 6%;
+min-height:600px;
 }
 
 .hero h1{
 font-size:40px;
-letter-spacing:5px;
+letter-spacing:4px;
 }
 
-.hero p{
-font-size:12px;
-letter-spacing:2px;
+.section-title{
+font-size:36px;
+}
+
+.services,
+.process-grid{
+grid-template-columns:1fr;
+}
+
+.quote h2{
+font-size:34px;
 }
 
 section{
 padding:70px 6%;
 }
-
-.section-title,
-.presentation-text .section-title{
-font-size:36px;
-text-align:center;
 }
 
-.presentation-text .section-label{
-text-align:center;
-}
-
-.presentation-image{
-height:420px;
-}
-
-.service{
-padding:32px 26px;
-}
-
-.steps{
-grid-template-columns:1fr;
-}
-
-.cta{
-padding:85px 6%;
-}
-
-.cta h2{
-font-size:36px;
-}
-
-.btn{
-width:100%;
-max-width:310px;
-text-align:center;
-}
-}
-
-@media(max-width:420px){
-.hero h1{
-font-size:32px;
-}
-
-.section-title,
-.presentation-text .section-title{
-font-size:31px;
-}
-
-nav a{
-font-size:10px;
-padding:6px 8px;
-}
-}
 </style>
 </head>
 
 <body>
 
 <header>
-<a href="index.html" class="logo">Kamila <span>Kopřivová</span></a>
+
+<a href="index.html" class="logo">
+Kamila <span>Kopřivová</span>
+</a>
 
 <nav>
 <a href="index.html">Domů</a>
@@ -546,150 +400,189 @@ padding:6px 8px;
 <div class="menu-circle">
 <span></span>
 </div>
+
 </header>
 
 <section class="hero">
+
 <div class="hero-content">
+
 <h1>Služby</h1>
+
 <div class="hero-line"></div>
+
 <p>Kompletní realitní servis od první konzultace po předání</p>
+
 </div>
+
 </section>
 
 <section>
 
-<div class="section-label">Realitní servis</div>
-<h2 class="section-title">S čím vám pomohu</h2>
+<div class="section-label">
+Realitní služby
+</div>
+
+<h2 class="section-title">
+Profesionální prezentace a individuální přístup
+</h2>
+
 <p class="section-subtitle">
-Každá nemovitost potřebuje jiný přístup. Cílem je připravit strategii,
-která bude odpovídat vaší situaci, typu nemovitosti i aktuálnímu trhu.
+Každé nemovitosti věnuji maximální péči. Od profesionální prezentace,
+fotografií a videa až po samotný prodej či pronájem.
 </p>
 
 <div class="services">
 
 <div class="service">
+
 <div class="service-number">01</div>
-<h3>Prodej nemovitosti</h3>
+
+<h3>Prodej nemovitostí</h3>
+
 <p>
-Pomohu vám nastavit správnou strategii prodeje, připravit nemovitost,
-oslovit vhodné zájemce a bezpečně projít celým procesem.
+Kompletní servis při prodeji bytů, domů, pozemků i komerčních prostor.
+Od strategie až po finální předání.
 </p>
-<ul>
-<li>cenové doporučení</li>
-<li>příprava nemovitosti</li>
-<li>inzerce a prezentace</li>
-<li>komunikace se zájemci</li>
-<li>vedení celého obchodu</li>
-</ul>
+
 </div>
 
 <div class="service">
+
 <div class="service-number">02</div>
-<h3>Pronájem nemovitosti</h3>
+
+<h3>Pronájem nemovitostí</h3>
+
 <p>
-Postarám se o to, aby vaše nemovitost působila důvěryhodně,
-zaujala správné zájemce a našla vhodného nájemníka.
+Efektivní prezentace a výběr vhodných zájemců s důrazem na bezpečný a klidný průběh pronájmu.
 </p>
-<ul>
-<li>příprava nabídky</li>
-<li>výběr nájemníka</li>
-<li>prohlídky</li>
-<li>komunikace a podklady</li>
-<li>bezpečný průběh pronájmu</li>
-</ul>
+
 </div>
 
 <div class="service">
+
 <div class="service-number">03</div>
-<h3>Marketing nemovitosti</h3>
+
+<h3>Marketing a prezentace</h3>
+
 <p>
-První dojem rozhoduje. Proto kladu důraz na kvalitní fotografie,
-video, textaci, sociální sítě a celkový dojem nabídky.
+Profesionální fotografie, video prohlídky, sociální sítě a moderní propagace každé nabídky.
 </p>
-<ul>
-<li>fotografie a video</li>
-<li>textace inzerátu</li>
-<li>sociální sítě</li>
-<li>vizuální prezentace</li>
-<li>zvýraznění předností</li>
-</ul>
+
+</div>
+
+<div class="service">
+
+<div class="service-number">04</div>
+
+<h3>Ocenění nemovitostí</h3>
+
+<p>
+Pomohu určit reálnou tržní cenu nemovitosti s ohledem na lokalitu a aktuální situaci na trhu.
+</p>
+
+</div>
+
+<div class="service">
+
+<div class="service-number">05</div>
+
+<h3>Právní servis</h3>
+
+<p>
+Zajištění smluv, právního procesu a bezpečného převodu nemovitosti včetně administrativy.
+</p>
+
+</div>
+
+<div class="service">
+
+<div class="service-number">06</div>
+
+<h3>Osobní přístup</h3>
+
+<p>
+Každá spolupráce je individuální. Zakládám si na důvěře, komunikaci a férovém jednání.
+</p>
+
 </div>
 
 </div>
+
 </section>
 
-<section class="presentation">
+<section class="quote">
 
-<div class="presentation-image">
-<img src="images/IMG_1007.png" alt="Prezentace nemovitosti">
-</div>
-
-<div class="presentation-text">
-<div class="section-label">Prémiová prezentace</div>
-<h2 class="section-title">Nemovitost musí zaujmout dřív, než začne prohlídka.</h2>
-
-<p>
-Kvalitní prezentace není jen o hezkých fotografiích. Je to kombinace správného světla,
-textu, atmosféry, ceny a jasného příběhu nemovitosti.
-</p>
-
-<p>
-U každé nabídky hledám její hlavní přednosti a snažím se je ukázat tak,
-aby si zájemce dokázal rychle představit, proč by právě tato nemovitost mohla být pro něj.
-</p>
-
-<a href="nemovitosti.html" class="clean-btn">Zobrazit aktuální nabídku</a>
-</div>
+<h2>
+„První dojem prodává.
+<span>Kvalitní prezentace nemovitosti</span>
+je dnes klíčem k úspěšnému obchodu.“
+</h2>
 
 </section>
 
 <section class="process">
 
-<div class="section-label">Postup spolupráce</div>
-<h2 class="section-title">Jak spolupráce probíhá</h2>
+<div class="section-label">
+Průběh spolupráce
+</div>
 
-<p class="section-subtitle">
-Srozumitelně, férově a s jasným plánem. Od prvního kontaktu až po úspěšné dokončení.
-</p>
+<h2 class="section-title">
+Jak probíhá spolupráce
+</h2>
 
-<div class="steps">
+<div class="process-grid">
 
 <div class="step">
-<div class="step-number">01</div>
+
+<div class="step-number">1</div>
+
 <h3>Konzultace</h3>
-<p>Společně projdeme vaši situaci, typ nemovitosti a cíle prodeje nebo pronájmu.</p>
-</div>
-
-<div class="step">
-<div class="step-number">02</div>
-<h3>Strategie</h3>
-<p>Nastavíme vhodný postup, cenu, prezentaci a způsob oslovení zájemců.</p>
-</div>
-
-<div class="step">
-<div class="step-number">03</div>
-<h3>Prezentace</h3>
-<p>Připraví se kvalitní fotografie, textace, inzerce a případně video nebo sociální sítě.</p>
-</div>
-
-<div class="step">
-<div class="step-number">04</div>
-<h3>Výsledek</h3>
-<p>Provedu vás jednáním, domluvou, prohlídkami a dokončením celého procesu.</p>
-</div>
-
-</div>
-</section>
-
-<section class="cta">
-<h2>Nejste si jistí, kde začít?</h2>
 
 <p>
-Začněme oceněním nemovitosti. Získáte lepší představu o její hodnotě
-a o tom, jaký postup bude dávat největší smysl.
+Společně projdeme možnosti prodeje nebo pronájmu a nastavíme vhodnou strategii.
 </p>
 
-<a href="oceneni-nemovitosti.html" class="btn btn-dark">Zjistit hodnotu nemovitosti</a>
+</div>
+
+<div class="step">
+
+<div class="step-number">2</div>
+
+<h3>Příprava</h3>
+
+<p>
+Profesionální fotografie, video, marketing a kompletní prezentace nemovitosti.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">3</div>
+
+<h3>Prezentace</h3>
+
+<p>
+Inzerce, sociální sítě, komunikace se zájemci a organizace prohlídek.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">4</div>
+
+<h3>Realizace</h3>
+
+<p>
+Bezpečné dokončení obchodu, právní servis a finální předání nemovitosti.
+</p>
+
+</div>
+
+</div>
+
 </section>
 
 <footer>
