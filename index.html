@@ -50,8 +50,6 @@ max-width:100%;
 display:block;
 }
 
-/* ANIMACE */
-
 @keyframes fadeUp{
 from{
 opacity:0;
@@ -701,17 +699,17 @@ Kamila <span>Kopřivová</span>
 <section class="stats">
 
 <div class="stat animate delay-1">
-<h2>12+</h2>
+<h2><span class="counter" data-target="12">0</span>+</h2>
 <p>let zkušeností</p>
 </div>
 
 <div class="stat animate delay-2">
-<h2>200+</h2>
+<h2><span class="counter" data-target="200">0</span>+</h2>
 <p>zobchodovaných nemovitostí</p>
 </div>
 
 <div class="stat animate delay-3">
-<h2>100%</h2>
+<h2><span class="counter" data-target="100">0</span>%</h2>
 <p>důraz na důvěru</p>
 </div>
 
@@ -839,6 +837,46 @@ Ukázka aktuálních nemovitostí v nabídce paní Kopřivové.
 <footer>
 © 2026 Kamila Kopřivová | Realitní makléřka
 </footer>
+
+<script>
+const counters = document.querySelectorAll(".counter");
+let counterStarted = false;
+
+function startCounters(){
+  if(counterStarted) return;
+
+  const statsSection = document.querySelector(".stats");
+  const sectionPosition = statsSection.getBoundingClientRect().top;
+  const screenPosition = window.innerHeight - 100;
+
+  if(sectionPosition < screenPosition){
+    counterStarted = true;
+
+    counters.forEach(counter => {
+      const target = Number(counter.dataset.target);
+      let current = 0;
+      const duration = 1800;
+      const increment = target / (duration / 16);
+
+      function updateCounter(){
+        current += increment;
+
+        if(current < target){
+          counter.textContent = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      }
+
+      updateCounter();
+    });
+  }
+}
+
+window.addEventListener("scroll", startCounters);
+window.addEventListener("load", startCounters);
+</script>
 
 </body>
 </html>
