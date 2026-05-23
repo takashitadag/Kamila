@@ -50,6 +50,57 @@ max-width:100%;
 display:block;
 }
 
+/* ANIMACE */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(35px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes slowZoom{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
+}
+
+@keyframes lineGrow{
+from{
+width:0;
+}
+to{
+width:120px;
+}
+}
+
+.animate{
+opacity:0;
+transform:translateY(35px);
+animation:fadeUp .9s ease forwards;
+}
+
+.delay-1{animation-delay:.15s;}
+.delay-2{animation-delay:.3s;}
+.delay-3{animation-delay:.45s;}
+.delay-4{animation-delay:.6s;}
+
 header{
 position:absolute;
 top:0;
@@ -61,6 +112,7 @@ grid-template-columns:auto 1fr auto;
 align-items:center;
 gap:30px;
 padding:34px 7%;
+animation:fadeIn 1.1s ease forwards;
 }
 
 .logo{
@@ -70,6 +122,11 @@ font-size:24px;
 letter-spacing:3px;
 text-transform:uppercase;
 white-space:nowrap;
+transition:.35s ease;
+}
+
+.logo:hover{
+letter-spacing:4px;
 }
 
 .logo span{
@@ -91,10 +148,26 @@ letter-spacing:2px;
 text-transform:uppercase;
 white-space:nowrap;
 transition:.3s;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:1px;
+background:var(--gold-light);
+transition:.35s;
 }
 
 nav a:hover{
 color:var(--gold-light);
+}
+
+nav a:hover::after{
+width:100%;
 }
 
 .menu-circle{
@@ -106,6 +179,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 position:relative;
+transition:.35s ease;
+}
+
+.menu-circle:hover{
+transform:scale(1.08);
+background:var(--gold-light);
 }
 
 .menu-circle span,
@@ -139,6 +218,25 @@ justify-content:center;
 text-align:center;
 padding:0 7%;
 color:white;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:url("images/IMG_1007.png") center/cover;
+z-index:-2;
+animation:slowZoom 18s ease-in-out infinite alternate;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(18,27,63,.58);
+z-index:-1;
 }
 
 .hero-content{
@@ -151,19 +249,23 @@ letter-spacing:9px;
 text-transform:uppercase;
 margin-bottom:24px;
 line-height:1.05;
+animation:fadeUp 1s ease forwards;
 }
 
 .hero-line{
-width:120px;
 height:1px;
 background:var(--gold-light);
 margin:0 auto 28px;
+animation:lineGrow 1s ease .4s forwards;
+width:0;
 }
 
 .hero p{
 font-size:15px;
 letter-spacing:3px;
 text-transform:uppercase;
+animation:fadeUp 1s ease .35s forwards;
+opacity:0;
 }
 
 .hero-buttons{
@@ -172,6 +274,8 @@ display:flex;
 justify-content:center;
 gap:18px;
 flex-wrap:wrap;
+animation:fadeUp 1s ease .55s forwards;
+opacity:0;
 }
 
 .btn{
@@ -181,8 +285,12 @@ text-decoration:none;
 font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
-transition:.35s;
+transition:.35s ease;
 font-weight:600;
+}
+
+.btn:hover{
+transform:translateY(-3px);
 }
 
 .btn-light{
@@ -245,6 +353,11 @@ padding:0;
 padding:70px 20px;
 text-align:center;
 background:white;
+transition:.35s ease;
+}
+
+.stat:hover{
+background:var(--soft);
 }
 
 .stat h2{
@@ -276,6 +389,11 @@ overflow:hidden;
 width:100%;
 height:100%;
 object-fit:cover;
+transition:1s ease;
+}
+
+.about-image:hover img{
+transform:scale(1.06);
 }
 
 .about-text .section-label,
@@ -301,11 +419,12 @@ gap:34px;
 .property{
 background:white;
 border:1px solid var(--border);
-transition:.35s;
+transition:.35s ease;
+overflow:hidden;
 }
 
 .property:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 box-shadow:0 24px 60px rgba(18,27,63,.08);
 }
 
@@ -313,6 +432,11 @@ box-shadow:0 24px 60px rgba(18,27,63,.08);
 width:100%;
 height:300px;
 object-fit:cover;
+transition:.7s ease;
+}
+
+.property:hover img{
+transform:scale(1.06);
 }
 
 .property-content{
@@ -351,6 +475,12 @@ font-size:13px;
 font-weight:600;
 border-bottom:1px solid var(--gold);
 padding-bottom:8px;
+transition:.35s;
+}
+
+.clean-btn:hover{
+color:var(--gold);
+letter-spacing:3px;
 }
 
 .quote{
@@ -360,6 +490,7 @@ url("images/IMG_1014.png") center/cover;
 color:white;
 text-align:center;
 padding:120px 8%;
+background-attachment:fixed;
 }
 
 .quote h2{
@@ -384,6 +515,11 @@ background:white;
 border:1px solid var(--border);
 padding:65px;
 text-align:center;
+transition:.35s ease;
+}
+
+.contact-box:hover{
+box-shadow:0 24px 60px rgba(18,27,63,.08);
 }
 
 .contact-box h2{
@@ -446,6 +582,10 @@ background:rgba(255,255,255,.12);
 padding:7px 10px;
 }
 
+nav a::after{
+display:none;
+}
+
 .menu-circle{
 display:none;
 }
@@ -488,6 +628,10 @@ height:420px;
 
 .property-grid{
 grid-template-columns:1fr;
+}
+
+.quote{
+background-attachment:scroll;
 }
 
 .quote h2{
@@ -556,17 +700,17 @@ Kamila <span>Kopřivová</span>
 
 <section class="stats">
 
-<div class="stat">
+<div class="stat animate delay-1">
 <h2>12+</h2>
 <p>let zkušeností</p>
 </div>
 
-<div class="stat">
+<div class="stat animate delay-2">
 <h2>200+</h2>
 <p>zobchodovaných nemovitostí</p>
 </div>
 
-<div class="stat">
+<div class="stat animate delay-3">
 <h2>100%</h2>
 <p>důraz na důvěru</p>
 </div>
@@ -575,11 +719,11 @@ Kamila <span>Kopřivová</span>
 
 <section class="about">
 
-<div class="about-image">
+<div class="about-image animate delay-1">
 <img src="images/IMG_1007.png" alt="Realitní prezentace">
 </div>
 
-<div class="about-text">
+<div class="about-text animate delay-2">
 
 <div class="section-label">
 O makléřce
@@ -607,21 +751,21 @@ celého procesu prodeje nebo pronájmu.
 
 <section class="properties">
 
-<div class="section-label">
+<div class="section-label animate delay-1">
 Aktuální nabídka
 </div>
 
-<h2 class="section-title">
+<h2 class="section-title animate delay-2">
 Vybrané nemovitosti
 </h2>
 
-<p class="section-subtitle">
+<p class="section-subtitle animate delay-3">
 Ukázka aktuálních nemovitostí v nabídce paní Kopřivové.
 </p>
 
 <div class="property-grid">
 
-<div class="property">
+<div class="property animate delay-1">
 <img src="images/IMG_1006.png" alt="Byt Olomouc">
 <div class="property-content">
 <small>Pronájem bytu</small>
@@ -631,7 +775,7 @@ Ukázka aktuálních nemovitostí v nabídce paní Kopřivové.
 </div>
 </div>
 
-<div class="property">
+<div class="property animate delay-2">
 <img src="images/IMG_1009.png" alt="Rodinný dům Moravičany">
 <div class="property-content">
 <small>Pronájem domu</small>
@@ -641,7 +785,7 @@ Ukázka aktuálních nemovitostí v nabídce paní Kopřivové.
 </div>
 </div>
 
-<div class="property">
+<div class="property animate delay-3">
 <img src="images/IMG_1014.png" alt="Pozemek Podolí">
 <div class="property-content">
 <small>Prodej pozemku</small>
@@ -653,7 +797,7 @@ Ukázka aktuálních nemovitostí v nabídce paní Kopřivové.
 
 </div>
 
-<div class="center">
+<div class="center animate delay-4">
 <a href="nemovitosti.html" class="clean-btn">Zobrazit všechny nemovitosti</a>
 </div>
 
@@ -661,16 +805,16 @@ Ukázka aktuálních nemovitostí v nabídce paní Kopřivové.
 
 <section class="quote">
 
-<h2>
+<h2 class="animate delay-1">
 „První dojem je nejdůležitější.
-<span>Ten opravdu prodavá.</span>“
+<span>Ten opravdu prodává.</span>“
 </h2>
 
 </section>
 
 <section class="contact" id="kontakt">
 
-<div class="contact-box">
+<div class="contact-box animate delay-1">
 
 <h2>Uvažujete o prodeji nebo pronájmu?</h2>
 
