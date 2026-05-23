@@ -23,6 +23,10 @@
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:"Montserrat",sans-serif;
 background:white;
@@ -41,6 +45,58 @@ max-width:100%;
 display:block;
 }
 
+/* ANIMACE */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(35px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes slowZoom{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
+}
+
+@keyframes lineGrow{
+from{
+width:0;
+}
+to{
+width:110px;
+}
+}
+
+.animate{
+opacity:0;
+transform:translateY(35px);
+animation:fadeUp .9s ease forwards;
+}
+
+.delay-1{animation-delay:.15s;}
+.delay-2{animation-delay:.3s;}
+.delay-3{animation-delay:.45s;}
+.delay-4{animation-delay:.6s;}
+.delay-5{animation-delay:.75s;}
+
 header{
 position:absolute;
 top:0;
@@ -52,6 +108,7 @@ grid-template-columns:auto 1fr auto;
 align-items:center;
 gap:30px;
 padding:34px 7%;
+animation:fadeIn 1s ease forwards;
 }
 
 .logo{
@@ -61,6 +118,11 @@ font-size:24px;
 letter-spacing:3px;
 text-transform:uppercase;
 white-space:nowrap;
+transition:.35s ease;
+}
+
+.logo:hover{
+letter-spacing:4px;
 }
 
 .logo span{color:var(--gold-light);}
@@ -80,9 +142,27 @@ letter-spacing:2px;
 text-transform:uppercase;
 white-space:nowrap;
 transition:.3s;
+position:relative;
 }
 
-nav a:hover{color:var(--gold-light);}
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:1px;
+background:var(--gold-light);
+transition:.35s;
+}
+
+nav a:hover{
+color:var(--gold-light);
+}
+
+nav a:hover::after{
+width:100%;
+}
 
 .menu-circle{
 width:64px;
@@ -93,6 +173,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 position:relative;
+transition:.35s ease;
+}
+
+.menu-circle:hover{
+transform:scale(1.08);
+background:var(--gold-light);
 }
 
 .menu-circle span,
@@ -121,6 +207,25 @@ justify-content:center;
 text-align:center;
 padding:0 7%;
 color:white;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:url("images/IMG_1014.png") center/cover;
+z-index:-2;
+animation:slowZoom 18s ease-in-out infinite alternate;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(18,27,63,.62);
+z-index:-1;
 }
 
 .hero h1{
@@ -128,19 +233,23 @@ font-size:76px;
 letter-spacing:8px;
 text-transform:uppercase;
 margin-bottom:24px;
+animation:fadeUp 1s ease forwards;
 }
 
 .hero-line{
-width:110px;
 height:1px;
 background:var(--gold-light);
 margin:0 auto 28px;
+width:0;
+animation:lineGrow 1s ease .35s forwards;
 }
 
 .hero p{
 font-size:15px;
 letter-spacing:3px;
 text-transform:uppercase;
+opacity:0;
+animation:fadeUp 1s ease .45s forwards;
 }
 
 section{
@@ -190,7 +299,11 @@ letter-spacing:2px;
 text-transform:uppercase;
 font-weight:600;
 cursor:pointer;
-transition:.3s;
+transition:.35s ease;
+}
+
+.filter:hover{
+transform:translateY(-3px);
 }
 
 .filter.active,
@@ -209,11 +322,19 @@ gap:34px;
 .property{
 background:white;
 border:1px solid var(--border);
-transition:.35s;
+transition:.35s ease;
+opacity:1;
+transform:scale(1);
+}
+
+.property.is-hidden{
+opacity:0;
+transform:scale(.96);
+pointer-events:none;
 }
 
 .property:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 box-shadow:0 24px 60px rgba(18,27,63,.08);
 }
 
@@ -226,11 +347,11 @@ overflow:hidden;
 width:100%;
 height:100%;
 object-fit:cover;
-transition:.5s;
+transition:.7s ease;
 }
 
 .property:hover .property-image img{
-transform:scale(1.04);
+transform:scale(1.06);
 }
 
 .property-content{
@@ -280,13 +401,14 @@ font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
 font-weight:600;
-transition:.35s;
+transition:.35s ease;
 background:var(--navy);
 color:white;
 }
 
 .btn:hover{
 background:var(--gold);
+transform:translateY(-3px);
 }
 
 .sold{
@@ -300,6 +422,7 @@ url("images/IMG_1007.png") center/cover;
 color:white;
 text-align:center;
 padding:120px 8%;
+background-attachment:fixed;
 }
 
 .cta h2{
@@ -352,6 +475,10 @@ background:rgba(255,255,255,.12);
 padding:7px 10px;
 }
 
+nav a::after{
+display:none;
+}
+
 .menu-circle{display:none;}
 
 .hero h1{font-size:56px;}
@@ -381,6 +508,10 @@ grid-template-columns:1fr;
 
 .property-image{
 height:260px;
+}
+
+.cta{
+background-attachment:scroll;
 }
 
 .cta h2{
@@ -439,15 +570,15 @@ Kamila <span>Kopřivová</span>
 
 <section>
 
-<div class="section-label">Portfolio nemovitostí</div>
+<div class="section-label animate delay-1">Portfolio nemovitostí</div>
 
-<h2 class="section-title">Aktuální nabídka</h2>
+<h2 class="section-title animate delay-2">Aktuální nabídka</h2>
 
-<p class="section-subtitle">
+<p class="section-subtitle animate delay-3">
 Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezentaci.
 </p>
 
-<div class="filters">
+<div class="filters animate delay-4">
 <button class="filter active" data-filter="all">Vše</button>
 <button class="filter" data-filter="byt">Byty</button>
 <button class="filter" data-filter="dum">Domy</button>
@@ -459,7 +590,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 
 <div class="properties">
 
-<div class="property" data-category="byt pronajem">
+<div class="property animate delay-1" data-category="byt pronajem">
 <div class="property-image">
 <img src="images/IMG_1006.png" alt="Byt Kpt. Nálepky">
 </div>
@@ -473,7 +604,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 </div>
 </div>
 
-<div class="property" data-category="byt pronajem">
+<div class="property animate delay-2" data-category="byt pronajem">
 <div class="property-image">
 <img src="images/IMG_1007.png" alt="Byt Šternberk Dolní Žleb">
 </div>
@@ -487,7 +618,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 </div>
 </div>
 
-<div class="property" data-category="komerce pronajem">
+<div class="property animate delay-3" data-category="komerce pronajem">
 <div class="property-image">
 <img src="images/IMG_1008.jpeg" alt="Komerční prostory Olomouc">
 </div>
@@ -501,7 +632,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 </div>
 </div>
 
-<div class="property" data-category="dum pronajem">
+<div class="property animate delay-1" data-category="dum pronajem">
 <div class="property-image">
 <img src="images/IMG_1009.png" alt="Rodinný dům Moravičany">
 </div>
@@ -515,7 +646,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 </div>
 </div>
 
-<div class="property" data-category="byt pronajem">
+<div class="property animate delay-2" data-category="byt pronajem">
 <div class="property-image">
 <img src="images/IMG_1010.png" alt="Byt Olomouc Neředín">
 </div>
@@ -529,7 +660,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 </div>
 </div>
 
-<div class="property" data-category="byt pronajem">
+<div class="property animate delay-3" data-category="byt pronajem">
 <div class="property-image">
 <img src="images/IMG_1011.png" alt="Byt Olomouc Ostružnická">
 </div>
@@ -543,7 +674,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 </div>
 </div>
 
-<div class="property" data-category="komerce pronajem">
+<div class="property animate delay-1" data-category="komerce pronajem">
 <div class="property-image">
 <img src="images/IMG_1012.png" alt="Kanceláře Olomouc Holická">
 </div>
@@ -557,7 +688,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 </div>
 </div>
 
-<div class="property" data-category="pozemek prodej">
+<div class="property animate delay-2" data-category="pozemek prodej">
 <div class="property-image">
 <img src="images/IMG_1013.png" alt="Pozemek Vernířovice">
 </div>
@@ -571,7 +702,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 </div>
 </div>
 
-<div class="property" data-category="pozemek prodej">
+<div class="property animate delay-3" data-category="pozemek prodej">
 <div class="property-image">
 <img src="images/IMG_1014.png" alt="Pozemek Podolí u Bouzova">
 </div>
@@ -590,17 +721,17 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 
 <section class="sold">
 
-<div class="section-label">Realizované obchody</div>
+<div class="section-label animate delay-1">Realizované obchody</div>
 
-<h2 class="section-title">Vybrané realizace</h2>
+<h2 class="section-title animate delay-2">Vybrané realizace</h2>
 
-<p class="section-subtitle">
+<p class="section-subtitle animate delay-3">
 Tuto část lze postupně doplnit o konkrétní prodané nebo pronajaté nemovitosti podle podkladů od paní Kopřivové.
 </p>
 
 <div class="properties">
 
-<div class="property">
+<div class="property animate delay-1">
 <div class="property-image">
 <img src="images/IMG_1013.png" alt="Realizovaný pozemek">
 </div>
@@ -613,7 +744,7 @@ Tuto část lze postupně doplnit o konkrétní prodané nebo pronajaté nemovit
 </div>
 </div>
 
-<div class="property">
+<div class="property animate delay-2">
 <div class="property-image">
 <img src="images/IMG_1007.png" alt="Realizovaný pronájem bytu">
 </div>
@@ -626,7 +757,7 @@ Tuto část lze postupně doplnit o konkrétní prodané nebo pronajaté nemovit
 </div>
 </div>
 
-<div class="property">
+<div class="property animate delay-3">
 <div class="property-image">
 <img src="images/IMG_1008.jpeg" alt="Realizovaná komerce">
 </div>
@@ -645,13 +776,13 @@ Tuto část lze postupně doplnit o konkrétní prodané nebo pronajaté nemovit
 
 <section class="cta">
 
-<h2>Máte zájem o některou z nemovitostí?</h2>
+<h2 class="animate delay-1">Máte zájem o některou z nemovitostí?</h2>
 
-<p>
+<p class="animate delay-2">
 Ozvěte se paní Kopřivové a domluvte si prohlídku nebo nezávaznou konzultaci.
 </p>
 
-<a href="index.html#kontakt" class="btn">Kontaktovat makléřku</a>
+<a href="index.html#kontakt" class="btn animate delay-3">Kontaktovat makléřku</a>
 
 </section>
 
@@ -664,22 +795,28 @@ const buttons = document.querySelectorAll(".filter");
 const properties = document.querySelectorAll(".property[data-category]");
 
 buttons.forEach(button => {
-button.addEventListener("click", () => {
-buttons.forEach(btn => btn.classList.remove("active"));
-button.classList.add("active");
+  button.addEventListener("click", () => {
+    buttons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
 
-const filter = button.getAttribute("data-filter");
+    const filter = button.getAttribute("data-filter");
 
-properties.forEach(property => {
-const category = property.getAttribute("data-category");
+    properties.forEach(property => {
+      const category = property.getAttribute("data-category");
 
-if(filter === "all" || category.includes(filter)){
-property.style.display = "block";
-} else {
-property.style.display = "none";
-}
-});
-});
+      if(filter === "all" || category.includes(filter)){
+        property.style.display = "block";
+        setTimeout(() => {
+          property.classList.remove("is-hidden");
+        }, 20);
+      } else {
+        property.classList.add("is-hidden");
+        setTimeout(() => {
+          property.style.display = "none";
+        }, 250);
+      }
+    });
+  });
 });
 </script>
 
