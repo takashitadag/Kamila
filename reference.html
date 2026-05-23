@@ -1,24 +1,25 @@
+<!-- reference.html -->
 <!DOCTYPE html>
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Reference | Kamila Kopřivová</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
 --white:#ffffff;
---soft:#f8f6f1;
---gold:#c6a66a;
---gold-light:#e8d8b8;
---navy:#111b3f;
---navy-soft:#1d2b5c;
---text:#333333;
---muted:#777777;
---border:#eee7da;
+--soft:#f7f5f0;
+--gold:#c8ab72;
+--gold-light:#eadcc0;
+--navy:#121b3f;
+--navy-soft:#1d2d63;
+--text:#2e2e2e;
+--muted:#777;
+--border:#ece6da;
 }
 
 *{
@@ -27,26 +28,22 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 font-family:"Montserrat",sans-serif;
-background:var(--white);
+background:white;
 color:var(--text);
 line-height:1.7;
 overflow-x:hidden;
 }
 
-img{
-max-width:100%;
-display:block;
-}
-
 h1,h2,h3{
 font-family:"Playfair Display",serif;
 font-weight:400;
+}
+
+img{
+max-width:100%;
+display:block;
 }
 
 header{
@@ -55,19 +52,18 @@ top:0;
 left:0;
 width:100%;
 z-index:1000;
-display:flex;
-justify-content:space-between;
+display:grid;
+grid-template-columns:auto 1fr auto;
 align-items:center;
+gap:30px;
 padding:34px 7%;
-color:white;
 }
 
 .logo{
 color:white;
 text-decoration:none;
-font-size:26px;
+font-size:24px;
 letter-spacing:3px;
-font-weight:400;
 text-transform:uppercase;
 white-space:nowrap;
 }
@@ -78,17 +74,18 @@ color:var(--gold-light);
 
 nav{
 display:flex;
-gap:34px;
+justify-content:center;
 align-items:center;
+gap:28px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-font-size:13px;
+font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
-font-weight:400;
+white-space:nowrap;
 transition:.3s;
 }
 
@@ -104,47 +101,39 @@ background:white;
 display:flex;
 align-items:center;
 justify-content:center;
-margin-left:12px;
 }
 
-.menu-circle span{
-width:24px;
-height:2px;
-background:var(--navy);
-position:relative;
-display:block;
-}
-
+.menu-circle span,
 .menu-circle span::before,
 .menu-circle span::after{
 content:"";
-position:absolute;
-left:0;
+display:block;
 width:24px;
 height:2px;
 background:var(--navy);
+position:absolute;
 }
 
 .menu-circle span::before{
-top:-8px;
+transform:translateY(-8px);
 }
 
 .menu-circle span::after{
-top:8px;
+transform:translateY(8px);
 }
 
 .hero{
 height:75vh;
-min-height:620px;
+min-height:650px;
 background:
-linear-gradient(rgba(17,27,63,.60),rgba(17,27,63,.60)),
+linear-gradient(rgba(18,27,63,.62),rgba(18,27,63,.62)),
 url("images/IMG_1007.png") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-color:white;
 padding:0 7%;
+color:white;
 }
 
 .hero-content{
@@ -155,36 +144,34 @@ max-width:1000px;
 font-size:76px;
 letter-spacing:8px;
 text-transform:uppercase;
-line-height:1.08;
 margin-bottom:24px;
 }
 
 .hero-line{
-width:120px;
+width:110px;
 height:1px;
 background:var(--gold-light);
 margin:0 auto 28px;
 }
 
 .hero p{
-font-size:16px;
+font-size:15px;
 letter-spacing:3px;
 text-transform:uppercase;
-font-weight:300;
 }
 
 section{
-padding:105px 8%;
+padding:100px 8%;
 }
 
 .section-label{
 text-align:center;
-color:var(--gold);
+font-size:12px;
 letter-spacing:3px;
 text-transform:uppercase;
-font-size:12px;
+color:var(--gold);
+margin-bottom:16px;
 font-weight:600;
-margin-bottom:18px;
 }
 
 .section-title{
@@ -195,11 +182,11 @@ margin-bottom:22px;
 }
 
 .section-subtitle{
-max-width:780px;
-margin:0 auto 60px;
+max-width:760px;
+margin:auto;
 text-align:center;
 color:var(--muted);
-font-size:17px;
+margin-bottom:60px;
 }
 
 .references{
@@ -211,14 +198,14 @@ gap:34px;
 .reference{
 background:white;
 border:1px solid var(--border);
-padding:42px;
+padding:40px;
 transition:.35s;
 position:relative;
 }
 
 .reference:hover{
 transform:translateY(-6px);
-box-shadow:0 24px 60px rgba(17,27,63,.08);
+box-shadow:0 24px 60px rgba(18,27,63,.08);
 }
 
 .reference::before{
@@ -232,16 +219,14 @@ background:linear-gradient(to right,var(--gold),var(--gold-light));
 }
 
 .stars{
-font-size:20px;
 color:var(--gold);
+font-size:20px;
 margin-bottom:22px;
-letter-spacing:4px;
 }
 
 .reference p{
 color:var(--muted);
-font-size:15px;
-margin-bottom:28px;
+margin-bottom:26px;
 }
 
 .client{
@@ -250,36 +235,33 @@ align-items:center;
 gap:16px;
 }
 
-.client-avatar{
+.avatar{
 width:58px;
 height:58px;
 border-radius:50%;
 background:var(--navy);
+color:white;
 display:flex;
 align-items:center;
 justify-content:center;
-color:white;
-font-size:18px;
-font-weight:500;
+font-weight:600;
 }
 
-.client-info h3{
-font-size:24px;
+.client h3{
+font-size:23px;
 color:var(--navy);
-margin-bottom:2px;
 }
 
-.client-info span{
-font-size:13px;
+.client span{
+font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
 color:var(--gold);
-font-weight:600;
 }
 
 .quote{
 background:
-linear-gradient(rgba(17,27,63,.82),rgba(17,27,63,.82)),
+linear-gradient(rgba(18,27,63,.82),rgba(18,27,63,.82)),
 url("images/IMG_1014.png") center/cover;
 color:white;
 text-align:center;
@@ -288,7 +270,7 @@ padding:120px 8%;
 
 .quote h2{
 font-size:52px;
-max-width:980px;
+max-width:1000px;
 margin:auto;
 line-height:1.35;
 }
@@ -298,25 +280,23 @@ color:var(--gold-light);
 }
 
 .stats{
-background:var(--soft);
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:1px;
-padding:0;
+background:var(--soft);
 border-top:1px solid var(--border);
 border-bottom:1px solid var(--border);
 }
 
 .stat{
-background:white;
-padding:65px 30px;
+padding:70px 20px;
 text-align:center;
+background:white;
 }
 
 .stat h2{
 font-size:54px;
 color:var(--navy);
-margin-bottom:8px;
+margin-bottom:10px;
 }
 
 .stat p{
@@ -324,52 +304,6 @@ color:var(--gold);
 letter-spacing:2px;
 text-transform:uppercase;
 font-size:12px;
-font-weight:600;
-}
-
-.cta{
-background:white;
-text-align:center;
-}
-
-.cta-box{
-max-width:850px;
-margin:auto;
-background:var(--soft);
-padding:70px;
-border:1px solid var(--border);
-}
-
-.cta-box h2{
-font-size:48px;
-color:var(--navy);
-margin-bottom:20px;
-}
-
-.cta-box p{
-color:var(--muted);
-max-width:700px;
-margin:0 auto 36px;
-}
-
-.btn{
-display:inline-block;
-padding:15px 32px;
-text-decoration:none;
-font-size:13px;
-letter-spacing:2px;
-text-transform:uppercase;
-font-weight:500;
-transition:.35s;
-}
-
-.btn-dark{
-background:var(--navy);
-color:white;
-}
-
-.btn-dark:hover{
-background:var(--gold);
 }
 
 footer{
@@ -384,44 +318,21 @@ letter-spacing:1px;
 @media(max-width:1100px){
 
 header{
-position:absolute;
+display:flex;
 flex-direction:column;
-gap:22px;
+gap:20px;
 padding:28px 5%;
+}
+
+.logo{
+font-size:21px;
+text-align:center;
 }
 
 nav{
 flex-wrap:wrap;
 justify-content:center;
-gap:18px;
-}
-
-.menu-circle{
-display:none;
-}
-
-.hero h1{
-font-size:58px;
-}
-
-.references{
-grid-template-columns:repeat(2,1fr);
-}
-
-.stats{
-grid-template-columns:1fr;
-}
-}
-
-@media(max-width:768px){
-
-.logo{
-font-size:20px;
-letter-spacing:2px;
-}
-
-nav{
-gap:10px;
+gap:12px;
 }
 
 nav a{
@@ -431,76 +342,51 @@ background:rgba(255,255,255,.12);
 padding:7px 10px;
 }
 
-.hero{
-min-height:620px;
-height:75vh;
-padding:0 6%;
+.menu-circle{
+display:none;
+}
+
+.references{
+grid-template-columns:1fr 1fr;
 }
 
 .hero h1{
-font-size:40px;
-letter-spacing:5px;
+font-size:56px;
 }
 
-.hero p{
-font-size:12px;
-letter-spacing:2px;
+.stats{
+grid-template-columns:1fr;
+}
 }
 
-section{
-padding:70px 6%;
+@media(max-width:768px){
+
+.hero{
+min-height:580px;
+}
+
+.hero h1{
+font-size:38px;
+letter-spacing:4px;
 }
 
 .section-title{
-font-size:36px;
+font-size:34px;
 }
 
 .references{
 grid-template-columns:1fr;
 }
 
-.reference{
-padding:32px 26px;
-}
-
-.quote{
-padding:85px 6%;
-}
-
 .quote h2{
 font-size:34px;
 }
 
-.cta-box{
-padding:40px 26px;
-}
-
-.cta-box h2{
-font-size:34px;
-}
-
-.btn{
-width:100%;
-max-width:320px;
-text-align:center;
+section{
+padding:70px 6%;
 }
 }
 
-@media(max-width:420px){
-
-.hero h1{
-font-size:32px;
-}
-
-.section-title{
-font-size:31px;
-}
-
-nav a{
-font-size:10px;
-padding:6px 8px;
-}
-}
 </style>
 </head>
 
@@ -544,16 +430,16 @@ Kamila <span>Kopřivová</span>
 <section>
 
 <div class="section-label">
-Zkušenosti klientů
+Reference klientů
 </div>
 
 <h2 class="section-title">
-Spolupráce založená na důvěře
+Profesionální přístup a důvěra
 </h2>
 
 <p class="section-subtitle">
-Každý obchod je především o komunikaci, férovosti a správném vedení celého procesu.
-Mým cílem je, aby klienti měli jistotu a klid během celé spolupráce.
+Každý obchod je jedinečný. Zakládám si na osobním přístupu,
+férovosti a kvalitní prezentaci nemovitostí.
 </p>
 
 <div class="references">
@@ -563,17 +449,15 @@ Mým cílem je, aby klienti měli jistotu a klid během celé spolupráce.
 <div class="stars">★★★★★</div>
 
 <p>
-Velmi příjemná komunikace, profesionální přístup a krásná prezentace nemovitosti.
-Vše proběhlo rychle a bez komplikací.
+Velmi profesionální komunikace a krásná prezentace nemovitosti.
+Celý proces proběhl rychle a bez starostí.
 </p>
 
 <div class="client">
 
-<div class="client-avatar">
-MK
-</div>
+<div class="avatar">MK</div>
 
-<div class="client-info">
+<div>
 <h3>Martin K.</h3>
 <span>Pronájem bytu</span>
 </div>
@@ -588,16 +472,14 @@ MK
 
 <p>
 Paní Kopřivová nám pomohla s prodejem pozemku.
-Oceňujeme férovost, ochotu a celkový profesionální přístup.
+Skvělá komunikace, ochota a lidský přístup.
 </p>
 
 <div class="client">
 
-<div class="client-avatar">
-JP
-</div>
+<div class="avatar">JP</div>
 
-<div class="client-info">
+<div>
 <h3>Jana P.</h3>
 <span>Prodej pozemku</span>
 </div>
@@ -611,90 +493,17 @@ JP
 <div class="stars">★★★★★</div>
 
 <p>
-Skvělé fotografie, video prezentace a výborná komunikace.
-Spolupráci mohu jedině doporučit.
+Výborná prezentace nemovitosti, profesionální fotografie a rychlé jednání.
+Doporučuji.
 </p>
 
 <div class="client">
 
-<div class="client-avatar">
-TH
-</div>
+<div class="avatar">TH</div>
 
-<div class="client-info">
+<div>
 <h3>Tomáš H.</h3>
 <span>Pronájem domu</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="reference">
-
-<div class="stars">★★★★★</div>
-
-<p>
-Profesionální vystupování, klidný průběh celého obchodu a lidský přístup.
-Děkujeme za spolupráci.
-</p>
-
-<div class="client">
-
-<div class="client-avatar">
-LK
-</div>
-
-<div class="client-info">
-<h3>Lucie K.</h3>
-<span>Prodej nemovitosti</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="reference">
-
-<div class="stars">★★★★★</div>
-
-<p>
-Vše proběhlo rychle a přehledně. Oceňujeme hlavně komunikaci a důvěru během celé spolupráce.
-</p>
-
-<div class="client">
-
-<div class="client-avatar">
-RM
-</div>
-
-<div class="client-info">
-<h3>Roman M.</h3>
-<span>Realitní servis</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="reference">
-
-<div class="stars">★★★★★</div>
-
-<p>
-Kráská prezentace nemovitosti a velmi profesionální přístup.
-Spolupráce byla opravdu příjemná.
-</p>
-
-<div class="client">
-
-<div class="client-avatar">
-AV
-</div>
-
-<div class="client-info">
-<h3>Andrea V.</h3>
-<span>Pronájem bytu</span>
 </div>
 
 </div>
@@ -708,8 +517,7 @@ AV
 <section class="quote">
 
 <h2>
-„Zakládám si na <span>férovosti, důvěře a kvalitní prezentaci</span>,
-která pomáhá nemovitosti správně ukázat.“
+„Zakládám si na <span>férovosti, důvěře a kvalitní prezentaci</span> každé nemovitosti.“
 </h2>
 
 </section>
@@ -728,28 +536,7 @@ která pomáhá nemovitosti správně ukázat.“
 
 <div class="stat">
 <h2>100%</h2>
-<p>důraz na důvěru</p>
-</div>
-
-</section>
-
-<section class="cta">
-
-<div class="cta-box">
-
-<h2>
-Hledáte profesionální přístup?
-</h2>
-
-<p>
-Ať už uvažujete o prodeji, pronájmu nebo jen potřebujete poradit,
-ráda s vámi projdu možnosti a navrhnu vhodný postup.
-</p>
-
-<a href="oceneni-nemovitosti.html" class="btn btn-dark">
-Zjistit hodnotu nemovitosti
-</a>
-
+<p>profesionální přístup</p>
 </div>
 
 </section>
