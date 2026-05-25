@@ -4,12 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Reference | Kamila Kopřivová</title>
+<meta name="description" content="Reference klientů Ing. Kamily Kopřivové. Férový přístup, důvěra, kvalitní prezentace a profesionální realitní servis v Olomouckém kraji.">
+<meta name="keywords" content="reference realitní makléřka Olomouc, Kamila Kopřivová reference, realitní servis Olomouc">
+<meta name="author" content="Ing. Kamila Kopřivová">
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
 --white:#ffffff;
 --soft:#f7f5f0;
@@ -374,6 +377,40 @@ text-transform:uppercase;
 color:var(--gold);
 }
 
+.value{
+background:var(--soft);
+}
+
+.value-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:28px;
+}
+
+.value-card{
+background:white;
+border:1px solid var(--border);
+padding:34px;
+text-align:center;
+transition:.35s ease;
+}
+
+.value-card:hover{
+transform:translateY(-8px);
+box-shadow:0 24px 60px rgba(18,27,63,.08);
+}
+
+.value-card h3{
+font-size:24px;
+color:var(--navy);
+margin-bottom:12px;
+}
+
+.value-card p{
+font-size:14px;
+color:var(--muted);
+}
+
 .quote{
 background:
 linear-gradient(rgba(18,27,63,.82),rgba(18,27,63,.82)),
@@ -427,6 +464,83 @@ text-transform:uppercase;
 font-size:12px;
 }
 
+.cta{
+background:white;
+text-align:center;
+}
+
+.cta-box{
+max-width:850px;
+margin:auto;
+background:var(--soft);
+border:1px solid var(--border);
+padding:60px;
+transition:.35s ease;
+}
+
+.cta-box:hover{
+box-shadow:0 24px 60px rgba(18,27,63,.08);
+}
+
+.cta-box h2{
+font-size:42px;
+color:var(--navy);
+margin-bottom:18px;
+}
+
+.cta-box p{
+color:var(--muted);
+margin-bottom:30px;
+}
+
+.btn{
+display:inline-block;
+padding:16px 34px;
+text-decoration:none;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+transition:.35s ease;
+font-weight:600;
+background:var(--navy);
+color:white;
+}
+
+.btn:hover{
+background:var(--gold);
+transform:translateY(-3px);
+}
+
+.floating-contact{
+position:fixed;
+right:22px;
+bottom:22px;
+z-index:2000;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.floating-contact a{
+width:54px;
+height:54px;
+border-radius:50%;
+background:var(--navy);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:22px;
+box-shadow:0 12px 30px rgba(18,27,63,.25);
+transition:.35s ease;
+}
+
+.floating-contact a:hover{
+background:var(--gold);
+transform:translateY(-4px);
+}
+
 footer{
 background:var(--navy);
 color:white;
@@ -475,6 +589,10 @@ display:none;
 grid-template-columns:1fr 1fr;
 }
 
+.value-grid{
+grid-template-columns:1fr 1fr;
+}
+
 .hero h1{
 font-size:56px;
 }
@@ -499,7 +617,8 @@ letter-spacing:4px;
 font-size:34px;
 }
 
-.references{
+.references,
+.value-grid{
 grid-template-columns:1fr;
 }
 
@@ -511,8 +630,23 @@ background-attachment:scroll;
 font-size:34px;
 }
 
+.cta-box{
+padding:38px 24px;
+}
+
 section{
 padding:70px 6%;
+}
+
+.btn{
+width:100%;
+max-width:310px;
+text-align:center;
+}
+
+.floating-contact{
+right:15px;
+bottom:15px;
 }
 }
 
@@ -643,6 +777,47 @@ Doporučuji.
 
 </section>
 
+<section class="value">
+
+<div class="section-label animate delay-1">
+Co klienti oceňují
+</div>
+
+<h2 class="section-title animate delay-2">
+Spolupráce, která má jasný průběh
+</h2>
+
+<p class="section-subtitle animate delay-3">
+Dobrá reference vzniká tehdy, když klient ví, co se děje,
+má dostatek informací a může se na celý proces spolehnout.
+</p>
+
+<div class="value-grid">
+
+<div class="value-card animate delay-1">
+<h3>Komunikace</h3>
+<p>Pravidelné informace, jasné kroky a lidský přístup.</p>
+</div>
+
+<div class="value-card animate delay-2">
+<h3>Prezentace</h3>
+<p>Nemovitost musí působit důvěryhodně a zaujmout na první pohled.</p>
+</div>
+
+<div class="value-card animate delay-3">
+<h3>Férovost</h3>
+<p>Zakládám si na otevřenosti, poctivosti a oboustranné důvěře.</p>
+</div>
+
+<div class="value-card animate delay-4">
+<h3>Jistota</h3>
+<p>Bezpečný průběh obchodu od začátku až po předání.</p>
+</div>
+
+</div>
+
+</section>
+
 <section class="quote">
 
 <h2 class="animate delay-1">
@@ -669,6 +844,32 @@ Doporučuji.
 </div>
 
 </section>
+
+<section class="cta">
+
+<div class="cta-box animate delay-1">
+
+<h2>
+Chcete podobnou zkušenost?
+</h2>
+
+<p>
+Ozvěte se a společně projdeme možnosti prodeje, pronájmu nebo ocenění vaší nemovitosti.
+</p>
+
+<a href="index.html#kontakt" class="btn">
+Kontaktovat makléřku
+</a>
+
+</div>
+
+</section>
+
+<div class="floating-contact">
+<a href="tel:+420736167321" title="Zavolat">☎</a>
+<a href="mailto:koprivovakamila@gmail.com" title="E-mail">✉</a>
+<a href="https://wa.me/420736167321" title="WhatsApp">☘</a>
+</div>
 
 <footer>
 © 2026 Kamila Kopřivová | Realitní makléřka
