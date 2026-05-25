@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Služby | Kamila Kopřivová</title>
+<meta name="description" content="Realitní služby Ing. Kamily Kopřivové pro Olomoucký kraj. Prodej, pronájem, ocenění nemovitostí, marketing, právní servis a osobní přístup.">
+<meta name="keywords" content="realitní služby Olomouc, prodej nemovitosti, pronájem nemovitosti, ocenění nemovitosti, realitní makléřka Olomouc">
+<meta name="author" content="Ing. Kamila Kopřivová">
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
@@ -353,6 +356,40 @@ color:var(--muted);
 font-size:15px;
 }
 
+.why{
+background:var(--soft);
+}
+
+.why-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:28px;
+}
+
+.why-card{
+background:white;
+border:1px solid var(--border);
+padding:34px;
+text-align:center;
+transition:.35s ease;
+}
+
+.why-card:hover{
+transform:translateY(-8px);
+box-shadow:0 24px 60px rgba(18,27,63,.08);
+}
+
+.why-card h3{
+font-size:24px;
+color:var(--navy);
+margin-bottom:12px;
+}
+
+.why-card p{
+font-size:14px;
+color:var(--muted);
+}
+
 .quote{
 background:
 linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
@@ -422,6 +459,83 @@ color:var(--muted);
 font-size:14px;
 }
 
+.cta{
+background:white;
+text-align:center;
+}
+
+.cta-box{
+max-width:850px;
+margin:auto;
+border:1px solid var(--border);
+padding:60px;
+background:var(--soft);
+transition:.35s ease;
+}
+
+.cta-box:hover{
+box-shadow:0 24px 60px rgba(18,27,63,.08);
+}
+
+.cta-box h2{
+font-size:42px;
+color:var(--navy);
+margin-bottom:18px;
+}
+
+.cta-box p{
+color:var(--muted);
+margin-bottom:30px;
+}
+
+.btn{
+display:inline-block;
+padding:16px 34px;
+text-decoration:none;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+transition:.35s ease;
+font-weight:600;
+background:var(--navy);
+color:white;
+}
+
+.btn:hover{
+background:var(--gold);
+transform:translateY(-3px);
+}
+
+.floating-contact{
+position:fixed;
+right:22px;
+bottom:22px;
+z-index:2000;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.floating-contact a{
+width:54px;
+height:54px;
+border-radius:50%;
+background:var(--navy);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:22px;
+box-shadow:0 12px 30px rgba(18,27,63,.25);
+transition:.35s ease;
+}
+
+.floating-contact a:hover{
+background:var(--gold);
+transform:translateY(-4px);
+}
+
 footer{
 background:var(--navy);
 color:white;
@@ -470,6 +584,7 @@ display:none;
 grid-template-columns:1fr 1fr;
 }
 
+.why-grid,
 .process-grid{
 grid-template-columns:1fr 1fr;
 }
@@ -495,6 +610,7 @@ font-size:36px;
 }
 
 .services,
+.why-grid,
 .process-grid{
 grid-template-columns:1fr;
 }
@@ -507,8 +623,23 @@ background-attachment:scroll;
 font-size:34px;
 }
 
+.cta-box{
+padding:38px 24px;
+}
+
 section{
 padding:70px 6%;
+}
+
+.btn{
+width:100%;
+max-width:310px;
+text-align:center;
+}
+
+.floating-contact{
+right:15px;
+bottom:15px;
 }
 }
 
@@ -570,76 +701,80 @@ fotografií a videa až po samotný prodej či pronájem.
 <div class="services">
 
 <div class="service animate delay-1">
-
 <div class="service-number">01</div>
-
 <h3>Prodej nemovitostí</h3>
-
-<p>
-Kompletní servis při prodeji bytů, domů, pozemků i komerčních prostor.
-Od strategie až po finální předání.
-</p>
-
+<p>Kompletní servis při prodeji bytů, domů, pozemků i komerčních prostor. Od strategie až po finální předání.</p>
 </div>
 
 <div class="service animate delay-2">
-
 <div class="service-number">02</div>
-
 <h3>Pronájem nemovitostí</h3>
-
-<p>
-Efektivní prezentace a výběr vhodných zájemců s důrazem na bezpečný a klidný průběh pronájmu.
-</p>
-
+<p>Efektivní prezentace a výběr vhodných zájemců s důrazem na bezpečný a klidný průběh pronájmu.</p>
 </div>
 
 <div class="service animate delay-3">
-
 <div class="service-number">03</div>
-
 <h3>Marketing a prezentace</h3>
-
-<p>
-Profesionální fotografie, video prohlídky, sociální sítě a moderní propagace každé nabídky.
-</p>
-
+<p>Profesionální fotografie, video prohlídky, sociální sítě a moderní propagace každé nabídky.</p>
 </div>
 
 <div class="service animate delay-4">
-
 <div class="service-number">04</div>
-
 <h3>Ocenění nemovitostí</h3>
-
-<p>
-Pomohu určit reálnou tržní cenu nemovitosti s ohledem na lokalitu a aktuální situaci na trhu.
-</p>
-
+<p>Pomohu určit reálnou tržní cenu nemovitosti s ohledem na lokalitu a aktuální situaci na trhu.</p>
 </div>
 
 <div class="service animate delay-5">
-
 <div class="service-number">05</div>
-
 <h3>Právní servis</h3>
-
-<p>
-Zajištění smluv, právního procesu a bezpečného převodu nemovitosti včetně administrativy.
-</p>
-
+<p>Zajištění smluv, právního procesu a bezpečného převodu nemovitosti včetně administrativy.</p>
 </div>
 
 <div class="service animate delay-6">
-
 <div class="service-number">06</div>
-
 <h3>Osobní přístup</h3>
+<p>Každá spolupráce je individuální. Zakládám si na důvěře, komunikaci a férovém jednání.</p>
+</div>
 
-<p>
-Každá spolupráce je individuální. Zakládám si na důvěře, komunikaci a férovém jednání.
+</div>
+
+</section>
+
+<section class="why">
+
+<div class="section-label animate delay-1">
+Proč zvolit mé služby
+</div>
+
+<h2 class="section-title animate delay-2">
+Služby postavené na důvěře a výsledku
+</h2>
+
+<p class="section-subtitle animate delay-3">
+Cílem není pouze zveřejnit nabídku, ale připravit celý proces tak,
+aby nemovitost zaujala správné zájemce a obchod proběhl bezpečně.
 </p>
 
+<div class="why-grid">
+
+<div class="why-card animate delay-1">
+<h3>Strategie</h3>
+<p>Každá nemovitost potřebuje vlastní plán a správné nastavení ceny.</p>
+</div>
+
+<div class="why-card animate delay-2">
+<h3>Prezentace</h3>
+<p>Kvalitní fotografie, video a text pomáhají vytvořit silný první dojem.</p>
+</div>
+
+<div class="why-card animate delay-3">
+<h3>Komunikace</h3>
+<p>Průběžná informovanost a férové jednání během celého procesu.</p>
+</div>
+
+<div class="why-card animate delay-4">
+<h3>Bezpečí</h3>
+<p>Administrativa, smlouvy a předání řešené s důrazem na jistotu.</p>
 </div>
 
 </div>
@@ -669,56 +804,57 @@ Jak probíhá spolupráce
 <div class="process-grid">
 
 <div class="step animate delay-1">
-
 <div class="step-number">1</div>
-
 <h3>Konzultace</h3>
-
-<p>
-Společně projdeme možnosti prodeje nebo pronájmu a nastavíme vhodnou strategii.
-</p>
-
+<p>Společně projdeme možnosti prodeje nebo pronájmu a nastavíme vhodnou strategii.</p>
 </div>
 
 <div class="step animate delay-2">
-
 <div class="step-number">2</div>
-
 <h3>Příprava</h3>
-
-<p>
-Profesionální fotografie, video, marketing a kompletní prezentace nemovitosti.
-</p>
-
+<p>Profesionální fotografie, video, marketing a kompletní prezentace nemovitosti.</p>
 </div>
 
 <div class="step animate delay-3">
-
 <div class="step-number">3</div>
-
 <h3>Prezentace</h3>
-
-<p>
-Inzerce, sociální sítě, komunikace se zájemci a organizace prohlídek.
-</p>
-
+<p>Inzerce, sociální sítě, komunikace se zájemci a organizace prohlídek.</p>
 </div>
 
 <div class="step animate delay-4">
-
 <div class="step-number">4</div>
-
 <h3>Realizace</h3>
-
-<p>
-Bezpečné dokončení obchodu, právní servis a finální předání nemovitosti.
-</p>
-
+<p>Bezpečné dokončení obchodu, právní servis a finální předání nemovitosti.</p>
 </div>
 
 </div>
 
 </section>
+
+<section class="cta">
+
+<div class="cta-box animate delay-1">
+
+<h2>Nejste si jistí, kde začít?</h2>
+
+<p>
+Začněme oceněním nemovitosti. Získáte lepší představu o její hodnotě
+a o tom, jaký postup bude dávat největší smysl.
+</p>
+
+<a href="oceneni-nemovitosti.html" class="btn">
+Zjistit hodnotu nemovitosti
+</a>
+
+</div>
+
+</section>
+
+<div class="floating-contact">
+<a href="tel:+420736167321" title="Zavolat">☎</a>
+<a href="mailto:koprivovakamila@gmail.com" title="E-mail">✉</a>
+<a href="https://wa.me/420736167321" title="WhatsApp">☘</a>
+</div>
 
 <footer>
 © 2026 Kamila Kopřivová | Realitní makléřka
