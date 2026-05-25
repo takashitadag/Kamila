@@ -6,11 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Ocenění nemovitosti | Kamila Kopřivová</title>
+<meta name="description" content="Nezávazné ocenění nemovitosti od Ing. Kamily Kopřivové. Zjistěte reálnou hodnotu bytu, domu, pozemku nebo komerční nemovitosti v Olomouckém kraji.">
+<meta name="keywords" content="ocenění nemovitosti Olomouc, odhad ceny nemovitosti, realitní makléřka Olomouc, Kamila Kopřivová">
+<meta name="author" content="Ing. Kamila Kopřivová">
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
 --white:#ffffff;
 --soft:#f7f5f0;
@@ -23,15 +25,9 @@
 --border:#ece6da;
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
 font-family:"Montserrat",sans-serif;
@@ -46,49 +42,26 @@ font-family:"Playfair Display",serif;
 font-weight:400;
 }
 
-img{
-max-width:100%;
-display:block;
-}
-
-/* ANIMACE */
+img{max-width:100%;display:block;}
 
 @keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(35px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0;transform:translateY(35px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 @keyframes fadeIn{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
+from{opacity:0;}
+to{opacity:1;}
 }
 
 @keyframes slowZoom{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.08);
-}
+from{transform:scale(1);}
+to{transform:scale(1.08);}
 }
 
 @keyframes lineGrow{
-from{
-width:0;
-}
-to{
-width:110px;
-}
+from{width:0;}
+to{width:110px;}
 }
 
 .animate{
@@ -127,13 +100,9 @@ white-space:nowrap;
 transition:.35s ease;
 }
 
-.logo:hover{
-letter-spacing:4px;
-}
+.logo:hover{letter-spacing:4px;}
 
-.logo span{
-color:var(--gold-light);
-}
+.logo span{color:var(--gold-light);}
 
 nav{
 display:flex;
@@ -164,13 +133,8 @@ background:var(--gold-light);
 transition:.35s;
 }
 
-nav a:hover{
-color:var(--gold-light);
-}
-
-nav a:hover::after{
-width:100%;
-}
+nav a:hover{color:var(--gold-light);}
+nav a:hover::after{width:100%;}
 
 .menu-circle{
 width:64px;
@@ -200,13 +164,8 @@ background:var(--navy);
 position:absolute;
 }
 
-.menu-circle span::before{
-transform:translateY(-8px);
-}
-
-.menu-circle span::after{
-transform:translateY(8px);
-}
+.menu-circle span::before{transform:translateY(-8px);}
+.menu-circle span::after{transform:translateY(8px);}
 
 .hero{
 height:85vh;
@@ -241,9 +200,7 @@ background:rgba(18,27,63,.62);
 z-index:-1;
 }
 
-.hero-content{
-max-width:1000px;
-}
+.hero-content{max-width:1000px;}
 
 .hero h1{
 font-size:76px;
@@ -290,9 +247,7 @@ background:var(--gold-light);
 transform:translateY(-3px);
 }
 
-section{
-padding:100px 8%;
-}
+section{padding:100px 8%;}
 
 .section-label{
 text-align:center;
@@ -424,6 +379,13 @@ min-height:130px;
 resize:vertical;
 }
 
+.form-note{
+font-size:12px;
+color:var(--muted);
+line-height:1.5;
+margin-top:-4px;
+}
+
 .submit-btn{
 padding:16px;
 background:var(--navy);
@@ -440,6 +402,40 @@ font-weight:600;
 .submit-btn:hover{
 background:var(--gold);
 transform:translateY(-3px);
+}
+
+.benefits{
+background:var(--soft);
+}
+
+.benefit-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.benefit-card{
+background:white;
+border:1px solid var(--border);
+padding:36px;
+text-align:center;
+transition:.35s ease;
+}
+
+.benefit-card:hover{
+transform:translateY(-8px);
+box-shadow:0 24px 60px rgba(18,27,63,.08);
+}
+
+.benefit-card h3{
+font-size:25px;
+color:var(--navy);
+margin-bottom:12px;
+}
+
+.benefit-card p{
+color:var(--muted);
+font-size:15px;
 }
 
 .quote{
@@ -459,8 +455,83 @@ margin:auto;
 line-height:1.35;
 }
 
-.quote span{
-color:var(--gold-light);
+.quote span{color:var(--gold-light);}
+
+.cta{
+background:white;
+text-align:center;
+}
+
+.cta-box{
+max-width:850px;
+margin:auto;
+background:var(--soft);
+border:1px solid var(--border);
+padding:60px;
+transition:.35s ease;
+}
+
+.cta-box:hover{
+box-shadow:0 24px 60px rgba(18,27,63,.08);
+}
+
+.cta-box h2{
+font-size:42px;
+color:var(--navy);
+margin-bottom:18px;
+}
+
+.cta-box p{
+color:var(--muted);
+margin-bottom:30px;
+}
+
+.btn{
+display:inline-block;
+padding:16px 34px;
+text-decoration:none;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+transition:.35s ease;
+font-weight:600;
+background:var(--navy);
+color:white;
+}
+
+.btn:hover{
+background:var(--gold);
+transform:translateY(-3px);
+}
+
+.floating-contact{
+position:fixed;
+right:22px;
+bottom:22px;
+z-index:2000;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.floating-contact a{
+width:54px;
+height:54px;
+border-radius:50%;
+background:var(--navy);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:22px;
+box-shadow:0 12px 30px rgba(18,27,63,.25);
+transition:.35s ease;
+}
+
+.floating-contact a:hover{
+background:var(--gold);
+transform:translateY(-4px);
 }
 
 footer{
@@ -473,7 +544,6 @@ letter-spacing:1px;
 }
 
 @media(max-width:1100px){
-
 header{
 display:flex;
 flex-direction:column;
@@ -499,28 +569,21 @@ background:rgba(255,255,255,.12);
 padding:7px 10px;
 }
 
-nav a::after{
-display:none;
-}
+nav a::after{display:none;}
 
-.menu-circle{
-display:none;
-}
+.menu-circle{display:none;}
 
-.grid{
+.grid{grid-template-columns:1fr;}
+
+.benefit-grid{
 grid-template-columns:1fr;
 }
 
-.hero h1{
-font-size:56px;
-}
+.hero h1{font-size:56px;}
 }
 
 @media(max-width:768px){
-
-.hero{
-min-height:620px;
-}
+.hero{min-height:620px;}
 
 .hero h1{
 font-size:40px;
@@ -544,25 +607,32 @@ grid-template-columns:1fr;
 background-attachment:scroll;
 }
 
-.quote h2{
-font-size:34px;
+.quote h2{font-size:34px;}
+
+.cta-box{
+padding:38px 24px;
 }
 
-section{
-padding:70px 6%;
-}
+section{padding:70px 6%;}
+
+.btn{
+width:100%;
+max-width:310px;
+text-align:center;
 }
 
+.floating-contact{
+right:15px;
+bottom:15px;
+}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<a href="index.html" class="logo">
-Kamila <span>Kopřivová</span>
-</a>
+<a href="index.html" class="logo">Kamila <span>Kopřivová</span></a>
 
 <nav>
 <a href="index.html">Domů</a>
@@ -573,28 +643,17 @@ Kamila <span>Kopřivová</span>
 <a href="index.html#kontakt">Kontakt</a>
 </nav>
 
-<div class="menu-circle">
-<span></span>
-</div>
-
+<div class="menu-circle"><span></span></div>
 </header>
 
 <section class="hero">
-
 <div class="hero-content">
-
 <h1>Ocenění nemovitosti</h1>
-
 <div class="hero-line"></div>
-
 <p>Zjistěte reálnou hodnotu své nemovitosti</p>
 
-<a href="#formular" class="hero-btn">
-Nezávazně poptat
-</a>
-
+<a href="#formular" class="hero-btn">Nezávazně poptat</a>
 </div>
-
 </section>
 
 <section>
@@ -633,37 +692,21 @@ která bude odpovídat aktuální situaci a potenciálu nemovitosti.
 <div class="points">
 
 <div class="point">
-
 <h3>Reálná tržní cena</h3>
-
-<p>
-Ocenění vychází z aktuálního trhu a srovnatelných nabídek.
-</p>
-
+<p>Ocenění vychází z aktuálního trhu a srovnatelných nabídek.</p>
 </div>
 
 <div class="point">
-
 <h3>Strategie prodeje</h3>
-
-<p>
-Společně nastavíme vhodný postup a prezentaci nemovitosti.
-</p>
-
+<p>Společně nastavíme vhodný postup a prezentaci nemovitosti.</p>
 </div>
 
 <div class="point">
-
 <h3>Nezávazná konzultace</h3>
-
-<p>
-Vše můžeme nezávazně probrat osobně nebo telefonicky.
-</p>
-
+<p>Vše můžeme nezávazně probrat osobně nebo telefonicky.</p>
 </div>
 
 </div>
-
 </div>
 
 <div class="form-box animate delay-2" id="formular">
@@ -674,46 +717,80 @@ Vše můžeme nezávazně probrat osobně nebo telefonicky.
 Vyplňte základní informace a ozvu se vám zpět.
 </p>
 
-<form>
+<form action="mailto:koprivovakamila@gmail.com" method="post" enctype="text/plain">
 
 <div class="form-row">
-
-<input type="text" placeholder="Jméno a příjmení">
-
-<input type="tel" placeholder="Telefon">
-
+<input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+<input type="tel" name="Telefon" placeholder="Telefon" required>
 </div>
 
-<input type="email" placeholder="E-mail">
+<input type="email" name="E-mail" placeholder="E-mail" required>
 
 <div class="form-row">
-
-<select>
-<option>Typ nemovitosti</option>
+<select name="Typ nemovitosti" required>
+<option value="">Typ nemovitosti</option>
 <option>Byt</option>
 <option>Dům</option>
 <option>Pozemek</option>
 <option>Komerční prostor</option>
 </select>
 
-<select>
-<option>Záměr</option>
+<select name="Záměr" required>
+<option value="">Záměr</option>
 <option>Prodej</option>
 <option>Pronájem</option>
+<option>Zatím se rozhoduji</option>
 </select>
-
 </div>
 
-<input type="text" placeholder="Lokalita">
+<input type="text" name="Lokalita" placeholder="Lokalita" required>
 
-<textarea placeholder="Krátký popis nemovitosti"></textarea>
+<textarea name="Zpráva" placeholder="Krátký popis nemovitosti"></textarea>
+
+<p class="form-note">
+Odesláním se otevře e-mailový klient s předvyplněnou zprávou. Později lze formulář napojit přes Formspree nebo backend.
+</p>
 
 <button type="submit" class="submit-btn">
 Odeslat poptávku
 </button>
 
 </form>
+</div>
 
+</div>
+</section>
+
+<section class="benefits">
+
+<div class="section-label animate delay-1">
+Co získáte
+</div>
+
+<h2 class="section-title animate delay-2">
+Ocenění jako první krok k úspěšnému obchodu
+</h2>
+
+<p class="section-subtitle animate delay-3">
+Správně nastavená cena pomáhá předejít zbytečnému čekání,
+špatnému nastavení nabídky i ztrátě zájmu kupujících.
+</p>
+
+<div class="benefit-grid">
+
+<div class="benefit-card animate delay-1">
+<h3>Přehled o trhu</h3>
+<p>Získáte lepší představu o aktuální hodnotě vaší nemovitosti.</p>
+</div>
+
+<div class="benefit-card animate delay-2">
+<h3>Doporučený postup</h3>
+<p>Navrhnu vhodnou strategii pro prodej, pronájem nebo další rozhodování.</p>
+</div>
+
+<div class="benefit-card animate delay-3">
+<h3>Jasný start</h3>
+<p>Budete vědět, zda je správný čas jednat a jak nemovitost připravit.</p>
 </div>
 
 </div>
@@ -721,13 +798,33 @@ Odeslat poptávku
 </section>
 
 <section class="quote">
-
 <h2 class="animate delay-1">
 „Dobře nastavená cena a kvalitní prezentace jsou
 <span>základem úspěšného realitního obchodu.</span>“
 </h2>
+</section>
+
+<section class="cta">
+
+<div class="cta-box animate delay-1">
+
+<h2>Raději vše proberete osobně?</h2>
+
+<p>
+Zavolejte nebo napište. Společně projdeme vaši situaci a možnosti vaší nemovitosti.
+</p>
+
+<a href="tel:+420736167321" class="btn">Zavolat</a>
+
+</div>
 
 </section>
+
+<div class="floating-contact">
+<a href="tel:+420736167321" title="Zavolat">☎</a>
+<a href="mailto:koprivovakamila@gmail.com" title="E-mail">✉</a>
+<a href="https://wa.me/420736167321" title="WhatsApp">☘</a>
+</div>
 
 <footer>
 © 2026 Kamila Kopřivová | Realitní makléřka
