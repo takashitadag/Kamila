@@ -1,0 +1,804 @@
+<!-- detail-byt-kpt-nalepky.html -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pronájem bytu 2+kk | Kamila Kopřivová</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--white:#ffffff;
+--soft:#f7f5f0;
+--gold:#c8ab72;
+--gold-light:#eadcc0;
+--navy:#121b3f;
+--navy-soft:#1d2d63;
+--text:#2d2d2d;
+--muted:#777;
+--border:#ece6da;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:"Montserrat",sans-serif;
+background:white;
+color:var(--text);
+line-height:1.7;
+overflow-x:hidden;
+}
+
+h1,h2,h3{
+font-family:"Playfair Display",serif;
+font-weight:400;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+header{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+display:grid;
+grid-template-columns:auto 1fr auto;
+align-items:center;
+gap:30px;
+padding:34px 7%;
+}
+
+.logo{
+color:white;
+text-decoration:none;
+font-size:24px;
+letter-spacing:3px;
+text-transform:uppercase;
+white-space:nowrap;
+}
+
+.logo span{
+color:var(--gold-light);
+}
+
+nav{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:28px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+white-space:nowrap;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:1px;
+background:var(--gold-light);
+transition:.35s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+.hero{
+height:75vh;
+min-height:650px;
+background:
+linear-gradient(rgba(18,27,63,.62),rgba(18,27,63,.62)),
+url("images/IMG_1006.png") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 7%;
+color:white;
+}
+
+.hero-content{
+max-width:1000px;
+}
+
+.hero h1{
+font-size:62px;
+letter-spacing:5px;
+text-transform:uppercase;
+margin-bottom:22px;
+line-height:1.15;
+}
+
+.hero-line{
+width:110px;
+height:1px;
+background:var(--gold-light);
+margin:0 auto 28px;
+}
+
+.hero p{
+font-size:14px;
+letter-spacing:3px;
+text-transform:uppercase;
+}
+
+section{
+padding:90px 8%;
+}
+
+.section-label{
+font-size:12px;
+letter-spacing:3px;
+text-transform:uppercase;
+color:var(--gold);
+font-weight:600;
+margin-bottom:18px;
+}
+
+.section-title{
+font-size:48px;
+color:var(--navy);
+margin-bottom:24px;
+line-height:1.2;
+}
+
+.top-grid{
+display:grid;
+grid-template-columns:1.3fr .7fr;
+gap:40px;
+align-items:start;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:18px;
+}
+
+.gallery-main img{
+height:100%;
+min-height:520px;
+object-fit:cover;
+border-radius:2px;
+}
+
+.gallery-side{
+display:grid;
+gap:18px;
+}
+
+.gallery-side img{
+height:251px;
+object-fit:cover;
+border-radius:2px;
+}
+
+.card{
+background:white;
+border:1px solid var(--border);
+padding:40px;
+position:sticky;
+top:40px;
+}
+
+.price{
+font-size:44px;
+color:var(--navy);
+margin-bottom:10px;
+font-family:"Playfair Display",serif;
+}
+
+.meta{
+display:grid;
+gap:16px;
+margin:34px 0;
+}
+
+.meta div{
+display:flex;
+justify-content:space-between;
+padding-bottom:12px;
+border-bottom:1px solid var(--border);
+font-size:14px;
+}
+
+.meta strong{
+color:var(--navy);
+}
+
+.btn{
+display:inline-block;
+width:100%;
+padding:16px;
+background:var(--navy);
+color:white;
+text-decoration:none;
+text-align:center;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+transition:.35s;
+}
+
+.btn:hover{
+background:var(--gold);
+}
+
+.content{
+display:grid;
+grid-template-columns:1fr .5fr;
+gap:70px;
+margin-top:90px;
+}
+
+.content p{
+color:var(--muted);
+margin-bottom:24px;
+font-size:16px;
+}
+
+.features{
+background:var(--soft);
+padding:40px;
+height:max-content;
+}
+
+.features h3{
+font-size:28px;
+color:var(--navy);
+margin-bottom:26px;
+}
+
+.features ul{
+display:grid;
+gap:16px;
+list-style:none;
+}
+
+.features li{
+padding-left:22px;
+position:relative;
+color:var(--muted);
+}
+
+.features li::before{
+content:"";
+width:8px;
+height:8px;
+border-radius:50%;
+background:var(--gold);
+position:absolute;
+left:0;
+top:10px;
+}
+
+.parameters{
+margin-top:90px;
+}
+
+.parameter-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:24px;
+margin-top:40px;
+}
+
+.parameter{
+border:1px solid var(--border);
+padding:26px;
+background:white;
+}
+
+.parameter h3{
+font-size:24px;
+color:var(--navy);
+margin-bottom:18px;
+}
+
+.parameter-row{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid var(--border);
+font-size:14px;
+}
+
+.parameter-row:last-child{
+border-bottom:none;
+}
+
+.quote{
+background:
+linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
+url("images/IMG_1014.png") center/cover;
+color:white;
+text-align:center;
+padding:120px 8%;
+margin-top:100px;
+}
+
+.quote h2{
+font-size:52px;
+max-width:1000px;
+margin:auto;
+line-height:1.35;
+}
+
+.quote span{
+color:var(--gold-light);
+}
+
+.contact{
+background:var(--soft);
+}
+
+.contact-box{
+max-width:900px;
+margin:auto;
+background:white;
+border:1px solid var(--border);
+padding:60px;
+}
+
+.contact-box h2{
+font-size:42px;
+color:var(--navy);
+margin-bottom:16px;
+}
+
+.contact-box p{
+color:var(--muted);
+margin-bottom:30px;
+}
+
+form{
+display:grid;
+gap:18px;
+}
+
+.form-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+input,
+textarea{
+width:100%;
+padding:16px;
+border:1px solid var(--border);
+font-family:"Montserrat",sans-serif;
+font-size:14px;
+outline:none;
+transition:.3s;
+}
+
+input:focus,
+textarea:focus{
+border-color:var(--gold);
+}
+
+textarea{
+min-height:140px;
+resize:vertical;
+}
+
+.submit-btn{
+padding:16px;
+background:var(--navy);
+color:white;
+border:none;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:600;
+cursor:pointer;
+transition:.35s;
+}
+
+.submit-btn:hover{
+background:var(--gold);
+}
+
+footer{
+background:var(--navy);
+color:white;
+text-align:center;
+padding:28px;
+font-size:13px;
+letter-spacing:1px;
+}
+
+@media(max-width:1100px){
+
+header{
+display:flex;
+flex-direction:column;
+gap:20px;
+padding:28px 5%;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+}
+
+nav a{
+font-size:11px;
+background:rgba(255,255,255,.12);
+padding:7px 10px;
+}
+
+.top-grid,
+.content,
+.parameter-grid{
+grid-template-columns:1fr;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery-side{
+grid-template-columns:1fr 1fr;
+}
+
+.card{
+position:relative;
+top:0;
+}
+
+.hero h1{
+font-size:48px;
+}
+}
+
+@media(max-width:768px){
+
+.hero{
+min-height:580px;
+}
+
+.hero h1{
+font-size:36px;
+letter-spacing:3px;
+}
+
+.section-title{
+font-size:34px;
+}
+
+.gallery-side{
+grid-template-columns:1fr;
+}
+
+.gallery-main img,
+.gallery-side img{
+min-height:auto;
+height:260px;
+}
+
+.form-row{
+grid-template-columns:1fr;
+}
+
+.contact-box{
+padding:34px 24px;
+}
+
+.quote h2{
+font-size:34px;
+}
+
+section{
+padding:70px 6%;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="logo">
+Kamila <span>Kopřivová</span>
+</a>
+
+<nav>
+<a href="index.html">Domů</a>
+<a href="sluzby.html">Služby</a>
+<a href="nemovitosti.html">Nemovitosti</a>
+<a href="oceneni-nemovitosti.html">Ocenění</a>
+<a href="reference.html">Reference</a>
+<a href="index.html#kontakt">Kontakt</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Pronájem útulného bytu 2+kk v Olomouci</h1>
+
+<div class="hero-line"></div>
+
+<p>Kpt. Nálepky • 39 m² • nezařízený</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="top-grid">
+
+<div class="gallery">
+
+<div class="gallery-main">
+<img src="images/IMG_1006.png" alt="Byt Olomouc">
+</div>
+
+<div class="gallery-side">
+<img src="images/IMG_1007.png" alt="">
+<img src="images/IMG_1011.png" alt="">
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-label">
+Pronájem bytu
+</div>
+
+<div class="price">
+14 000 Kč / měsíc
+</div>
+
+<div class="meta">
+
+<div>
+<span>Lokalita</span>
+<strong>Olomouc</strong>
+</div>
+
+<div>
+<span>Dispozice</span>
+<strong>2+kk</strong>
+</div>
+
+<div>
+<span>Užitná plocha</span>
+<strong>39 m²</strong>
+</div>
+
+<div>
+<span>Stav</span>
+<strong>Velmi dobrý</strong>
+</div>
+
+<div>
+<span>Typ</span>
+<strong>Osobní vlastnictví</strong>
+</div>
+
+</div>
+
+<a href="#kontakt-form" class="btn">
+Domluvit prohlídku
+</a>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<div>
+
+<div class="section-label">
+Popis nemovitosti
+</div>
+
+<h2 class="section-title">
+Získejte veškeré potřebné informace
+</h2>
+
+<p>
+Čerstvě zrekonstruovaný byt 2+kk v Olomouci na ulici Kpt. Nálepky
+může být přesně místem, kam se budete rádi vracet po práci, škole
+i večerním městě.
+</p>
+
+<p>
+Byt se nachází v přízemí cihlového domu a díky modernímu provedení
+působí vzdušně a útulně. Ideální pro jednotlivce nebo mladý pár.
+Pronajímá se nezařízený.
+</p>
+
+<p>
+Velkou výhodou je skvělá dostupnost centra Olomouce, MHD,
+vlakového spojení i občanské vybavenosti.
+</p>
+
+</div>
+
+<div class="features">
+
+<h3>Co Vás čeká?</h3>
+
+<ul>
+<li>Moderní kuchyňská linka s troubou a indukcí</li>
+<li>Koupelna s vanou</li>
+<li>Vlastní plynový kotel</li>
+<li>Sklepní prostor</li>
+<li>Nezařízený byt</li>
+<li>Volné ihned</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="parameters">
+
+<div class="section-label">
+Parametry
+</div>
+
+<h2 class="section-title">
+Podrobnosti o nabídce
+</h2>
+
+<div class="parameter-grid">
+
+<div class="parameter">
+
+<h3>Informace o nabídce</h3>
+
+<div class="parameter-row">
+<span>Typ smlouvy</span>
+<strong>Pronájem</strong>
+</div>
+
+<div class="parameter-row">
+<span>Dispozice</span>
+<strong>2+kk</strong>
+</div>
+
+<div class="parameter-row">
+<span>Užitná plocha</span>
+<strong>39 m²</strong>
+</div>
+
+<div class="parameter-row">
+<span>Stav bytu</span>
+<strong>Velmi dobrý</strong>
+</div>
+
+<div class="parameter-row">
+<span>Podlaží</span>
+<strong>1. NP</strong>
+</div>
+
+</div>
+
+<div class="parameter">
+
+<h3>Náklady</h3>
+
+<div class="parameter-row">
+<span>Nájem</span>
+<strong>14 000 Kč</strong>
+</div>
+
+<div class="parameter-row">
+<span>Voda a služby</span>
+<strong>680 Kč</strong>
+</div>
+
+<div class="parameter-row">
+<span>Elektřina + plyn</span>
+<strong>2 050 Kč</strong>
+</div>
+
+<div class="parameter-row">
+<span>Kauce</span>
+<strong>17 000 Kč</strong>
+</div>
+
+<div class="parameter-row">
+<span>Provize</span>
+<strong>14 000 Kč</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="quote">
+
+<h2>
+„Kvalitní prezentace a správný první dojem
+<span>pomáhají najít ideálního zájemce.</span>“
+</h2>
+
+</section>
+
+<section class="contact" id="kontakt-form">
+
+<div class="contact-box">
+
+<h2>Máte zájem o prohlídku?</h2>
+
+<p>
+Vyplňte formulář a paní Kopřivová Vás bude kontaktovat.
+</p>
+
+<form>
+
+<div class="form-row">
+
+<input type="text" placeholder="Jméno a příjmení">
+
+<input type="tel" placeholder="Telefon">
+
+</div>
+
+<input type="email" placeholder="E-mail">
+
+<textarea>
+Dobrý den, měl/a bych zájem o prohlídku této nemovitosti.
+</textarea>
+
+<button type="submit" class="submit-btn">
+Odeslat poptávku
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Kamila Kopřivová | Realitní makléřka
+</footer>
+
+</body>
+</html>
