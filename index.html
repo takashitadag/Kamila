@@ -8,11 +8,8 @@
 <title>Kamila Kopřivová | Realitní makléřka Olomoucký kraj</title>
 
 <meta name="description" content="Ing. Kamila Kopřivová – realitní makléřka pro Olomoucký kraj. Prodej, pronájem, ocenění nemovitostí a profesionální prezentace.">
-
 <meta name="keywords" content="realitní makléřka Olomouc, prodej nemovitosti Olomouc, pronájem bytu Olomouc, ocenění nemovitosti">
-
 <meta name="author" content="Ing. Kamila Kopřivová">
-
 <meta name="theme-color" content="#121b3f">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,12 +84,8 @@ transform:translateY(0);
 /* ANIMACE */
 
 @keyframes pageLoad{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
+from{opacity:0;}
+to{opacity:1;}
 }
 
 @keyframes fadeUp{
@@ -106,61 +99,25 @@ transform:translateY(0);
 }
 }
 
-@keyframes fadeLeft{
-from{
-opacity:0;
-transform:translateX(-70px);
-}
-to{
-opacity:1;
-transform:translateX(0);
-}
-}
-
-@keyframes fadeRight{
-from{
-opacity:0;
-transform:translateX(70px);
-}
-to{
-opacity:1;
-transform:translateX(0);
-}
-}
-
 @keyframes fadeIn{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
+from{opacity:0;}
+to{opacity:1;}
 }
 
 @keyframes slowZoom{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.08);
-}
+from{transform:scale(1);}
+to{transform:scale(1.08);}
 }
 
 @keyframes lineGrow{
-from{
-width:0;
-}
-to{
-width:120px;
-}
+from{width:0;}
+to{width:120px;}
 }
 
 .reveal{
 opacity:0;
 transform:translateY(45px);
-transition:
-opacity .9s ease,
-transform .9s ease;
+transition:opacity .9s ease, transform .9s ease;
 }
 
 .reveal.active{
@@ -171,9 +128,7 @@ transform:translateY(0);
 .reveal-left{
 opacity:0;
 transform:translateX(-70px);
-transition:
-opacity .9s ease,
-transform .9s ease;
+transition:opacity .9s ease, transform .9s ease;
 }
 
 .reveal-left.active{
@@ -184,9 +139,7 @@ transform:translateX(0);
 .reveal-right{
 opacity:0;
 transform:translateX(70px);
-transition:
-opacity .9s ease,
-transform .9s ease;
+transition:opacity .9s ease, transform .9s ease;
 }
 
 .reveal-right.active{
@@ -198,8 +151,6 @@ transform:translateX(0);
 .delay-2{transition-delay:.24s;}
 .delay-3{transition-delay:.36s;}
 .delay-4{transition-delay:.48s;}
-
-/* HEADER */
 
 header{
 position:absolute;
@@ -306,8 +257,6 @@ transform:translateY(-8px);
 transform:translateY(8px);
 }
 
-/* HERO */
-
 .hero{
 height:100vh;
 min-height:760px;
@@ -380,8 +329,6 @@ opacity:0;
 animation:fadeUp 1s ease .6s forwards;
 }
 
-/* BUTTONS */
-
 .btn{
 display:inline-block;
 padding:16px 34px;
@@ -416,8 +363,6 @@ background:white;
 color:var(--navy);
 }
 
-/* SECTIONS */
-
 section{
 padding:110px 8%;
 }
@@ -447,8 +392,6 @@ text-align:center;
 color:var(--muted);
 margin-bottom:65px;
 }
-
-/* STATS */
 
 .stats{
 display:grid;
@@ -480,8 +423,6 @@ letter-spacing:2px;
 text-transform:uppercase;
 font-size:12px;
 }
-
-/* ABOUT */
 
 .about{
 display:grid;
@@ -518,8 +459,6 @@ color:var(--muted);
 margin-bottom:20px;
 }
 
-/* WHY */
-
 .why-grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -549,8 +488,6 @@ margin-bottom:12px;
 color:var(--muted);
 font-size:14px;
 }
-
-/* PROPERTIES */
 
 .properties{
 background:var(--soft);
@@ -630,8 +567,6 @@ color:var(--gold);
 letter-spacing:3px;
 }
 
-/* QUOTE */
-
 .quote{
 background:
 linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
@@ -652,8 +587,6 @@ line-height:1.35;
 .quote span{
 color:var(--gold-light);
 }
-
-/* CONTACT */
 
 .contact{
 background:var(--soft);
@@ -698,8 +631,6 @@ background:var(--navy);
 color:white;
 }
 
-/* FLOATING */
-
 .floating-contact{
 position:fixed;
 right:22px;
@@ -730,8 +661,6 @@ background:var(--gold);
 transform:translateY(-4px);
 }
 
-/* FOOTER */
-
 footer{
 background:var(--navy);
 color:white;
@@ -740,8 +669,6 @@ padding:28px;
 font-size:13px;
 letter-spacing:1px;
 }
-
-/* RESPONSIVE */
 
 @media(max-width:1100px){
 
@@ -866,6 +793,20 @@ font-size:44px;
 }
 }
 
+@media(prefers-reduced-motion:reduce){
+*{
+animation:none!important;
+transition:none!important;
+scroll-behavior:auto!important;
+}
+
+.reveal,
+.reveal-left,
+.reveal-right{
+opacity:1!important;
+transform:none!important;
+}
+}
 </style>
 </head>
 
@@ -875,16 +816,16 @@ font-size:44px;
 
 <header>
 
-<a href="index.html" class="logo">
+<a href="index.html" class="logo transition-link">
 Kamila <span>Kopřivová</span>
 </a>
 
 <nav>
-<a href="index.html">Domů</a>
-<a href="sluzby.html">Služby</a>
-<a href="nemovitosti.html">Nemovitosti</a>
-<a href="oceneni-nemovitosti.html">Ocenění</a>
-<a href="reference.html">Reference</a>
+<a href="index.html" class="transition-link">Domů</a>
+<a href="sluzby.html" class="transition-link">Služby</a>
+<a href="nemovitosti.html" class="transition-link">Nemovitosti</a>
+<a href="oceneni-nemovitosti.html" class="transition-link">Ocenění</a>
+<a href="reference.html" class="transition-link">Reference</a>
 <a href="#kontakt">Kontakt</a>
 </nav>
 
@@ -1164,125 +1105,88 @@ Zavolat
 </footer>
 
 <script>
-
-/* PAGE TRANSITION */
-
 const transitionLinks = document.querySelectorAll(".transition-link");
 const transition = document.querySelector(".page-transition");
 
 transitionLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    const href = link.getAttribute("href");
 
-link.addEventListener("click", e => {
+    if(
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto") ||
+      href.startsWith("tel") ||
+      href.startsWith("https://wa.me")
+    ){
+      return;
+    }
 
-const href = link.getAttribute("href");
+    e.preventDefault();
 
-if(
-href.startsWith("#") ||
-href.startsWith("mailto") ||
-href.startsWith("tel")
-){
-return;
-}
+    transition.classList.add("active");
 
-e.preventDefault();
-
-transition.classList.add("active");
-
-setTimeout(() => {
-window.location.href = href;
-}, 650);
-
+    setTimeout(() => {
+      window.location.href = href;
+    }, 650);
+  });
 });
-
-});
-
-/* SCROLL REVEAL */
 
 const revealElements = document.querySelectorAll(
-".reveal, .reveal-left, .reveal-right"
+  ".reveal, .reveal-left, .reveal-right"
 );
 
 const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-entry.target.classList.add("active");
-}
-
-});
-
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
 },{
-threshold:.15
+  threshold:.15
 });
 
 revealElements.forEach(el => {
-observer.observe(el);
+  observer.observe(el);
 });
-
-/* COUNTERS */
 
 const counters = document.querySelectorAll(".counter");
 let counterStarted = false;
 
 function startCounters(){
+  if(counterStarted) return;
 
-if(counterStarted) return;
+  const statsSection = document.querySelector(".stats");
+  const sectionPosition = statsSection.getBoundingClientRect().top;
+  const screenPosition = window.innerHeight - 100;
 
-const statsSection = document.querySelector(".stats");
+  if(sectionPosition < screenPosition){
+    counterStarted = true;
 
-const sectionPosition =
-statsSection.getBoundingClientRect().top;
+    counters.forEach(counter => {
+      const target = Number(counter.dataset.target);
+      let current = 0;
+      const duration = 1800;
+      const increment = target / (duration / 16);
 
-const screenPosition =
-window.innerHeight - 100;
+      function updateCounter(){
+        current += increment;
 
-if(sectionPosition < screenPosition){
+        if(current < target){
+          counter.textContent = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      }
 
-counterStarted = true;
-
-counters.forEach(counter => {
-
-const target =
-Number(counter.dataset.target);
-
-let current = 0;
-
-const duration = 1800;
-
-const increment =
-target / (duration / 16);
-
-function updateCounter(){
-
-current += increment;
-
-if(current < target){
-
-counter.textContent =
-Math.floor(current);
-
-requestAnimationFrame(updateCounter);
-
-}else{
-
-counter.textContent = target;
-
-}
-
-}
-
-updateCounter();
-
-});
-
-}
-
+      updateCounter();
+    });
+  }
 }
 
 window.addEventListener("scroll", startCounters);
 window.addEventListener("load", startCounters);
-
 </script>
 
 </body>
