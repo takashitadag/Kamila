@@ -7,7 +7,9 @@
 
 <title>Nemovitosti | Kamila Kopřivová</title>
 
-<meta name="description" content="Aktuální nabídka nemovitostí Ing. Kamily Kopřivové.">
+<meta name="description" content="Aktuální nabídka nemovitostí Ing. Kamily Kopřivové. Byty, domy, pozemky a komerční prostory v Olomouckém kraji.">
+<meta name="keywords" content="realitní makléřka Olomouc, byty Olomouc, domy Olomoucký kraj, nemovitosti Olomouc">
+<meta name="author" content="Ing. Kamila Kopřivová">
 <meta name="theme-color" content="#121b3f">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,6 +60,10 @@ max-width:100%;
 display:block;
 }
 
+a{
+-webkit-tap-highlight-color:transparent;
+}
+
 .page-transition{
 position:fixed;
 inset:0;
@@ -88,59 +94,37 @@ transform:translateY(0);
 }
 }
 
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
 @keyframes slowZoom{
 from{transform:scale(1);}
 to{transform:scale(1.08);}
 }
 
-.hero{
-height:72vh;
-min-height:620px;
-background:
-linear-gradient(rgba(18,27,63,.65),rgba(18,27,63,.65)),
-url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1600&auto=format&fit=crop") center/cover;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:0 7%;
-color:white;
-position:relative;
-overflow:hidden;
+@keyframes lineGrow{
+from{width:0;}
+to{width:110px;}
 }
 
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-background:url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1600&auto=format&fit=crop") center/cover;
-z-index:-2;
-animation:slowZoom 18s ease-in-out infinite alternate;
+.reveal{
+opacity:0;
+transform:translateY(45px);
+transition:opacity .9s ease, transform .9s ease;
 }
 
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(18,27,63,.62);
-z-index:-1;
+.reveal.active{
+opacity:1;
+transform:translateY(0);
 }
 
-.hero h1{
-font-size:clamp(42px,7vw,76px);
-letter-spacing:6px;
-text-transform:uppercase;
-margin-bottom:24px;
-line-height:1.08;
-animation:fadeUp 1s ease forwards;
-}
-
-.hero p{
-font-size:14px;
-letter-spacing:3px;
-text-transform:uppercase;
-opacity:.9;
-}
+.delay-1{transition-delay:.12s;}
+.delay-2{transition-delay:.24s;}
+.delay-3{transition-delay:.36s;}
+.delay-4{transition-delay:.48s;}
+.delay-5{transition-delay:.6s;}
 
 header{
 position:absolute;
@@ -153,6 +137,7 @@ grid-template-columns:auto 1fr auto;
 align-items:center;
 gap:30px;
 padding:34px 7%;
+animation:fadeIn 1s ease forwards;
 }
 
 .logo{
@@ -161,6 +146,12 @@ text-decoration:none;
 font-size:24px;
 letter-spacing:3px;
 text-transform:uppercase;
+white-space:nowrap;
+transition:.35s ease;
+}
+
+.logo:hover{
+letter-spacing:4px;
 }
 
 .logo span{
@@ -170,6 +161,7 @@ color:var(--gold-light);
 nav{
 display:flex;
 justify-content:center;
+align-items:center;
 gap:28px;
 }
 
@@ -179,6 +171,28 @@ text-decoration:none;
 font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
+white-space:nowrap;
+transition:.3s;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:1px;
+background:var(--gold-light);
+transition:.35s;
+}
+
+nav a:hover{
+color:var(--gold-light);
+}
+
+nav a:hover::after{
+width:100%;
 }
 
 .menu-circle{
@@ -189,6 +203,13 @@ background:white;
 display:flex;
 align-items:center;
 justify-content:center;
+position:relative;
+transition:.35s ease;
+}
+
+.menu-circle:hover{
+transform:scale(1.08);
+background:var(--gold-light);
 }
 
 .menu-circle span,
@@ -208,6 +229,64 @@ transform:translateY(-8px);
 
 .menu-circle span::after{
 transform:translateY(8px);
+}
+
+.hero{
+height:75vh;
+min-height:680px;
+background:
+linear-gradient(rgba(18,27,63,.62),rgba(18,27,63,.62)),
+url("images/IMG_1014.png") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 7%;
+color:white;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:url("images/IMG_1014.png") center/cover;
+z-index:-2;
+animation:slowZoom 18s ease-in-out infinite alternate;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(18,27,63,.62);
+z-index:-1;
+}
+
+.hero h1{
+font-size:clamp(42px,7vw,76px);
+letter-spacing:clamp(4px,1vw,8px);
+text-transform:uppercase;
+margin-bottom:24px;
+line-height:1.08;
+animation:fadeUp 1s ease forwards;
+}
+
+.hero-line{
+height:1px;
+background:var(--gold-light);
+margin:0 auto 28px;
+width:0;
+animation:lineGrow 1s ease .35s forwards;
+}
+
+.hero p{
+font-size:15px;
+letter-spacing:3px;
+text-transform:uppercase;
+opacity:0;
+animation:fadeUp 1s ease .45s forwards;
 }
 
 section{
@@ -251,6 +330,10 @@ color:var(--muted);
 font-size:15px;
 }
 
+.import-note strong{
+color:var(--navy);
+}
+
 .import-note.success{
 background:#f7fbf7;
 }
@@ -280,6 +363,10 @@ cursor:pointer;
 transition:.35s ease;
 }
 
+.filter:hover{
+transform:translateY(-3px);
+}
+
 .filter.active,
 .filter:hover{
 background:var(--navy);
@@ -304,8 +391,16 @@ padding:40px;
 .property{
 background:white;
 border:1px solid var(--border);
+transition:opacity .35s ease, transform .35s ease, box-shadow .35s ease;
+opacity:1;
+transform:scale(1);
 overflow:hidden;
-transition:.35s ease;
+}
+
+.property.is-hidden{
+opacity:0;
+transform:scale(.96);
+pointer-events:none;
 }
 
 .property:hover{
@@ -376,13 +471,43 @@ font-size:12px;
 letter-spacing:2px;
 text-transform:uppercase;
 font-weight:600;
+transition:.35s ease;
 background:var(--navy);
 color:white;
-transition:.35s ease;
 }
 
 .btn:hover{
 background:var(--gold);
+transform:translateY(-3px);
+}
+
+.sold{
+background:var(--soft);
+}
+
+.cta{
+background:
+linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
+url("images/IMG_1007.png") center/cover;
+color:white;
+text-align:center;
+padding:130px 8%;
+background-attachment:fixed;
+}
+
+.cta h2{
+font-size:clamp(34px,5vw,52px);
+max-width:900px;
+margin:auto;
+margin-bottom:24px;
+line-height:1.35;
+}
+
+.cta p{
+max-width:700px;
+margin:auto;
+margin-bottom:34px;
+color:#e6e6e6;
 }
 
 .floating-contact{
@@ -406,6 +531,13 @@ align-items:center;
 justify-content:center;
 text-decoration:none;
 font-size:22px;
+box-shadow:0 14px 35px rgba(18,27,63,.25);
+transition:.35s ease;
+}
+
+.floating-contact a:hover{
+background:var(--gold);
+transform:translateY(-4px);
 }
 
 footer{
@@ -414,6 +546,7 @@ color:white;
 text-align:center;
 padding:28px;
 font-size:13px;
+letter-spacing:1px;
 }
 
 @media(max-width:1100px){
@@ -425,14 +558,34 @@ gap:20px;
 padding:28px 5%;
 }
 
+.logo{
+font-size:21px;
+text-align:center;
+}
+
 nav{
 flex-wrap:wrap;
 justify-content:center;
 gap:12px;
 }
 
+nav a{
+font-size:11px;
+letter-spacing:1.5px;
+background:rgba(255,255,255,.12);
+padding:7px 10px;
+}
+
+nav a::after{
+display:none;
+}
+
 .menu-circle{
 display:none;
+}
+
+.hero{
+min-height:660px;
 }
 }
 
@@ -443,8 +596,9 @@ height:100svh;
 min-height:600px;
 }
 
-section{
-padding:80px 6%;
+.hero p{
+font-size:12px;
+letter-spacing:2px;
 }
 
 .properties{
@@ -455,9 +609,61 @@ grid-template-columns:1fr;
 height:260px;
 }
 
+.cta{
+background-attachment:scroll;
+}
+
+section{
+padding:80px 6%;
+}
+
 .btn{
 width:100%;
 text-align:center;
+}
+
+.filter{
+font-size:11px;
+padding:10px 14px;
+}
+
+.floating-contact{
+right:15px;
+bottom:15px;
+}
+}
+
+@media(max-width:420px){
+
+.logo{
+font-size:18px;
+letter-spacing:2px;
+}
+
+nav a{
+font-size:10px;
+padding:6px 8px;
+}
+
+.import-note{
+padding:22px;
+}
+
+.property-content{
+padding:26px;
+}
+}
+
+@media(prefers-reduced-motion:reduce){
+*{
+animation:none!important;
+transition:none!important;
+scroll-behavior:auto!important;
+}
+
+.reveal{
+opacity:1!important;
+transform:none!important;
 }
 }
 
@@ -470,16 +676,16 @@ text-align:center;
 
 <header>
 
-<a href="index.html" class="logo">
+<a href="index.html" class="logo transition-link">
 Kamila <span>Kopřivová</span>
 </a>
 
 <nav>
-<a href="index.html">Domů</a>
-<a href="sluzby.html">Služby</a>
-<a href="nemovitosti.html">Nemovitosti</a>
-<a href="oceneni-nemovitosti.html">Ocenění</a>
-<a href="reference.html">Reference</a>
+<a href="index.html" class="transition-link">Domů</a>
+<a href="sluzby.html" class="transition-link">Služby</a>
+<a href="nemovitosti.html" class="transition-link">Nemovitosti</a>
+<a href="oceneni-nemovitosti.html" class="transition-link">Ocenění</a>
+<a href="reference.html" class="transition-link">Reference</a>
 <a href="index.html#kontakt">Kontakt</a>
 </nav>
 
@@ -493,6 +699,7 @@ Kamila <span>Kopřivová</span>
 
 <div>
 <h1>Nemovitosti</h1>
+<div class="hero-line"></div>
 <p>Aktuální nabídka Ing. Kamily Kopřivové</p>
 </div>
 
@@ -500,24 +707,24 @@ Kamila <span>Kopřivová</span>
 
 <section>
 
-<div class="section-label">
+<div class="section-label reveal">
 Portfolio nemovitostí
 </div>
 
-<h2 class="section-title">
+<h2 class="section-title reveal delay-1">
 Aktuální nabídka
 </h2>
 
-<p class="section-subtitle">
+<p class="section-subtitle reveal delay-2">
 Vybrané byty, domy, komerční prostory a pozemky v čisté prémiové prezentaci.
 </p>
 
-<div class="import-note" id="importNote">
+<div class="import-note reveal delay-3" id="importNote">
 <strong>Automatický import:</strong>
 Načítám nabídky z realitního systému.
 </div>
 
-<div class="filters">
+<div class="filters reveal delay-4">
 <button class="filter active" data-filter="all">Vše</button>
 <button class="filter" data-filter="byt">Byty</button>
 <button class="filter" data-filter="dum">Domy</button>
@@ -533,10 +740,85 @@ Načítám nabídky z realitního systému.
 
 </section>
 
+<section class="sold">
+
+<div class="section-label reveal">
+Realizované obchody
+</div>
+
+<h2 class="section-title reveal delay-1">
+Vybrané realizace
+</h2>
+
+<p class="section-subtitle reveal delay-2">
+Ukázka realizovaných prodejů a pronájmů.
+</p>
+
+<div class="properties">
+
+<div class="property reveal delay-1">
+<div class="property-image">
+<img src="images/IMG_1013.png" alt="Realizovaný pozemek">
+</div>
+<div class="property-content">
+<div class="property-type">Realizováno</div>
+<h3>Prodej pozemku</h3>
+<p class="location">Olomoucký kraj</p>
+<p class="desc">Úspěšně realizovaný obchod.</p>
+<p class="price">Prodáno</p>
+</div>
+</div>
+
+<div class="property reveal delay-2">
+<div class="property-image">
+<img src="images/IMG_1007.png" alt="Realizovaný pronájem bytu">
+</div>
+<div class="property-content">
+<div class="property-type">Realizováno</div>
+<h3>Pronájem bytu</h3>
+<p class="location">Olomouc</p>
+<p class="desc">Pronájem bytové jednotky.</p>
+<p class="price">Pronajato</p>
+</div>
+</div>
+
+<div class="property reveal delay-3">
+<div class="property-image">
+<img src="images/IMG_1008.jpeg" alt="Realizovaná komerce">
+</div>
+<div class="property-content">
+<div class="property-type">Realizováno</div>
+<h3>Pronájem komerce</h3>
+<p class="location">Olomouc</p>
+<p class="desc">Pronájem komerčních prostor.</p>
+<p class="price">Realizováno</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2 class="reveal">
+Máte zájem o některou z nemovitostí?
+</h2>
+
+<p class="reveal delay-1">
+Ozvěte se paní Kopřivové a domluvte si prohlídku nebo nezávaznou konzultaci.
+</p>
+
+<a href="index.html#kontakt" class="btn reveal delay-2 transition-link">
+Kontaktovat makléřku
+</a>
+
+</section>
+
 <div class="floating-contact">
-<a href="tel:+420736167321">☎</a>
-<a href="mailto:koprivovakamila@gmail.com">✉</a>
-<a href="https://wa.me/420736167321" target="_blank">💬</a>
+<a href="tel:+420736167321" title="Zavolat">☎</a>
+<a href="mailto:koprivovakamila@gmail.com" title="E-mail">✉</a>
+<a href="https://wa.me/420736167321" target="_blank" title="WhatsApp">💬</a>
 </div>
 
 <footer>
@@ -544,9 +826,52 @@ Načítám nabídky z realitního systému.
 </footer>
 
 <script>
-
+const transition = document.querySelector(".page-transition");
 const propertiesGrid = document.querySelector("#propertiesGrid");
 const importNote = document.querySelector("#importNote");
+
+function setupTransitionLinks(){
+  const transitionLinks = document.querySelectorAll(".transition-link");
+
+  transitionLinks.forEach(link => {
+    link.onclick = e => {
+      const href = link.getAttribute("href");
+
+      if(
+        !href ||
+        href.startsWith("#") ||
+        href.startsWith("mailto") ||
+        href.startsWith("tel") ||
+        href.startsWith("https://wa.me")
+      ){
+        return;
+      }
+
+      e.preventDefault();
+      transition.classList.add("active");
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 650);
+    };
+  });
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
+},{
+  threshold:.15
+});
+
+function setupReveal(){
+  document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+  });
+}
 
 function clean(value){
   return value ? String(value).trim() : "";
@@ -557,26 +882,40 @@ function normalize(value){
 }
 
 function getTitle(item){
-  return clean(item.title || "Nemovitost");
+  return clean(
+    item.title ||
+    item.nadpis_nemovitosti ||
+    item.nadpis ||
+    "Nemovitost v nabídce"
+  );
 }
 
 function getEstateType(item){
-  return clean(item.estateType || "Nemovitost");
+  return clean(
+    item.estateType ||
+    item.typ_nemovitosti ||
+    item.typNemovitosti ||
+    "Nemovitost"
+  );
 }
 
 function getOfferType(item){
-  return clean(item.type || "Nabídka");
+  return clean(
+    item.type ||
+    item.typ_nabidky ||
+    item.typNabidky ||
+    "Nabídka nemovitosti"
+  );
 }
 
 function getCategory(item){
-
   const estateType = normalize(getEstateType(item));
   const offerType = normalize(getOfferType(item));
 
   let category = "";
 
   if(estateType.includes("byt")) category += " byt";
-  if(estateType.includes("dům") || estateType.includes("dum")) category += " dum";
+  if(estateType.includes("dům") || estateType.includes("dum") || estateType.includes("vila")) category += " dum";
   if(estateType.includes("pozem")) category += " pozemek";
   if(estateType.includes("komer")) category += " komerce";
 
@@ -587,17 +926,23 @@ function getCategory(item){
 }
 
 function getImage(item){
-
   if(item.image) return item.image;
+  if(item.fotka) return item.fotka;
 
   if(Array.isArray(item.images) && item.images.length){
     return item.images[0];
+  }
+
+  if(Array.isArray(item.fotky) && item.fotky.length){
+    return item.fotky[0];
   }
 
   return "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop";
 }
 
 function getPrice(item){
+  if(item.priceText) return item.priceText;
+  if(item.cenaText) return item.cenaText;
 
   if(item.price){
     const number = Number(item.price);
@@ -606,86 +951,101 @@ function getPrice(item){
       return number.toLocaleString("cs-CZ") + " Kč";
     }
 
-    return item.price;
+    return clean(item.price);
+  }
+
+  if(item.cena && item.cena.castka){
+    const amount = Number(item.cena.castka);
+
+    const formattedAmount = !Number.isNaN(amount)
+      ? amount.toLocaleString("cs-CZ")
+      : clean(item.cena.castka);
+
+    const unit = item.cena.jednotka
+      ? " / " + clean(item.cena.jednotka)
+      : "";
+
+    return formattedAmount + " Kč" + unit;
   }
 
   return "Cena u makléře";
 }
 
 function getLocation(item){
-
   const city = clean(item.city);
   const street = clean(item.street);
 
-  if(city && street){
-    return city + ", " + street;
-  }
+  if(city && street) return city + ", " + street;
+  if(city) return city;
 
-  if(city){
-    return city;
-  }
+  if(item.location) return clean(item.location);
+  if(item.lokalita) return clean(item.lokalita);
+
+  const address = item.adresa || {};
+  const obec = clean(address.obec_nazev || address.obec);
+  const ulice = clean(address.ulice_nazev || address.ulice);
+
+  if(obec && ulice) return obec + ", " + ulice;
+  if(obec) return obec;
 
   return "Olomoucký kraj";
 }
 
 function getDescription(item){
-
-  const desc = clean(item.description);
+  const desc = clean(
+    item.description ||
+    item.popis_nemovitosti ||
+    item.popis
+  );
 
   if(!desc){
-    return "Detailní informace budou doplněny.";
+    return "Detailní informace o nemovitosti najdete po rozkliknutí nabídky.";
   }
 
   return desc.length > 120
-    ? desc.substring(0,120) + "..."
+    ? desc.substring(0, 120) + "..."
     : desc;
 }
 
-function createPropertyCard(item){
+function getId(item){
+  return clean(item.id || item.id_nabidka || item.cislo_nabidky);
+}
 
+function getDetailUrl(item){
+  const id = getId(item);
+
+  if(id){
+    return "detail.html?id=" + encodeURIComponent(id);
+  }
+
+  return "#";
+}
+
+function createPropertyCard(item, index){
   const category = getCategory(item);
+  const delay = "delay-" + ((index % 3) + 1);
+  const title = getTitle(item);
 
   return `
-    <div class="property" data-category="${category}">
-
+    <div class="property reveal ${delay}" data-category="${category}">
       <div class="property-image">
-        <img src="${getImage(item)}" alt="${getTitle(item)}">
+        <img src="${getImage(item)}" alt="${title}">
       </div>
 
       <div class="property-content">
-
-        <div class="property-type">
-          ${getOfferType(item)} ${getEstateType(item)}
-        </div>
-
-        <h3>${getTitle(item)}</h3>
-
-        <p class="location">
-          ${getLocation(item)}
-        </p>
-
-        <p class="desc">
-          ${getDescription(item)}
-        </p>
-
-        <p class="price">
-          ${getPrice(item)}
-        </p>
-
-        <a href="detail.html?id=${item.id}" class="btn">
-          Zobrazit detail
-        </a>
-
+        <div class="property-type">${getOfferType(item)} ${getEstateType(item)}</div>
+        <h3>${title}</h3>
+        <p class="location">${getLocation(item)}</p>
+        <p class="desc">${getDescription(item)}</p>
+        <p class="price">${getPrice(item)}</p>
+        <a href="${getDetailUrl(item)}" class="btn transition-link">Zobrazit detail</a>
       </div>
-
     </div>
   `;
 }
 
 async function loadProperties(){
-
   try{
-
     const response = await fetch("/api/nemovitosti");
 
     if(!response.ok){
@@ -696,7 +1056,7 @@ async function loadProperties(){
 
     const items = Array.isArray(data)
       ? data
-      : data.items || data.nemovitosti || [];
+      : data.nemovitosti || data.items || data.nabidky || [];
 
     if(!items.length){
       throw new Error("Žádné nabídky");
@@ -705,73 +1065,64 @@ async function loadProperties(){
     propertiesGrid.innerHTML = items.map(createPropertyCard).join("");
 
     importNote.classList.add("success");
-
-    importNote.innerHTML = `
-      <strong>Automatický import:</strong>
-      Nabídky jsou načtené z API.
-      Jakmile bude vložena Poski XML URL,
-      budou se načítat přímo z realitního systému.
-    `;
+    importNote.classList.remove("error");
+    importNote.innerHTML = "<strong>Automatický import:</strong> Nabídky jsou načtené z API. Jakmile bude vložena správná Poski XML adresa, budou se načítat přímo z realitního systému.";
 
     setupFilters();
+    setupReveal();
+    setupTransitionLinks();
 
   }catch(error){
 
-    console.log(error);
-
     propertiesGrid.innerHTML = `
       <div class="loading-text">
-        Nabídky se nepodařilo načíst.
+        Nabídky se nepodařilo načíst. Zkontrolujte API nebo XML feed.
       </div>
     `;
 
     importNote.classList.add("error");
-
-    importNote.innerHTML = `
-      <strong>Automatický import:</strong>
-      Feed zatím není aktivní.
-    `;
+    importNote.classList.remove("success");
+    importNote.innerHTML = "<strong>Automatický import:</strong> Feed se zatím nepodařilo načíst.";
   }
 }
 
 function setupFilters(){
-
   const buttons = document.querySelectorAll(".filter");
-  const properties = document.querySelectorAll(".property");
+  const properties = document.querySelectorAll(".property[data-category]");
 
   buttons.forEach(button => {
-
     button.onclick = () => {
-
-      buttons.forEach(btn => {
-        btn.classList.remove("active");
-      });
-
+      buttons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
 
-      const filter = button.dataset.filter;
+      const filter = button.getAttribute("data-filter");
 
       properties.forEach(property => {
-
-        const category = property.dataset.category;
+        const category = property.getAttribute("data-category");
 
         if(filter === "all" || category.includes(filter)){
           property.style.display = "block";
-        }else{
-          property.style.display = "none";
+
+          setTimeout(() => {
+            property.classList.remove("is-hidden");
+          },20);
+        } else {
+          property.classList.add("is-hidden");
+
+          setTimeout(() => {
+            property.style.display = "none";
+          },250);
         }
-
       });
-
     };
-
   });
-
 }
 
+setupTransitionLinks();
+setupReveal();
 loadProperties();
-
 </script>
 
 </body>
-</html>
+</html> 
+Uprav jen to co máš a nemaž animace ty ichtyle kurva 
