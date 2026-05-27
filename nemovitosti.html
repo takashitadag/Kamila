@@ -10,6 +10,10 @@
 <meta name="description" content="Aktuální nabídka nemovitostí Ing. Kamily Kopřivové. Byty, domy, pozemky a komerční prostory v Olomouckém kraji.">
 <meta name="keywords" content="realitní makléřka Olomouc, byty Olomouc, domy Olomoucký kraj, nemovitosti Olomouc">
 <meta name="author" content="Ing. Kamila Kopřivová">
+<meta name="theme-color" content="#121b3f">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
@@ -42,6 +46,8 @@ background:white;
 color:var(--text);
 line-height:1.7;
 overflow-x:hidden;
+opacity:0;
+animation:pageLoad .8s ease forwards;
 }
 
 h1,h2,h3{
@@ -54,12 +60,33 @@ max-width:100%;
 display:block;
 }
 
-/* ANIMACE */
+a{
+-webkit-tap-highlight-color:transparent;
+}
+
+.page-transition{
+position:fixed;
+inset:0;
+background:var(--navy);
+z-index:99999;
+transform:translateY(100%);
+pointer-events:none;
+transition:transform .75s cubic-bezier(.77,0,.175,1);
+}
+
+.page-transition.active{
+transform:translateY(0);
+}
+
+@keyframes pageLoad{
+from{opacity:0;}
+to{opacity:1;}
+}
 
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(35px);
+transform:translateY(50px);
 }
 to{
 opacity:1;
@@ -68,43 +95,58 @@ transform:translateY(0);
 }
 
 @keyframes fadeIn{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
+from{opacity:0;}
+to{opacity:1;}
 }
 
 @keyframes slowZoom{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.08);
-}
+from{transform:scale(1);}
+to{transform:scale(1.08);}
 }
 
 @keyframes lineGrow{
-from{
-width:0;
-}
-to{
-width:110px;
-}
+from{width:0;}
+to{width:110px;}
 }
 
-.animate{
+.reveal{
 opacity:0;
-transform:translateY(35px);
-animation:fadeUp .9s ease forwards;
+transform:translateY(45px);
+transition:opacity .9s ease, transform .9s ease;
 }
 
-.delay-1{animation-delay:.15s;}
-.delay-2{animation-delay:.3s;}
-.delay-3{animation-delay:.45s;}
-.delay-4{animation-delay:.6s;}
-.delay-5{animation-delay:.75s;}
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.reveal-left{
+opacity:0;
+transform:translateX(-70px);
+transition:opacity .9s ease, transform .9s ease;
+}
+
+.reveal-left.active{
+opacity:1;
+transform:translateX(0);
+}
+
+.reveal-right{
+opacity:0;
+transform:translateX(70px);
+transition:opacity .9s ease, transform .9s ease;
+}
+
+.reveal-right.active{
+opacity:1;
+transform:translateX(0);
+}
+
+.delay-1{transition-delay:.12s;}
+.delay-2{transition-delay:.24s;}
+.delay-3{transition-delay:.36s;}
+.delay-4{transition-delay:.48s;}
+.delay-5{transition-delay:.6s;}
 
 header{
 position:absolute;
@@ -213,7 +255,7 @@ transform:translateY(8px);
 
 .hero{
 height:75vh;
-min-height:650px;
+min-height:680px;
 background:
 linear-gradient(rgba(18,27,63,.62),rgba(18,27,63,.62)),
 url("images/IMG_1014.png") center/cover;
@@ -245,10 +287,11 @@ z-index:-1;
 }
 
 .hero h1{
-font-size:76px;
-letter-spacing:8px;
+font-size:clamp(42px,7vw,76px);
+letter-spacing:clamp(4px,1vw,8px);
 text-transform:uppercase;
 margin-bottom:24px;
+line-height:1.08;
 animation:fadeUp 1s ease forwards;
 }
 
@@ -269,7 +312,7 @@ animation:fadeUp 1s ease .45s forwards;
 }
 
 section{
-padding:100px 8%;
+padding:110px 8%;
 }
 
 .section-label{
@@ -283,10 +326,11 @@ margin-bottom:18px;
 }
 
 .section-title{
-font-size:48px;
+font-size:clamp(34px,4vw,48px);
 color:var(--navy);
 text-align:center;
 margin-bottom:22px;
+line-height:1.2;
 }
 
 .section-subtitle{
@@ -353,9 +397,10 @@ gap:34px;
 .property{
 background:white;
 border:1px solid var(--border);
-transition:.35s ease;
+transition:opacity .35s ease, transform .35s ease, box-shadow .35s ease;
 opacity:1;
 transform:scale(1);
+overflow:hidden;
 }
 
 .property.is-hidden{
@@ -452,12 +497,12 @@ linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
 url("images/IMG_1007.png") center/cover;
 color:white;
 text-align:center;
-padding:120px 8%;
+padding:130px 8%;
 background-attachment:fixed;
 }
 
 .cta h2{
-font-size:52px;
+font-size:clamp(34px,5vw,52px);
 max-width:900px;
 margin:auto;
 margin-bottom:24px;
@@ -545,8 +590,8 @@ display:none;
 display:none;
 }
 
-.hero h1{
-font-size:56px;
+.hero{
+min-height:660px;
 }
 
 .properties{
@@ -557,16 +602,13 @@ grid-template-columns:repeat(2,1fr);
 @media(max-width:768px){
 
 .hero{
+height:100svh;
 min-height:600px;
 }
 
-.hero h1{
-font-size:38px;
-letter-spacing:4px;
-}
-
-.section-title{
-font-size:36px;
+.hero p{
+font-size:12px;
+letter-spacing:2px;
 }
 
 .properties{
@@ -581,12 +623,8 @@ height:260px;
 background-attachment:scroll;
 }
 
-.cta h2{
-font-size:34px;
-}
-
 section{
-padding:70px 6%;
+padding:80px 6%;
 }
 
 .btn{
@@ -598,6 +636,47 @@ text-align:center;
 font-size:11px;
 padding:10px 14px;
 }
+
+.floating-contact{
+right:15px;
+bottom:15px;
+}
+}
+
+@media(max-width:420px){
+
+.logo{
+font-size:18px;
+letter-spacing:2px;
+}
+
+nav a{
+font-size:10px;
+padding:6px 8px;
+}
+
+.import-note{
+padding:22px;
+}
+
+.property-content{
+padding:26px;
+}
+}
+
+@media(prefers-reduced-motion:reduce){
+*{
+animation:none!important;
+transition:none!important;
+scroll-behavior:auto!important;
+}
+
+.reveal,
+.reveal-left,
+.reveal-right{
+opacity:1!important;
+transform:none!important;
+}
 }
 
 </style>
@@ -605,18 +684,20 @@ padding:10px 14px;
 
 <body>
 
+<div class="page-transition"></div>
+
 <header>
 
-<a href="index.html" class="logo">
+<a href="index.html" class="logo transition-link">
 Kamila <span>Kopřivová</span>
 </a>
 
 <nav>
-<a href="index.html">Domů</a>
-<a href="sluzby.html">Služby</a>
-<a href="nemovitosti.html">Nemovitosti</a>
-<a href="oceneni-nemovitosti.html">Ocenění</a>
-<a href="reference.html">Reference</a>
+<a href="index.html" class="transition-link">Domů</a>
+<a href="sluzby.html" class="transition-link">Služby</a>
+<a href="nemovitosti.html" class="transition-link">Nemovitosti</a>
+<a href="oceneni-nemovitosti.html" class="transition-link">Ocenění</a>
+<a href="reference.html" class="transition-link">Reference</a>
 <a href="index.html#kontakt">Kontakt</a>
 </nav>
 
@@ -638,24 +719,24 @@ Kamila <span>Kopřivová</span>
 
 <section>
 
-<div class="section-label animate delay-1">
+<div class="section-label reveal">
 Portfolio nemovitostí
 </div>
 
-<h2 class="section-title animate delay-2">
+<h2 class="section-title reveal delay-1">
 Aktuální nabídka
 </h2>
 
-<p class="section-subtitle animate delay-3">
+<p class="section-subtitle reveal delay-2">
 Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezentaci.
 </p>
 
-<div class="import-note animate delay-4">
+<div class="import-note reveal delay-3">
 <strong>Automatický import:</strong>
 Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systémem bude možné automatické načítání nemovitostí přes XML/API export.
 </div>
 
-<div class="filters animate delay-5">
+<div class="filters reveal delay-4">
 <button class="filter active" data-filter="all">Vše</button>
 <button class="filter" data-filter="byt">Byty</button>
 <button class="filter" data-filter="dum">Domy</button>
@@ -667,7 +748,7 @@ Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systéme
 
 <div class="properties">
 
-<div class="property animate delay-1" data-category="byt pronajem">
+<div class="property reveal delay-1" data-category="byt pronajem">
 <div class="property-image">
 <img src="images/IMG_1006.png" alt="Byt Kpt. Nálepky">
 </div>
@@ -677,11 +758,11 @@ Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systéme
 <p class="location">Olomouc, ul. Kpt. Nálepky</p>
 <p class="desc">Přízemní nezařízený byt vhodný pro jednotlivce nebo pár.</p>
 <p class="price">14 000 Kč / měsíc</p>
-<a href="detail-byt-kpt-nalepky.html" class="btn">Zobrazit detail</a>
+<a href="detail-byt-kpt-nalepky.html" class="btn transition-link">Zobrazit detail</a>
 </div>
 </div>
 
-<div class="property animate delay-2" data-category="byt pronajem">
+<div class="property reveal delay-2" data-category="byt pronajem">
 <div class="property-image">
 <img src="images/IMG_1007.png" alt="Byt Šternberk">
 </div>
@@ -695,7 +776,7 @@ Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systéme
 </div>
 </div>
 
-<div class="property animate delay-3" data-category="komerce pronajem">
+<div class="property reveal delay-3" data-category="komerce pronajem">
 <div class="property-image">
 <img src="images/IMG_1008.jpeg" alt="Komerční prostory">
 </div>
@@ -709,7 +790,7 @@ Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systéme
 </div>
 </div>
 
-<div class="property animate delay-1" data-category="dum pronajem">
+<div class="property reveal delay-1" data-category="dum pronajem">
 <div class="property-image">
 <img src="images/IMG_1009.png" alt="Rodinný dům">
 </div>
@@ -723,7 +804,7 @@ Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systéme
 </div>
 </div>
 
-<div class="property animate delay-2" data-category="byt pronajem">
+<div class="property reveal delay-2" data-category="byt pronajem">
 <div class="property-image">
 <img src="images/IMG_1010.png" alt="Byt Olomouc">
 </div>
@@ -737,7 +818,7 @@ Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systéme
 </div>
 </div>
 
-<div class="property animate delay-3" data-category="pozemek prodej">
+<div class="property reveal delay-3" data-category="pozemek prodej">
 <div class="property-image">
 <img src="images/IMG_1014.png" alt="Pozemek Podolí">
 </div>
@@ -757,23 +838,23 @@ Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systéme
 
 <section class="sold">
 
-<div class="section-label animate delay-1">
+<div class="section-label reveal">
 Realizované obchody
 </div>
 
-<h2 class="section-title animate delay-2">
+<h2 class="section-title reveal delay-1">
 Vybrané realizace
 </h2>
 
-<p class="section-subtitle animate delay-3">
+<p class="section-subtitle reveal delay-2">
 Ukázka realizovaných prodejů a pronájmů.
 </p>
 
 <div class="properties">
 
-<div class="property animate delay-1">
+<div class="property reveal delay-1">
 <div class="property-image">
-<img src="images/IMG_1013.png" alt="">
+<img src="images/IMG_1013.png" alt="Realizovaný pozemek">
 </div>
 <div class="property-content">
 <div class="property-type">Realizováno</div>
@@ -784,9 +865,9 @@ Ukázka realizovaných prodejů a pronájmů.
 </div>
 </div>
 
-<div class="property animate delay-2">
+<div class="property reveal delay-2">
 <div class="property-image">
-<img src="images/IMG_1007.png" alt="">
+<img src="images/IMG_1007.png" alt="Realizovaný pronájem bytu">
 </div>
 <div class="property-content">
 <div class="property-type">Realizováno</div>
@@ -797,9 +878,9 @@ Ukázka realizovaných prodejů a pronájmů.
 </div>
 </div>
 
-<div class="property animate delay-3">
+<div class="property reveal delay-3">
 <div class="property-image">
-<img src="images/IMG_1008.jpeg" alt="">
+<img src="images/IMG_1008.jpeg" alt="Realizovaná komerce">
 </div>
 <div class="property-content">
 <div class="property-type">Realizováno</div>
@@ -816,24 +897,24 @@ Ukázka realizovaných prodejů a pronájmů.
 
 <section class="cta">
 
-<h2 class="animate delay-1">
+<h2 class="reveal">
 Máte zájem o některou z nemovitostí?
 </h2>
 
-<p class="animate delay-2">
+<p class="reveal delay-1">
 Ozvěte se paní Kopřivové a domluvte si prohlídku nebo nezávaznou konzultaci.
 </p>
 
-<a href="index.html#kontakt" class="btn animate delay-3">
+<a href="index.html#kontakt" class="btn reveal delay-2 transition-link">
 Kontaktovat makléřku
 </a>
 
 </section>
 
 <div class="floating-contact">
-<a href="tel:+420736167321">☎</a>
-<a href="mailto:koprivovakamila@gmail.com">✉</a>
-<a href="https://wa.me/420736167321">💬</a>
+<a href="tel:+420736167321" title="Zavolat">☎</a>
+<a href="mailto:koprivovakamila@gmail.com" title="E-mail">✉</a>
+<a href="https://wa.me/420736167321" target="_blank" title="WhatsApp">💬</a>
 </div>
 
 <footer>
@@ -841,47 +922,79 @@ Kontaktovat makléřku
 </footer>
 
 <script>
+const transitionLinks = document.querySelectorAll(".transition-link");
+const transition = document.querySelector(".page-transition");
+
+transitionLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    const href = link.getAttribute("href");
+
+    if(
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto") ||
+      href.startsWith("tel") ||
+      href.startsWith("https://wa.me")
+    ){
+      return;
+    }
+
+    e.preventDefault();
+    transition.classList.add("active");
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 650);
+  });
+});
+
+const revealElements = document.querySelectorAll(
+  ".reveal, .reveal-left, .reveal-right"
+);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
+},{
+  threshold:.15
+});
+
+revealElements.forEach(el => {
+  observer.observe(el);
+});
 
 const buttons = document.querySelectorAll(".filter");
 const properties = document.querySelectorAll(".property[data-category]");
 
 buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    buttons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
 
-button.addEventListener("click", () => {
+    const filter = button.getAttribute("data-filter");
 
-buttons.forEach(btn => btn.classList.remove("active"));
-button.classList.add("active");
+    properties.forEach(property => {
+      const category = property.getAttribute("data-category");
 
-const filter = button.getAttribute("data-filter");
+      if(filter === "all" || category.includes(filter)){
+        property.style.display = "block";
 
-properties.forEach(property => {
+        setTimeout(() => {
+          property.classList.remove("is-hidden");
+        },20);
+      } else {
+        property.classList.add("is-hidden");
 
-const category = property.getAttribute("data-category");
-
-if(filter === "all" || category.includes(filter)){
-
-property.style.display = "block";
-
-setTimeout(() => {
-property.classList.remove("is-hidden");
-},20);
-
-}else{
-
-property.classList.add("is-hidden");
-
-setTimeout(() => {
-property.style.display = "none";
-},250);
-
-}
-
+        setTimeout(() => {
+          property.style.display = "none";
+        },250);
+      }
+    });
+  });
 });
-
-});
-
-});
-
 </script>
 
 </body>
