@@ -1,162 +1,155 @@
-import { XMLParser } from "fast-xml-parser";
-
-function toArray(value){
-  if(!value) return [];
-  return Array.isArray(value) ? value : [value];
-}
-
-function clean(value){
-  if(value === undefined || value === null) return "";
-  if(typeof value === "object" && value["#text"]){
-    return String(value["#text"]).trim();
-  }
-  return String(value).trim();
-}
-
 export default async function handler(req, res){
 
-  const FEED_URL = process.env.POSKI_XML_URL;
+  const nemovitosti = [
 
-  try{
+    {
+      id: "29967",
+      title: "Pronájem útulného bytu 2+kk",
+      description: "Přízemní nezařízený byt vhodný pro jednotlivce nebo pár.",
+      longDescription: "Moderní útulný byt 2+kk v klidné části Olomouce. Nemovitost nabízí příjemné bydlení s dobrou dostupností do centra města.",
+      price: "14 000 Kč / měsíc",
+      city: "Olomouc",
+      street: "Kpt. Nálepky",
+      district: "Olomouc",
+      estateType: "Byt",
+      type: "Pronájem",
+      usableArea: "48 m²",
+      floor: "Přízemí",
+      condition: "Velmi dobrý",
+      energyClass: "C",
+      image: "/images/IMG_1006.png",
+      gallery: [
+        "/images/IMG_1006.png",
+        "/images/IMG_1007.png",
+        "/images/IMG_1010.png"
+      ]
+    },
 
-    // ====== POKUS O XML IMPORT ======
+    {
+      id: "30001",
+      title: "Stylový byt 3+1",
+      description: "Byt s lodžií a garáží.",
+      longDescription: "Prostorný byt vhodný pro rodinu. Součástí je lodžie, sklep a garážové stání.",
+      price: "17 200 Kč / měsíc",
+      city: "Šternberk",
+      street: "Dolní Žleb",
+      district: "Olomouc",
+      estateType: "Byt",
+      type: "Pronájem",
+      usableArea: "76 m²",
+      floor: "2. patro",
+      condition: "Po rekonstrukci",
+      energyClass: "D",
+      image: "/images/IMG_1007.png",
+      gallery: [
+        "/images/IMG_1007.png",
+        "/images/IMG_1006.png"
+      ]
+    },
 
-    if(FEED_URL){
+    {
+      id: "30002",
+      title: "Komerční prostory",
+      description: "Reprezentativní kanceláře v centru.",
+      longDescription: "Exkluzivní komerční prostory vhodné pro kanceláře nebo showroom v centru Olomouce.",
+      price: "150 000 Kč / měsíc",
+      city: "Olomouc",
+      street: "Centrum",
+      district: "Olomouc",
+      estateType: "Komerce",
+      type: "Pronájem",
+      usableArea: "320 m²",
+      floor: "1. NP",
+      condition: "Luxusní",
+      energyClass: "B",
+      image: "/images/IMG_1008.jpeg",
+      gallery: [
+        "/images/IMG_1008.jpeg",
+        "/images/IMG_1013.png"
+      ]
+    },
 
-      const response = await fetch(FEED_URL);
+    {
+      id: "30003",
+      title: "Pronájem RD 4+kk",
+      description: "Rodinný dům s pozemkem a garáží.",
+      longDescription: "Moderní rodinný dům s prostornou zahradou a garáží v klidné lokalitě.",
+      price: "24 000 Kč / měsíc",
+      city: "Moravičany",
+      street: "",
+      district: "Šumperk",
+      estateType: "Dům",
+      type: "Pronájem",
+      usableArea: "183 m²",
+      floor: "Patrový dům",
+      condition: "Novostavba",
+      energyClass: "B",
+      image: "/images/IMG_1009.png",
+      gallery: [
+        "/images/IMG_1009.png",
+        "/images/IMG_1014.png"
+      ]
+    },
 
-      if(response.ok){
+    {
+      id: "30004",
+      title: "Byt 2+1 po rekonstrukci",
+      description: "Moderní byt po rekonstrukci v oblíbené části města.",
+      longDescription: "Světlý zrekonstruovaný byt s moderní kuchyní a výbornou občanskou vybaveností.",
+      price: "16 000 Kč / měsíc",
+      city: "Olomouc",
+      street: "Neředín",
+      district: "Olomouc",
+      estateType: "Byt",
+      type: "Pronájem",
+      usableArea: "63 m²",
+      floor: "3. patro",
+      condition: "Po rekonstrukci",
+      energyClass: "C",
+      image: "/images/IMG_1010.png",
+      gallery: [
+        "/images/IMG_1010.png",
+        "/images/IMG_1007.png"
+      ]
+    },
 
-        const xml = await response.text();
-
-        const parser = new XMLParser({
-          ignoreAttributes:false,
-          attributeNamePrefix:""
-        });
-
-        const data = parser.parse(xml);
-
-        const nabidky =
-          toArray(data?.export?.nabidky?.nabidka);
-
-        const result = nabidky.map(item => {
-
-          const cena = item.cena || {};
-          const adresa = item.adresa || {};
-
-          const fotky = toArray(
-            item?.fotky?.fotka
-          );
-
-          const hlavniFotka =
-            fotky.find(f => clean(f.hlavni) === "ano")
-            || fotky[0];
-
-          return {
-
-            id: clean(item.id_nabidka),
-
-            title:
-              clean(item.nadpis_nemovitosti),
-
-            description:
-              clean(item.popis_nemovitosti),
-
-            price:
-              clean(cena.castka),
-
-            priceNote:
-              clean(cena.poznamka),
-
-            city:
-              clean(adresa.obec_nazev),
-
-            district:
-              clean(adresa.okres_nazev),
-
-            street:
-              clean(adresa.ulice_nazev),
-
-            type:
-              clean(item.typ_nabidky),
-
-            estateType:
-              clean(item.typ_nemovitosti),
-
-            image:
-              hlavniFotka?.url
-                || hlavniFotka
-                || "",
-
-            url:
-              clean(item.url)
-          };
-
-        });
-
-        return res.status(200).json(result);
-
-      }
-
+    {
+      id: "30005",
+      title: "Pozemek pro bydlení",
+      description: "Rovinatý pozemek vhodný pro bydlení nebo investici.",
+      longDescription: "Stavební pozemek v krásné lokalitě Podolí u Bouzova vhodný pro rodinný dům.",
+      price: "580 Kč / m²",
+      city: "Podolí u Bouzova",
+      street: "",
+      district: "Olomouc",
+      estateType: "Pozemek",
+      type: "Prodej",
+      usableArea: "1240 m²",
+      floor: "-",
+      condition: "Stavební",
+      energyClass: "-",
+      image: "/images/IMG_1014.png",
+      gallery: [
+        "/images/IMG_1014.png",
+        "/images/IMG_1013.png"
+      ]
     }
 
-    // ====== FALLBACK DATA ======
+  ];
 
-    return res.status(200).json([
+  const { id } = req.query;
 
-      {
-        id:"29967",
-        title:"Pronájem útulného bytu 2+kk",
-        description:"Přízemní nezařízený byt vhodný pro jednotlivce nebo pár.",
-        price:"14000",
-        city:"Olomouc",
-        district:"Olomouc",
-        street:"Kpt. Nálepky",
-        type:"Pronájem",
-        estateType:"Byt",
-        image:"/images/IMG_1006.png",
-        url:"#"
-      },
+  if(id){
+    const detail = nemovitosti.find(item => item.id === id);
 
-      {
-        id:"30001",
-        title:"Stylový byt 3+1",
-        description:"Byt s lodžií a garáží.",
-        price:"17200",
-        city:"Šternberk",
-        district:"Olomouc",
-        street:"Dolní Žleb",
-        type:"Pronájem",
-        estateType:"Byt",
-        image:"/images/IMG_1007.png",
-        url:"#"
-      },
+    if(!detail){
+      return res.status(404).json({
+        error: "Nemovitost nebyla nalezena"
+      });
+    }
 
-      {
-        id:"30002",
-        title:"Komerční prostory",
-        description:"Reprezentativní kanceláře v centru.",
-        price:"150000",
-        city:"Olomouc",
-        district:"Olomouc",
-        street:"Centrum",
-        type:"Pronájem",
-        estateType:"Komerce",
-        image:"/images/IMG_1008.jpeg",
-        url:"#"
-      }
-
-    ]);
-
-  }catch(error){
-
-    return res.status(200).json([
-      {
-        error:true,
-        message:"Fallback režim aktivní"
-      }
-    ]);
-
+    return res.status(200).json(detail);
   }
 
+  return res.status(200).json(nemovitosti);
 }
