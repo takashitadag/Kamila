@@ -356,6 +356,21 @@ font-size:15px;
 color:var(--navy);
 }
 
+.import-note.success{
+background:#f7fbf7;
+}
+
+.import-note.error{
+background:#fff7f7;
+}
+
+.loading-text{
+grid-column:1/-1;
+text-align:center;
+color:var(--muted);
+padding:40px;
+}
+
 .filters{
 display:flex;
 justify-content:center;
@@ -733,7 +748,7 @@ Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezenta
 
 <div class="import-note reveal delay-3">
 <strong>Automatický import:</strong>
-Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systémem bude možné automatické načítání nemovitostí přes XML/API export.
+Zkouším načíst nabídky z realitního systému. Pokud feed zatím není aktivní, zobrazí se záložní ruční nabídky.
 </div>
 
 <div class="filters reveal delay-4">
@@ -746,7 +761,7 @@ Aktuálně jsou nabídky vkládány ručně. Po propojení s realitním systéme
 <button class="filter" data-filter="pronajem">Pronájem</button>
 </div>
 
-<div class="properties">
+<div class="properties" id="propertiesGrid">
 
 <div class="property reveal delay-1" data-category="byt pronajem">
 <div class="property-image">
@@ -922,35 +937,34 @@ Kontaktovat makléřku
 </footer>
 
 <script>
-const transitionLinks = document.querySelectorAll(".transition-link");
 const transition = document.querySelector(".page-transition");
 
-transitionLinks.forEach(link => {
-  link.addEventListener("click", e => {
-    const href = link.getAttribute("href");
+function setupTransitionLinks(){
+  const transitionLinks = document.querySelectorAll(".transition-link");
 
-    if(
-      !href ||
-      href.startsWith("#") ||
-      href.startsWith("mailto") ||
-      href.startsWith("tel") ||
-      href.startsWith("https://wa.me")
-    ){
-      return;
-    }
+  transitionLinks.forEach(link => {
+    link.onclick = e => {
+      const href = link.getAttribute("href");
 
-    e.preventDefault();
-    transition.classList.add("active");
+      if(
+        !href ||
+        href.startsWith("#") ||
+        href.startsWith("mailto") ||
+        href.startsWith("tel") ||
+        href.startsWith("https://wa.me")
+      ){
+        return;
+      }
 
-    setTimeout(() => {
-      window.location.href = href;
-    }, 650);
+      e.preventDefault();
+      transition.classList.add("active");
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 650);
+    };
   });
-});
-
-const revealElements = document.querySelectorAll(
-  ".reveal, .reveal-left, .reveal-right"
-);
+}
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -962,39 +976,209 @@ const observer = new IntersectionObserver(entries => {
   threshold:.15
 });
 
-revealElements.forEach(el => {
-  observer.observe(el);
-});
+function setupReveal(){
+  const revealElements = document.querySelectorAll(
+    ".reveal, .reveal-left, .reveal-right"
+  );
 
-const buttons = document.querySelectorAll(".filter");
-const properties = document.querySelectorAll(".property[data-category]");
-
-buttons.forEach(button => {
-  button.addEventListener("click", () => {
-    buttons.forEach(btn => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    const filter = button.getAttribute("data-filter");
-
-    properties.forEach(property => {
-      const category = property.getAttribute("data-category");
-
-      if(filter === "all" || category.includes(filter)){
-        property.style.display = "block";
-
-        setTimeout(() => {
-          property.classList.remove("is-hidden");
-        },20);
-      } else {
-        property.classList.add("is-hidden");
-
-        setTimeout(() => {
-          property.style.display = "none";
-        },250);
-      }
-    });
+  revealElements.forEach(el => {
+    observer.observe(el);
   });
-});
+}
+
+const propertiesGrid = document.querySelector("#propertiesGrid");
+const importNote = document.querySelector(".import-note");
+
+function normalizeText(value){
+  return value ? String(value).trim() : "";
+}
+
+function getCategory(item){
+  const type = normalizeText(item.typ_nemovitosti || item.typNemovitosti || item.type).toLowerCase();
+  const offer = normalizeText(item.typ_nabidky || item.typNabidky || item.offerType).toLowerCase();
+
+  let category = "";
+
+  if(type.includes("byt")) category += " byt";
+  if(type.includes("dům") || type.includes("dum") || type.includes("vila")) category += " dum";
+  if(type.includes("pozem")) category += " pozemek";
+  if(type.includes("komer")) category += " komerce";
+
+  if(offer.includes("prodej")) category += " prodej";
+  if(offer.includes("pronájem") || offer.includes("pronajem")) category += " pronajem";
+
+  return category.trim() || "ostatni";
+}
+
+function getImage(item){
+  if(item.fotka) return item.fotka;
+  if(item.image) return item.image;
+
+  if(item.fotky && Array.isArray(item.fotky) && item.fotky.length){
+    return item.fotky[0];
+  }
+
+  if(item.photos && Array.isArray(item.photos) && item.photos.length){
+    return item.photos[0];
+  }
+
+  return "images/IMG_1007.png";
+}
+
+function getPrice(item){
+  if(item.cenaText) return item.cenaText;
+  if(item.priceText) return item.priceText;
+
+  if(item.cena && item.cena.castka){
+    const amount = Number(item.cena.castka).toLocaleString("cs-CZ");
+    const unit = item.cena.jednotka ? " / " + item.cena.jednotka : "";
+    return amount + " Kč" + unit;
+  }
+
+  if(item.price) return item.price;
+
+  return "Cena u makléře";
+}
+
+function getLocation(item){
+  if(item.lokalita) return item.lokalita;
+  if(item.location) return item.location;
+
+  const address = item.adresa || {};
+  const obec = normalizeText(address.obec_nazev || address.obec);
+  const ulice = normalizeText(address.ulice_nazev || address.ulice);
+
+  if(obec && ulice) return obec + ", " + ulice;
+  if(obec) return obec;
+
+  return "Olomoucký kraj";
+}
+
+function getDescription(item){
+  const desc = normalizeText(item.popis_nemovitosti || item.popis || item.description);
+
+  if(!desc){
+    return "Detailní informace o nemovitosti najdete po rozkliknutí nabídky.";
+  }
+
+  return desc.length > 120 ? desc.substring(0, 120) + "..." : desc;
+}
+
+function getTitle(item){
+  return normalizeText(
+    item.nadpis_nemovitosti ||
+    item.nadpis ||
+    item.title ||
+    "Nemovitost v nabídce"
+  );
+}
+
+function getDetailUrl(item){
+  if(item.detailUrl) return item.detailUrl;
+  if(item.url) return item.url;
+
+  const id = item.id_nabidka || item.id || "";
+
+  return id ? "detail.html?id=" + encodeURIComponent(id) : "#";
+}
+
+function createPropertyCard(item, index){
+  const category = getCategory(item);
+  const delay = "delay-" + ((index % 3) + 1);
+
+  return `
+    <div class="property reveal ${delay}" data-category="${category}">
+      <div class="property-image">
+        <img src="${getImage(item)}" alt="${getTitle(item)}">
+      </div>
+
+      <div class="property-content">
+        <div class="property-type">${normalizeText(item.typ_nabidky || item.offerType || "Nabídka nemovitosti")}</div>
+        <h3>${getTitle(item)}</h3>
+        <p class="location">${getLocation(item)}</p>
+        <p class="desc">${getDescription(item)}</p>
+        <p class="price">${getPrice(item)}</p>
+        <a href="${getDetailUrl(item)}" class="btn transition-link">Zobrazit detail</a>
+      </div>
+    </div>
+  `;
+}
+
+async function loadProperties(){
+  if(!propertiesGrid) return;
+
+  try{
+    const response = await fetch("/api/nemovitosti");
+
+    if(!response.ok){
+      throw new Error("API není dostupné");
+    }
+
+    const data = await response.json();
+    const items = Array.isArray(data)
+      ? data
+      : data.nemovitosti || data.items || data.nabidky || [];
+
+    if(!items.length){
+      throw new Error("Feed zatím neobsahuje nabídky");
+    }
+
+    propertiesGrid.innerHTML = items.map(createPropertyCard).join("");
+
+    importNote.classList.add("success");
+    importNote.classList.remove("error");
+    importNote.innerHTML = "<strong>Automatický import:</strong> Nabídky jsou načtené z realitního systému.";
+
+    setupFilters();
+    setupReveal();
+    setupTransitionLinks();
+
+  }catch(error){
+    console.log("Používám ruční záložní nabídky:", error.message);
+
+    importNote.classList.add("error");
+    importNote.classList.remove("success");
+    importNote.innerHTML = "<strong>Automatický import:</strong> Feed zatím není aktivní, proto se zobrazují ručně vložené záložní nabídky.";
+
+    setupFilters();
+  }
+}
+
+function setupFilters(){
+  const buttons = document.querySelectorAll(".filter");
+  const properties = document.querySelectorAll(".property[data-category]");
+
+  buttons.forEach(button => {
+    button.onclick = () => {
+      buttons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const filter = button.getAttribute("data-filter");
+
+      properties.forEach(property => {
+        const category = property.getAttribute("data-category");
+
+        if(filter === "all" || category.includes(filter)){
+          property.style.display = "block";
+
+          setTimeout(() => {
+            property.classList.remove("is-hidden");
+          },20);
+        } else {
+          property.classList.add("is-hidden");
+
+          setTimeout(() => {
+            property.style.display = "none";
+          },250);
+        }
+      });
+    };
+  });
+}
+
+setupTransitionLinks();
+setupReveal();
+loadProperties();
 </script>
 
 </body>
