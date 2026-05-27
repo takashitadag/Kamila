@@ -9,6 +9,10 @@
 <meta name="description" content="Reference klientů Ing. Kamily Kopřivové. Férový přístup, důvěra, kvalitní prezentace a profesionální realitní servis v Olomouckém kraji.">
 <meta name="keywords" content="reference realitní makléřka Olomouc, Kamila Kopřivová reference, realitní servis Olomouc">
 <meta name="author" content="Ing. Kamila Kopřivová">
+<meta name="theme-color" content="#121b3f">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
@@ -41,6 +45,8 @@ background:white;
 color:var(--text);
 line-height:1.7;
 overflow-x:hidden;
+opacity:0;
+animation:pageLoad .8s ease forwards;
 }
 
 h1,h2,h3{
@@ -53,12 +59,33 @@ max-width:100%;
 display:block;
 }
 
-/* ANIMACE */
+a{
+-webkit-tap-highlight-color:transparent;
+}
+
+.page-transition{
+position:fixed;
+inset:0;
+background:var(--navy);
+z-index:99999;
+transform:translateY(100%);
+pointer-events:none;
+transition:transform .75s cubic-bezier(.77,0,.175,1);
+}
+
+.page-transition.active{
+transform:translateY(0);
+}
+
+@keyframes pageLoad{
+from{opacity:0;}
+to{opacity:1;}
+}
 
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(35px);
+transform:translateY(50px);
 }
 to{
 opacity:1;
@@ -67,42 +94,57 @@ transform:translateY(0);
 }
 
 @keyframes fadeIn{
-from{
-opacity:0;
-}
-to{
-opacity:1;
-}
+from{opacity:0;}
+to{opacity:1;}
 }
 
 @keyframes slowZoom{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.08);
-}
+from{transform:scale(1);}
+to{transform:scale(1.08);}
 }
 
 @keyframes lineGrow{
-from{
-width:0;
-}
-to{
-width:110px;
-}
+from{width:0;}
+to{width:110px;}
 }
 
-.animate{
+.reveal{
 opacity:0;
-transform:translateY(35px);
-animation:fadeUp .9s ease forwards;
+transform:translateY(45px);
+transition:opacity .9s ease, transform .9s ease;
 }
 
-.delay-1{animation-delay:.15s;}
-.delay-2{animation-delay:.3s;}
-.delay-3{animation-delay:.45s;}
-.delay-4{animation-delay:.6s;}
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.reveal-left{
+opacity:0;
+transform:translateX(-70px);
+transition:opacity .9s ease, transform .9s ease;
+}
+
+.reveal-left.active{
+opacity:1;
+transform:translateX(0);
+}
+
+.reveal-right{
+opacity:0;
+transform:translateX(70px);
+transition:opacity .9s ease, transform .9s ease;
+}
+
+.reveal-right.active{
+opacity:1;
+transform:translateX(0);
+}
+
+.delay-1{transition-delay:.12s;}
+.delay-2{transition-delay:.24s;}
+.delay-3{transition-delay:.36s;}
+.delay-4{transition-delay:.48s;}
 
 header{
 position:absolute;
@@ -211,7 +253,7 @@ transform:translateY(8px);
 
 .hero{
 height:75vh;
-min-height:650px;
+min-height:680px;
 background:
 linear-gradient(rgba(18,27,63,.62),rgba(18,27,63,.62)),
 url("images/IMG_1007.png") center/cover;
@@ -247,10 +289,11 @@ max-width:1000px;
 }
 
 .hero h1{
-font-size:76px;
-letter-spacing:8px;
+font-size:clamp(42px,7vw,76px);
+letter-spacing:clamp(4px,1vw,8px);
 text-transform:uppercase;
 margin-bottom:24px;
+line-height:1.08;
 animation:fadeUp 1s ease forwards;
 }
 
@@ -271,7 +314,7 @@ animation:fadeUp 1s ease .45s forwards;
 }
 
 section{
-padding:100px 8%;
+padding:110px 8%;
 }
 
 .section-label{
@@ -285,10 +328,11 @@ font-weight:600;
 }
 
 .section-title{
-font-size:48px;
+font-size:clamp(34px,4vw,48px);
 color:var(--navy);
 text-align:center;
 margin-bottom:22px;
+line-height:1.2;
 }
 
 .section-subtitle{
@@ -417,12 +461,12 @@ linear-gradient(rgba(18,27,63,.82),rgba(18,27,63,.82)),
 url("images/IMG_1014.png") center/cover;
 color:white;
 text-align:center;
-padding:120px 8%;
+padding:130px 8%;
 background-attachment:fixed;
 }
 
 .quote h2{
-font-size:52px;
+font-size:clamp(34px,5vw,52px);
 max-width:1000px;
 margin:auto;
 line-height:1.35;
@@ -483,9 +527,10 @@ box-shadow:0 24px 60px rgba(18,27,63,.08);
 }
 
 .cta-box h2{
-font-size:42px;
+font-size:clamp(34px,4vw,42px);
 color:var(--navy);
 margin-bottom:18px;
+line-height:1.2;
 }
 
 .cta-box p{
@@ -593,28 +638,25 @@ grid-template-columns:1fr 1fr;
 grid-template-columns:1fr 1fr;
 }
 
-.hero h1{
-font-size:56px;
-}
-
 .stats{
 grid-template-columns:1fr;
+}
+
+.hero{
+min-height:650px;
 }
 }
 
 @media(max-width:768px){
 
 .hero{
+height:100svh;
 min-height:580px;
 }
 
-.hero h1{
-font-size:38px;
-letter-spacing:4px;
-}
-
-.section-title{
-font-size:34px;
+.hero p{
+font-size:12px;
+letter-spacing:2px;
 }
 
 .references,
@@ -626,21 +668,17 @@ grid-template-columns:1fr;
 background-attachment:scroll;
 }
 
-.quote h2{
-font-size:34px;
-}
-
 .cta-box{
 padding:38px 24px;
 }
 
 section{
-padding:70px 6%;
+padding:80px 6%;
 }
 
 .btn{
 width:100%;
-max-width:310px;
+max-width:320px;
 text-align:center;
 }
 
@@ -650,23 +688,65 @@ bottom:15px;
 }
 }
 
+@media(max-width:420px){
+
+.logo{
+font-size:18px;
+letter-spacing:2px;
+}
+
+nav a{
+font-size:10px;
+padding:6px 8px;
+}
+
+.reference,
+.value-card{
+padding:30px 24px;
+}
+
+.stat{
+padding:55px 20px;
+}
+
+.stat h2{
+font-size:44px;
+}
+}
+
+@media(prefers-reduced-motion:reduce){
+*{
+animation:none!important;
+transition:none!important;
+scroll-behavior:auto!important;
+}
+
+.reveal,
+.reveal-left,
+.reveal-right{
+opacity:1!important;
+transform:none!important;
+}
+}
 </style>
 </head>
 
 <body>
 
+<div class="page-transition"></div>
+
 <header>
 
-<a href="index.html" class="logo">
+<a href="index.html" class="logo transition-link">
 Kamila <span>Kopřivová</span>
 </a>
 
 <nav>
-<a href="index.html">Domů</a>
-<a href="sluzby.html">Služby</a>
-<a href="nemovitosti.html">Nemovitosti</a>
-<a href="oceneni-nemovitosti.html">Ocenění</a>
-<a href="reference.html">Reference</a>
+<a href="index.html" class="transition-link">Domů</a>
+<a href="sluzby.html" class="transition-link">Služby</a>
+<a href="nemovitosti.html" class="transition-link">Nemovitosti</a>
+<a href="oceneni-nemovitosti.html" class="transition-link">Ocenění</a>
+<a href="reference.html" class="transition-link">Reference</a>
 <a href="index.html#kontakt">Kontakt</a>
 </nav>
 
@@ -692,43 +772,40 @@ Kamila <span>Kopřivová</span>
 
 <section>
 
-<div class="section-label animate delay-1">
+<div class="section-label reveal">
 Reference klientů
 </div>
 
-<h2 class="section-title animate delay-2">
+<h2 class="section-title reveal delay-1">
 Profesionální přístup a důvěra
 </h2>
 
-<p class="section-subtitle animate delay-3">
+<p class="section-subtitle reveal delay-2">
 Každý obchod je jedinečný. Zakládám si na osobním přístupu,
 férovosti a kvalitní prezentaci nemovitostí.
 </p>
 
 <div class="references">
 
-<div class="reference animate delay-1">
+<div class="reference reveal delay-1">
 
 <div class="stars">★★★★★</div>
 
 <p>
-Na inzerci jsem se dívala a byla jsem z ní nadšená. Moc se Vám povedla. 
+Na inzerci jsem se dívala a byla jsem z ní nadšená. Moc se Vám povedla.
 </p>
 
 <div class="client">
-
 <div class="avatar">DD</div>
-
 <div>
 <h3>Daniela D.</h3>
 <span>Inzerce bytu</span>
 </div>
-
 </div>
 
 </div>
 
-<div class="reference animate delay-2">
+<div class="reference reveal delay-2">
 
 <div class="stars">★★★★★</div>
 
@@ -737,19 +814,16 @@ Dokonalé.
 </p>
 
 <div class="client">
-
 <div class="avatar">ŽH</div>
-
 <div>
-<h3>Žaneta H..</h3>
+<h3>Žaneta H.</h3>
 <span>Inzerce bytu</span>
 </div>
-
 </div>
 
 </div>
 
-<div class="reference animate delay-3">
+<div class="reference reveal delay-3">
 
 <div class="stars">★★★★★</div>
 
@@ -759,14 +833,11 @@ Doporučuji.
 </p>
 
 <div class="client">
-
 <div class="avatar">TH</div>
-
 <div>
 <h3>Tomáš H.</h3>
 <span>Pronájem domu</span>
 </div>
-
 </div>
 
 </div>
@@ -777,37 +848,37 @@ Doporučuji.
 
 <section class="value">
 
-<div class="section-label animate delay-1">
+<div class="section-label reveal">
 Co klienti oceňují
 </div>
 
-<h2 class="section-title animate delay-2">
+<h2 class="section-title reveal delay-1">
 Spolupráce, která má jasný průběh
 </h2>
 
-<p class="section-subtitle animate delay-3">
+<p class="section-subtitle reveal delay-2">
 Dobrá reference vzniká tehdy, když klient ví, co se děje,
 má dostatek informací a může se na celý proces spolehnout.
 </p>
 
 <div class="value-grid">
 
-<div class="value-card animate delay-1">
+<div class="value-card reveal delay-1">
 <h3>Komunikace</h3>
 <p>Pravidelné informace, jasné kroky a lidský přístup.</p>
 </div>
 
-<div class="value-card animate delay-2">
+<div class="value-card reveal delay-2">
 <h3>Prezentace</h3>
 <p>Nemovitost musí působit důvěryhodně a zaujmout na první pohled.</p>
 </div>
 
-<div class="value-card animate delay-3">
+<div class="value-card reveal delay-3">
 <h3>Férovost</h3>
 <p>Zakládám si na otevřenosti, poctivosti a oboustranné důvěře.</p>
 </div>
 
-<div class="value-card animate delay-4">
+<div class="value-card reveal delay-4">
 <h3>Jistota</h3>
 <p>Bezpečný průběh obchodu od začátku až po předání.</p>
 </div>
@@ -818,7 +889,7 @@ má dostatek informací a může se na celý proces spolehnout.
 
 <section class="quote">
 
-<h2 class="animate delay-1">
+<h2 class="reveal">
 „Zakládám si na <span>férovosti, důvěře a kvalitní prezentaci</span> každé nemovitosti.“
 </h2>
 
@@ -826,17 +897,17 @@ má dostatek informací a může se na celý proces spolehnout.
 
 <section class="stats">
 
-<div class="stat animate delay-1">
+<div class="stat reveal delay-1">
 <h2><span class="counter" data-target="12">0</span>+</h2>
 <p>let zkušeností</p>
 </div>
 
-<div class="stat animate delay-2">
+<div class="stat reveal delay-2">
 <h2><span class="counter" data-target="200">0</span>+</h2>
 <p>zobchodovaných nemovitostí</p>
 </div>
 
-<div class="stat animate delay-3">
+<div class="stat reveal delay-3">
 <h2><span class="counter" data-target="100">0</span>%</h2>
 <p>profesionální přístup</p>
 </div>
@@ -845,7 +916,7 @@ má dostatek informací a může se na celý proces spolehnout.
 
 <section class="cta">
 
-<div class="cta-box animate delay-1">
+<div class="cta-box reveal">
 
 <h2>
 Chcete podobnou zkušenost?
@@ -855,7 +926,7 @@ Chcete podobnou zkušenost?
 Ozvěte se a společně projdeme možnosti prodeje, pronájmu nebo ocenění vaší nemovitosti.
 </p>
 
-<a href="index.html#kontakt" class="btn">
+<a href="index.html#kontakt" class="btn transition-link">
 Kontaktovat makléřku
 </a>
 
@@ -866,7 +937,7 @@ Kontaktovat makléřku
 <div class="floating-contact">
 <a href="tel:+420736167321" title="Zavolat">☎</a>
 <a href="mailto:koprivovakamila@gmail.com" title="E-mail">✉</a>
-<a href="https://wa.me/420736167321" title="WhatsApp">☘</a>
+<a href="https://wa.me/420736167321" target="_blank" title="WhatsApp">☘</a>
 </div>
 
 <footer>
@@ -874,6 +945,51 @@ Kontaktovat makléřku
 </footer>
 
 <script>
+const transitionLinks = document.querySelectorAll(".transition-link");
+const transition = document.querySelector(".page-transition");
+
+transitionLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    const href = link.getAttribute("href");
+
+    if(
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto") ||
+      href.startsWith("tel") ||
+      href.startsWith("https://wa.me")
+    ){
+      return;
+    }
+
+    e.preventDefault();
+
+    transition.classList.add("active");
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 650);
+  });
+});
+
+const revealElements = document.querySelectorAll(
+  ".reveal, .reveal-left, .reveal-right"
+);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
+},{
+  threshold:.15
+});
+
+revealElements.forEach(el => {
+  observer.observe(el);
+});
+
 const counters = document.querySelectorAll(".counter");
 let counterStarted = false;
 
