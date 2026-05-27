@@ -9,6 +9,10 @@
 <meta name="description" content="Nezávazné ocenění nemovitosti od Ing. Kamily Kopřivové. Zjistěte reálnou hodnotu bytu, domu, pozemku nebo komerční nemovitosti v Olomouckém kraji.">
 <meta name="keywords" content="ocenění nemovitosti Olomouc, odhad ceny nemovitosti, realitní makléřka Olomouc, Kamila Kopřivová">
 <meta name="author" content="Ing. Kamila Kopřivová">
+<meta name="theme-color" content="#121b3f">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
@@ -25,9 +29,15 @@
 --border:#ece6da;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth;}
+html{
+scroll-behavior:smooth;
+}
 
 body{
 font-family:"Montserrat",sans-serif;
@@ -35,6 +45,8 @@ background:white;
 color:var(--text);
 line-height:1.7;
 overflow-x:hidden;
+opacity:0;
+animation:pageLoad .8s ease forwards;
 }
 
 h1,h2,h3{
@@ -42,11 +54,43 @@ font-family:"Playfair Display",serif;
 font-weight:400;
 }
 
-img{max-width:100%;display:block;}
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+-webkit-tap-highlight-color:transparent;
+}
+
+.page-transition{
+position:fixed;
+inset:0;
+background:var(--navy);
+z-index:99999;
+transform:translateY(100%);
+pointer-events:none;
+transition:transform .75s cubic-bezier(.77,0,.175,1);
+}
+
+.page-transition.active{
+transform:translateY(0);
+}
+
+@keyframes pageLoad{
+from{opacity:0;}
+to{opacity:1;}
+}
 
 @keyframes fadeUp{
-from{opacity:0;transform:translateY(35px);}
-to{opacity:1;transform:translateY(0);}
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 @keyframes fadeIn{
@@ -64,17 +108,44 @@ from{width:0;}
 to{width:110px;}
 }
 
-.animate{
+.reveal{
 opacity:0;
-transform:translateY(35px);
-animation:fadeUp .9s ease forwards;
+transform:translateY(45px);
+transition:opacity .9s ease, transform .9s ease;
 }
 
-.delay-1{animation-delay:.15s;}
-.delay-2{animation-delay:.3s;}
-.delay-3{animation-delay:.45s;}
-.delay-4{animation-delay:.6s;}
-.delay-5{animation-delay:.75s;}
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.reveal-left{
+opacity:0;
+transform:translateX(-70px);
+transition:opacity .9s ease, transform .9s ease;
+}
+
+.reveal-left.active{
+opacity:1;
+transform:translateX(0);
+}
+
+.reveal-right{
+opacity:0;
+transform:translateX(70px);
+transition:opacity .9s ease, transform .9s ease;
+}
+
+.reveal-right.active{
+opacity:1;
+transform:translateX(0);
+}
+
+.delay-1{transition-delay:.12s;}
+.delay-2{transition-delay:.24s;}
+.delay-3{transition-delay:.36s;}
+.delay-4{transition-delay:.48s;}
+.delay-5{transition-delay:.6s;}
 
 header{
 position:absolute;
@@ -100,9 +171,13 @@ white-space:nowrap;
 transition:.35s ease;
 }
 
-.logo:hover{letter-spacing:4px;}
+.logo:hover{
+letter-spacing:4px;
+}
 
-.logo span{color:var(--gold-light);}
+.logo span{
+color:var(--gold-light);
+}
 
 nav{
 display:flex;
@@ -133,8 +208,13 @@ background:var(--gold-light);
 transition:.35s;
 }
 
-nav a:hover{color:var(--gold-light);}
-nav a:hover::after{width:100%;}
+nav a:hover{
+color:var(--gold-light);
+}
+
+nav a:hover::after{
+width:100%;
+}
 
 .menu-circle{
 width:64px;
@@ -164,8 +244,13 @@ background:var(--navy);
 position:absolute;
 }
 
-.menu-circle span::before{transform:translateY(-8px);}
-.menu-circle span::after{transform:translateY(8px);}
+.menu-circle span::before{
+transform:translateY(-8px);
+}
+
+.menu-circle span::after{
+transform:translateY(8px);
+}
 
 .hero{
 height:85vh;
@@ -200,13 +285,16 @@ background:rgba(18,27,63,.62);
 z-index:-1;
 }
 
-.hero-content{max-width:1000px;}
+.hero-content{
+max-width:1000px;
+}
 
 .hero h1{
-font-size:76px;
-letter-spacing:8px;
+font-size:clamp(40px,7vw,76px);
+letter-spacing:clamp(3px,1vw,8px);
 text-transform:uppercase;
 margin-bottom:24px;
+line-height:1.08;
 animation:fadeUp 1s ease forwards;
 }
 
@@ -247,7 +335,9 @@ background:var(--gold-light);
 transform:translateY(-3px);
 }
 
-section{padding:100px 8%;}
+section{
+padding:110px 8%;
+}
 
 .section-label{
 text-align:center;
@@ -260,10 +350,11 @@ margin-bottom:18px;
 }
 
 .section-title{
-font-size:48px;
+font-size:clamp(34px,4vw,48px);
 color:var(--navy);
 text-align:center;
 margin-bottom:22px;
+line-height:1.2;
 }
 
 .section-subtitle{
@@ -279,12 +370,14 @@ display:grid;
 grid-template-columns:1fr 1fr;
 gap:70px;
 align-items:start;
+overflow:hidden;
 }
 
 .info h2{
-font-size:46px;
+font-size:clamp(34px,4vw,46px);
 color:var(--navy);
 margin-bottom:24px;
+line-height:1.2;
 }
 
 .info p{
@@ -334,9 +427,10 @@ box-shadow:0 30px 75px rgba(18,27,63,.1);
 }
 
 .form-box h2{
-font-size:40px;
+font-size:clamp(32px,4vw,40px);
 color:var(--navy);
 margin-bottom:12px;
+line-height:1.2;
 }
 
 .form-box p{
@@ -365,6 +459,7 @@ font-family:"Montserrat",sans-serif;
 font-size:14px;
 outline:none;
 transition:.3s ease;
+background:white;
 }
 
 input:focus,
@@ -444,18 +539,20 @@ linear-gradient(rgba(18,27,63,.84),rgba(18,27,63,.84)),
 url("images/IMG_1014.png") center/cover;
 color:white;
 text-align:center;
-padding:120px 8%;
+padding:130px 8%;
 background-attachment:fixed;
 }
 
 .quote h2{
-font-size:52px;
+font-size:clamp(34px,5vw,52px);
 max-width:1000px;
 margin:auto;
 line-height:1.35;
 }
 
-.quote span{color:var(--gold-light);}
+.quote span{
+color:var(--gold-light);
+}
 
 .cta{
 background:white;
@@ -476,9 +573,10 @@ box-shadow:0 24px 60px rgba(18,27,63,.08);
 }
 
 .cta-box h2{
-font-size:42px;
+font-size:clamp(34px,4vw,42px);
 color:var(--navy);
 margin-bottom:18px;
+line-height:1.2;
 }
 
 .cta-box p{
@@ -544,6 +642,7 @@ letter-spacing:1px;
 }
 
 @media(max-width:1100px){
+
 header{
 display:flex;
 flex-direction:column;
@@ -569,30 +668,37 @@ background:rgba(255,255,255,.12);
 padding:7px 10px;
 }
 
-nav a::after{display:none;}
+nav a::after{
+display:none;
+}
 
-.menu-circle{display:none;}
+.menu-circle{
+display:none;
+}
 
-.grid{grid-template-columns:1fr;}
+.grid{
+grid-template-columns:1fr;
+}
 
 .benefit-grid{
 grid-template-columns:1fr;
 }
 
-.hero h1{font-size:56px;}
+.hero{
+min-height:680px;
+}
 }
 
 @media(max-width:768px){
-.hero{min-height:620px;}
 
-.hero h1{
-font-size:40px;
-letter-spacing:4px;
+.hero{
+height:100svh;
+min-height:620px;
 }
 
-.section-title,
-.info h2{
-font-size:36px;
+.hero p{
+font-size:12px;
+letter-spacing:2px;
 }
 
 .form-box{
@@ -607,18 +713,24 @@ grid-template-columns:1fr;
 background-attachment:scroll;
 }
 
-.quote h2{font-size:34px;}
-
 .cta-box{
 padding:38px 24px;
 }
 
-section{padding:70px 6%;}
+section{
+padding:80px 6%;
+}
 
-.btn{
+.btn,
+.hero-btn,
+.submit-btn{
 width:100%;
-max-width:310px;
+max-width:320px;
 text-align:center;
+}
+
+.submit-btn{
+max-width:none;
 }
 
 .floating-contact{
@@ -626,54 +738,102 @@ right:15px;
 bottom:15px;
 }
 }
+
+@media(max-width:420px){
+
+.logo{
+font-size:18px;
+letter-spacing:2px;
+}
+
+nav a{
+font-size:10px;
+padding:6px 8px;
+}
+
+.form-box{
+padding:30px 20px;
+}
+}
+
+@media(prefers-reduced-motion:reduce){
+*{
+animation:none!important;
+transition:none!important;
+scroll-behavior:auto!important;
+}
+
+.reveal,
+.reveal-left,
+.reveal-right{
+opacity:1!important;
+transform:none!important;
+}
+}
 </style>
 </head>
 
 <body>
 
+<div class="page-transition"></div>
+
 <header>
-<a href="index.html" class="logo">Kamila <span>Kopřivová</span></a>
+
+<a href="index.html" class="logo transition-link">
+Kamila <span>Kopřivová</span>
+</a>
 
 <nav>
-<a href="index.html">Domů</a>
-<a href="sluzby.html">Služby</a>
-<a href="nemovitosti.html">Nemovitosti</a>
-<a href="oceneni-nemovitosti.html">Ocenění</a>
-<a href="reference.html">Reference</a>
+<a href="index.html" class="transition-link">Domů</a>
+<a href="sluzby.html" class="transition-link">Služby</a>
+<a href="nemovitosti.html" class="transition-link">Nemovitosti</a>
+<a href="oceneni-nemovitosti.html" class="transition-link">Ocenění</a>
+<a href="reference.html" class="transition-link">Reference</a>
 <a href="index.html#kontakt">Kontakt</a>
 </nav>
 
-<div class="menu-circle"><span></span></div>
+<div class="menu-circle">
+<span></span>
+</div>
+
 </header>
 
 <section class="hero">
+
 <div class="hero-content">
+
 <h1>Ocenění nemovitosti</h1>
+
 <div class="hero-line"></div>
+
 <p>Zjistěte reálnou hodnotu své nemovitosti</p>
 
-<a href="#formular" class="hero-btn">Nezávazně poptat</a>
+<a href="#formular" class="hero-btn">
+Nezávazně poptat
+</a>
+
 </div>
+
 </section>
 
 <section>
 
-<div class="section-label animate delay-1">
+<div class="section-label reveal">
 Ocenění nemovitosti
 </div>
 
-<h2 class="section-title animate delay-2">
+<h2 class="section-title reveal delay-1">
 Správná cena rozhoduje
 </h2>
 
-<p class="section-subtitle animate delay-3">
+<p class="section-subtitle reveal delay-2">
 Pomohu vám získat realistický pohled na hodnotu nemovitosti
 a navrhnu vhodnou strategii prodeje nebo pronájmu.
 </p>
 
 <div class="grid">
 
-<div class="info animate delay-1">
+<div class="info reveal-left">
 
 <h2>
 Profesionální pohled na hodnotu vaší nemovitosti
@@ -707,9 +867,10 @@ která bude odpovídat aktuální situaci a potenciálu nemovitosti.
 </div>
 
 </div>
+
 </div>
 
-<div class="form-box animate delay-2" id="formular">
+<div class="form-box reveal-right" id="formular">
 
 <h2>Nezávazná poptávka</h2>
 
@@ -756,39 +917,41 @@ Odeslat poptávku
 </button>
 
 </form>
+
 </div>
 
 </div>
+
 </section>
 
 <section class="benefits">
 
-<div class="section-label animate delay-1">
+<div class="section-label reveal">
 Co získáte
 </div>
 
-<h2 class="section-title animate delay-2">
+<h2 class="section-title reveal delay-1">
 Ocenění jako první krok k úspěšnému obchodu
 </h2>
 
-<p class="section-subtitle animate delay-3">
+<p class="section-subtitle reveal delay-2">
 Správně nastavená cena pomáhá předejít zbytečnému čekání,
 špatnému nastavení nabídky i ztrátě zájmu kupujících.
 </p>
 
 <div class="benefit-grid">
 
-<div class="benefit-card animate delay-1">
+<div class="benefit-card reveal delay-1">
 <h3>Přehled o trhu</h3>
 <p>Získáte lepší představu o aktuální hodnotě vaší nemovitosti.</p>
 </div>
 
-<div class="benefit-card animate delay-2">
+<div class="benefit-card reveal delay-2">
 <h3>Doporučený postup</h3>
 <p>Navrhnu vhodnou strategii pro prodej, pronájem nebo další rozhodování.</p>
 </div>
 
-<div class="benefit-card animate delay-3">
+<div class="benefit-card reveal delay-3">
 <h3>Jasný start</h3>
 <p>Budete vědět, zda je správný čas jednat a jak nemovitost připravit.</p>
 </div>
@@ -798,15 +961,17 @@ Správně nastavená cena pomáhá předejít zbytečnému čekání,
 </section>
 
 <section class="quote">
-<h2 class="animate delay-1">
+
+<h2 class="reveal">
 „Dobře nastavená cena a kvalitní prezentace jsou
 <span>základem úspěšného realitního obchodu.</span>“
 </h2>
+
 </section>
 
 <section class="cta">
 
-<div class="cta-box animate delay-1">
+<div class="cta-box reveal">
 
 <h2>Raději vše proberete osobně?</h2>
 
@@ -814,7 +979,9 @@ Správně nastavená cena pomáhá předejít zbytečnému čekání,
 Zavolejte nebo napište. Společně projdeme vaši situaci a možnosti vaší nemovitosti.
 </p>
 
-<a href="tel:+420736167321" class="btn">Zavolat</a>
+<a href="tel:+420736167321" class="btn">
+Zavolat
+</a>
 
 </div>
 
@@ -823,12 +990,58 @@ Zavolejte nebo napište. Společně projdeme vaši situaci a možnosti vaší ne
 <div class="floating-contact">
 <a href="tel:+420736167321" title="Zavolat">☎</a>
 <a href="mailto:koprivovakamila@gmail.com" title="E-mail">✉</a>
-<a href="https://wa.me/420736167321" title="WhatsApp">☘</a>
+<a href="https://wa.me/420736167321" target="_blank" title="WhatsApp">☘</a>
 </div>
 
 <footer>
 © 2026 Kamila Kopřivová | Realitní makléřka
 </footer>
+
+<script>
+const transitionLinks = document.querySelectorAll(".transition-link");
+const transition = document.querySelector(".page-transition");
+
+transitionLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    const href = link.getAttribute("href");
+
+    if(
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("mailto") ||
+      href.startsWith("tel") ||
+      href.startsWith("https://wa.me")
+    ){
+      return;
+    }
+
+    e.preventDefault();
+    transition.classList.add("active");
+
+    setTimeout(() => {
+      window.location.href = href;
+    }, 650);
+  });
+});
+
+const revealElements = document.querySelectorAll(
+  ".reveal, .reveal-left, .reveal-right"
+);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
+},{
+  threshold:.15
+});
+
+revealElements.forEach(el => {
+  observer.observe(el);
+});
+</script>
 
 </body>
 </html>
