@@ -656,6 +656,7 @@ function getImage(item){
 }
 
 function getImages(item){
+  if(Array.isArray(item.gallery) && item.gallery.length) return item.gallery;
   if(Array.isArray(item.images) && item.images.length) return item.images;
   if(Array.isArray(item.fotky) && item.fotky.length) return item.fotky;
 
@@ -670,7 +671,7 @@ function getImages(item){
 
 function renderDetail(item){
   const title = clean(item.title || item.nadpis_nemovitosti || "Detail nemovitosti");
-  const description = clean(item.description || item.popis_nemovitosti || "Detailní informace k této nemovitosti budou doplněny.");
+  const description = clean(item.longDescription || item.description || item.popis_nemovitosti || "Detailní informace k této nemovitosti budou doplněny.");
   const location = getLocation(item);
   const image = getImage(item);
   const images = getImages(item);
@@ -740,6 +741,26 @@ function renderDetail(item){
               <div class="param">
                 <span>Okres</span>
                 <span>${clean(item.district || "Olomouc")}</span>
+              </div>
+
+              <div class="param">
+                <span>Užitná plocha</span>
+                <span>${clean(item.usableArea || "—")}</span>
+              </div>
+
+              <div class="param">
+                <span>Stav</span>
+                <span>${clean(item.condition || "—")}</span>
+              </div>
+
+              <div class="param">
+                <span>Energetická třída</span>
+                <span>${clean(item.energyClass || "—")}</span>
+              </div>
+
+              <div class="param">
+                <span>Podlaží</span>
+                <span>${clean(item.floor || "—")}</span>
               </div>
             </div>
           </div>
