@@ -120,28 +120,6 @@ opacity:1;
 transform:translateY(0);
 }
 
-.reveal-left{
-opacity:0;
-transform:translateX(-70px);
-transition:opacity .9s ease, transform .9s ease;
-}
-
-.reveal-left.active{
-opacity:1;
-transform:translateX(0);
-}
-
-.reveal-right{
-opacity:0;
-transform:translateX(70px);
-transition:opacity .9s ease, transform .9s ease;
-}
-
-.reveal-right.active{
-opacity:1;
-transform:translateX(0);
-}
-
 .delay-1{transition-delay:.12s;}
 .delay-2{transition-delay:.24s;}
 .delay-3{transition-delay:.36s;}
@@ -364,13 +342,6 @@ background:#f7fbf7;
 background:#fff7f7;
 }
 
-.loading-text{
-grid-column:1/-1;
-text-align:center;
-color:var(--muted);
-padding:40px;
-}
-
 .filters{
 display:flex;
 justify-content:center;
@@ -407,6 +378,13 @@ border-color:var(--navy);
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:34px;
+}
+
+.loading-text{
+grid-column:1/-1;
+text-align:center;
+color:var(--muted);
+padding:40px;
 }
 
 .property{
@@ -686,9 +664,7 @@ transition:none!important;
 scroll-behavior:auto!important;
 }
 
-.reveal,
-.reveal-left,
-.reveal-right{
+.reveal{
 opacity:1!important;
 transform:none!important;
 }
@@ -743,12 +719,12 @@ Aktuální nabídka
 </h2>
 
 <p class="section-subtitle reveal delay-2">
-Vybrané byty, dům, komerční prostory a pozemky v čisté prémiové prezentaci.
+Vybrané byty, domy, komerční prostory a pozemky v čisté prémiové prezentaci.
 </p>
 
-<div class="import-note reveal delay-3">
+<div class="import-note reveal delay-3" id="importNote">
 <strong>Automatický import:</strong>
-Zkouším načíst nabídky z realitního systému. Pokud feed zatím není aktivní, zobrazí se záložní ruční nabídky.
+Načítám nabídky z realitního systému.
 </div>
 
 <div class="filters reveal delay-4">
@@ -762,91 +738,7 @@ Zkouším načíst nabídky z realitního systému. Pokud feed zatím není akti
 </div>
 
 <div class="properties" id="propertiesGrid">
-
-<div class="property reveal delay-1" data-category="byt pronajem">
-<div class="property-image">
-<img src="images/IMG_1006.png" alt="Byt Kpt. Nálepky">
-</div>
-<div class="property-content">
-<div class="property-type">Pronájem bytu</div>
-<h3>Pronájem útulného bytu 2+kk</h3>
-<p class="location">Olomouc, ul. Kpt. Nálepky</p>
-<p class="desc">Přízemní nezařízený byt vhodný pro jednotlivce nebo pár.</p>
-<p class="price">14 000 Kč / měsíc</p>
-<a href="detail-byt-kpt-nalepky.html" class="btn transition-link">Zobrazit detail</a>
-</div>
-</div>
-
-<div class="property reveal delay-2" data-category="byt pronajem">
-<div class="property-image">
-<img src="images/IMG_1007.png" alt="Byt Šternberk">
-</div>
-<div class="property-content">
-<div class="property-type">Pronájem bytu</div>
-<h3>Stylový byt 3+1, 76 m²</h3>
-<p class="location">Šternberk – Dolní Žleb</p>
-<p class="desc">Byt s lodžií, garáží a zahrádkou v příjemné lokalitě.</p>
-<p class="price">17 200 Kč / měsíc</p>
-<a href="#" class="btn">Zobrazit detail</a>
-</div>
-</div>
-
-<div class="property reveal delay-3" data-category="komerce pronajem">
-<div class="property-image">
-<img src="images/IMG_1008.jpeg" alt="Komerční prostory">
-</div>
-<div class="property-content">
-<div class="property-type">Pronájem komerce</div>
-<h3>Exkluzivní komerční prostory</h3>
-<p class="location">Olomouc, centrum</p>
-<p class="desc">Reprezentativní prostory v centru Olomouce.</p>
-<p class="price">150 000 Kč / měsíc</p>
-<a href="#" class="btn">Zobrazit detail</a>
-</div>
-</div>
-
-<div class="property reveal delay-1" data-category="dum pronajem">
-<div class="property-image">
-<img src="images/IMG_1009.png" alt="Rodinný dům">
-</div>
-<div class="property-content">
-<div class="property-type">Pronájem domu</div>
-<h3>Pronájem RD 4+kk, 183 m²</h3>
-<p class="location">Moravičany</p>
-<p class="desc">Rodinný dům s pozemkem a garáží.</p>
-<p class="price">24 000 Kč / měsíc</p>
-<a href="#" class="btn">Zobrazit detail</a>
-</div>
-</div>
-
-<div class="property reveal delay-2" data-category="byt pronajem">
-<div class="property-image">
-<img src="images/IMG_1010.png" alt="Byt Olomouc">
-</div>
-<div class="property-content">
-<div class="property-type">Pronájem bytu</div>
-<h3>Byt 2+1 po rekonstrukci</h3>
-<p class="location">Olomouc, Neředín</p>
-<p class="desc">Moderní byt po rekonstrukci v oblíbené části města.</p>
-<p class="price">16 000 Kč / měsíc</p>
-<a href="#" class="btn">Zobrazit detail</a>
-</div>
-</div>
-
-<div class="property reveal delay-3" data-category="pozemek prodej">
-<div class="property-image">
-<img src="images/IMG_1014.png" alt="Pozemek Podolí">
-</div>
-<div class="property-content">
-<div class="property-type">Prodej pozemku</div>
-<h3>Pozemek pro bydlení</h3>
-<p class="location">Podolí u Bouzova</p>
-<p class="desc">Rovinatý pozemek vhodný pro bydlení nebo investici.</p>
-<p class="price">580 Kč / m²</p>
-<a href="#" class="btn">Zobrazit detail</a>
-</div>
-</div>
-
+<div class="loading-text">Načítám nemovitosti...</div>
 </div>
 
 </section>
@@ -938,6 +830,8 @@ Kontaktovat makléřku
 
 <script>
 const transition = document.querySelector(".page-transition");
+const propertiesGrid = document.querySelector("#propertiesGrid");
+const importNote = document.querySelector("#importNote");
 
 function setupTransitionLinks(){
   const transitionLinks = document.querySelectorAll(".transition-link");
@@ -977,76 +871,122 @@ const observer = new IntersectionObserver(entries => {
 });
 
 function setupReveal(){
-  const revealElements = document.querySelectorAll(
-    ".reveal, .reveal-left, .reveal-right"
-  );
-
-  revealElements.forEach(el => {
+  document.querySelectorAll(".reveal").forEach(el => {
     observer.observe(el);
   });
 }
 
-const propertiesGrid = document.querySelector("#propertiesGrid");
-const importNote = document.querySelector(".import-note");
-
-function normalizeText(value){
+function clean(value){
   return value ? String(value).trim() : "";
 }
 
+function normalize(value){
+  return clean(value).toLowerCase();
+}
+
+function getTitle(item){
+  return clean(
+    item.title ||
+    item.nadpis_nemovitosti ||
+    item.nadpis ||
+    "Nemovitost v nabídce"
+  );
+}
+
+function getEstateType(item){
+  return clean(
+    item.estateType ||
+    item.typ_nemovitosti ||
+    item.typNemovitosti ||
+    "Nemovitost"
+  );
+}
+
+function getOfferType(item){
+  return clean(
+    item.type ||
+    item.typ_nabidky ||
+    item.typNabidky ||
+    "Nabídka nemovitosti"
+  );
+}
+
 function getCategory(item){
-  const type = normalizeText(item.typ_nemovitosti || item.typNemovitosti || item.type).toLowerCase();
-  const offer = normalizeText(item.typ_nabidky || item.typNabidky || item.offerType).toLowerCase();
+  const estateType = normalize(getEstateType(item));
+  const offerType = normalize(getOfferType(item));
 
   let category = "";
 
-  if(type.includes("byt")) category += " byt";
-  if(type.includes("dům") || type.includes("dum") || type.includes("vila")) category += " dum";
-  if(type.includes("pozem")) category += " pozemek";
-  if(type.includes("komer")) category += " komerce";
+  if(estateType.includes("byt")) category += " byt";
+  if(estateType.includes("dům") || estateType.includes("dum") || estateType.includes("vila")) category += " dum";
+  if(estateType.includes("pozem")) category += " pozemek";
+  if(estateType.includes("komer")) category += " komerce";
 
-  if(offer.includes("prodej")) category += " prodej";
-  if(offer.includes("pronájem") || offer.includes("pronajem")) category += " pronajem";
+  if(offerType.includes("prodej")) category += " prodej";
+  if(offerType.includes("pronájem") || offerType.includes("pronajem")) category += " pronajem";
 
   return category.trim() || "ostatni";
 }
 
 function getImage(item){
-  if(item.fotka) return item.fotka;
   if(item.image) return item.image;
+  if(item.fotka) return item.fotka;
 
-  if(item.fotky && Array.isArray(item.fotky) && item.fotky.length){
-    return item.fotky[0];
+  if(Array.isArray(item.images) && item.images.length){
+    return item.images[0];
   }
 
-  if(item.photos && Array.isArray(item.photos) && item.photos.length){
-    return item.photos[0];
+  if(Array.isArray(item.fotky) && item.fotky.length){
+    return item.fotky[0];
   }
 
   return "images/IMG_1007.png";
 }
 
 function getPrice(item){
-  if(item.cenaText) return item.cenaText;
   if(item.priceText) return item.priceText;
+  if(item.cenaText) return item.cenaText;
 
-  if(item.cena && item.cena.castka){
-    const amount = Number(item.cena.castka).toLocaleString("cs-CZ");
-    const unit = item.cena.jednotka ? " / " + item.cena.jednotka : "";
-    return amount + " Kč" + unit;
+  if(item.price){
+    const number = Number(item.price);
+
+    if(!Number.isNaN(number)){
+      return number.toLocaleString("cs-CZ") + " Kč";
+    }
+
+    return clean(item.price);
   }
 
-  if(item.price) return item.price;
+  if(item.cena && item.cena.castka){
+    const amount = Number(item.cena.castka);
+
+    const formattedAmount = !Number.isNaN(amount)
+      ? amount.toLocaleString("cs-CZ")
+      : clean(item.cena.castka);
+
+    const unit = item.cena.jednotka
+      ? " / " + clean(item.cena.jednotka)
+      : "";
+
+    return formattedAmount + " Kč" + unit;
+  }
 
   return "Cena u makléře";
 }
 
 function getLocation(item){
-  if(item.lokalita) return item.lokalita;
-  if(item.location) return item.location;
+  const city = clean(item.city);
+  const street = clean(item.street);
+
+  if(city && street) return city + ", " + street;
+  if(city) return city;
+
+  if(item.location) return clean(item.location);
+  if(item.lokalita) return clean(item.lokalita);
 
   const address = item.adresa || {};
-  const obec = normalizeText(address.obec_nazev || address.obec);
-  const ulice = normalizeText(address.ulice_nazev || address.ulice);
+  const obec = clean(address.obec_nazev || address.obec);
+  const ulice = clean(address.ulice_nazev || address.ulice);
 
   if(obec && ulice) return obec + ", " + ulice;
   if(obec) return obec;
@@ -1055,46 +995,49 @@ function getLocation(item){
 }
 
 function getDescription(item){
-  const desc = normalizeText(item.popis_nemovitosti || item.popis || item.description);
+  const desc = clean(
+    item.description ||
+    item.popis_nemovitosti ||
+    item.popis
+  );
 
   if(!desc){
     return "Detailní informace o nemovitosti najdete po rozkliknutí nabídky.";
   }
 
-  return desc.length > 120 ? desc.substring(0, 120) + "..." : desc;
+  return desc.length > 120
+    ? desc.substring(0, 120) + "..."
+    : desc;
 }
 
-function getTitle(item){
-  return normalizeText(
-    item.nadpis_nemovitosti ||
-    item.nadpis ||
-    item.title ||
-    "Nemovitost v nabídce"
-  );
+function getId(item){
+  return clean(item.id || item.id_nabidka || item.cislo_nabidky);
 }
 
 function getDetailUrl(item){
-  if(item.detailUrl) return item.detailUrl;
-  if(item.url) return item.url;
+  const id = getId(item);
 
-  const id = item.id_nabidka || item.id || "";
+  if(id){
+    return "detail.html?id=" + encodeURIComponent(id);
+  }
 
-  return id ? "detail.html?id=" + encodeURIComponent(id) : "#";
+  return "#";
 }
 
 function createPropertyCard(item, index){
   const category = getCategory(item);
   const delay = "delay-" + ((index % 3) + 1);
+  const title = getTitle(item);
 
   return `
     <div class="property reveal ${delay}" data-category="${category}">
       <div class="property-image">
-        <img src="${getImage(item)}" alt="${getTitle(item)}">
+        <img src="${getImage(item)}" alt="${title}">
       </div>
 
       <div class="property-content">
-        <div class="property-type">${normalizeText(item.typ_nabidky || item.offerType || "Nabídka nemovitosti")}</div>
-        <h3>${getTitle(item)}</h3>
+        <div class="property-type">${getOfferType(item)} ${getEstateType(item)}</div>
+        <h3>${title}</h3>
         <p class="location">${getLocation(item)}</p>
         <p class="desc">${getDescription(item)}</p>
         <p class="price">${getPrice(item)}</p>
@@ -1105,8 +1048,6 @@ function createPropertyCard(item, index){
 }
 
 async function loadProperties(){
-  if(!propertiesGrid) return;
-
   try{
     const response = await fetch("/api/nemovitosti");
 
@@ -1115,32 +1056,36 @@ async function loadProperties(){
     }
 
     const data = await response.json();
+
     const items = Array.isArray(data)
       ? data
       : data.nemovitosti || data.items || data.nabidky || [];
 
     if(!items.length){
-      throw new Error("Feed zatím neobsahuje nabídky");
+      throw new Error("Žádné nabídky");
     }
 
     propertiesGrid.innerHTML = items.map(createPropertyCard).join("");
 
     importNote.classList.add("success");
     importNote.classList.remove("error");
-    importNote.innerHTML = "<strong>Automatický import:</strong> Nabídky jsou načtené z realitního systému.";
+    importNote.innerHTML = "<strong>Automatický import:</strong> Nabídky jsou načtené z API. Jakmile bude vložena správná Poski XML adresa, budou se načítat přímo z realitního systému.";
 
     setupFilters();
     setupReveal();
     setupTransitionLinks();
 
   }catch(error){
-    console.log("Používám ruční záložní nabídky:", error.message);
+
+    propertiesGrid.innerHTML = `
+      <div class="loading-text">
+        Nabídky se nepodařilo načíst. Zkontrolujte API nebo XML feed.
+      </div>
+    `;
 
     importNote.classList.add("error");
     importNote.classList.remove("success");
-    importNote.innerHTML = "<strong>Automatický import:</strong> Feed zatím není aktivní, proto se zobrazují ručně vložené záložní nabídky.";
-
-    setupFilters();
+    importNote.innerHTML = "<strong>Automatický import:</strong> Feed se zatím nepodařilo načíst.";
   }
 }
 
